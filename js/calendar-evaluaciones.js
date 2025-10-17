@@ -186,7 +186,7 @@ class EvaluacionesCalendar {
     }
     
     return monthEvaluaciones.map(evaluacion => `
-      <div class="card border-0 shadow-sm mb-2">
+      <div class="activity-item card mb-2">
         <div class="card-body p-3">
           <div class="d-flex justify-content-between align-items-start">
             <div class="flex-grow-1">
