@@ -34,8 +34,20 @@ class EvaluacionesCalendar {
   
   async init() {
     await this.loadEvaluaciones();
+    this.extractCursos();
     this.render();
     this.attachEventListeners();
+  }
+  
+  extractCursos() {
+    // Extraer cursos únicos del CSV
+    const cursosSet = new Set();
+    this.evaluaciones.forEach(evaluacion => {
+      if (evaluacion.curso && evaluacion.curso.trim() !== '') {
+        cursosSet.add(evaluacion.curso.trim());
+      }
+    });
+    this.cursos = Array.from(cursosSet).sort();
   }
   
   async loadEvaluaciones() {
