@@ -101,10 +101,7 @@ class EvaluacionesCalendar {
             <button class="btn btn-outline-secondary btn-sm" id="todayBtn">Hoy</button>
             <select class="form-select form-select-sm" id="cursoFilter" style="width: auto;">
               <option value="all">Todos los cursos</option>
-              <option value="1° Medio">1° Medio</option>
-              <option value="2° Medio">2° Medio</option>
-              <option value="3° Medio">3° Medio</option>
-              <option value="4° Medio">4° Medio</option>
+              ${this.cursos.map(curso => `<option value="${curso}">${curso}</option>`).join('')}
             </select>
           </div>
         </div>
