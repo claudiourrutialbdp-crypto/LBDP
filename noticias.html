@@ -263,16 +263,24 @@
   function openDetail(id){
     const n = NEWS.find(x=>x.id===id);
     if(!n) return;
+    
     document.getElementById('newsTitle').textContent = n.title;
-    document.getElementById('newsMeta').textContent = `${new Date(n.date).toLocaleDateString()} • ${n.category}`;
+    document.getElementById('newsMeta').innerHTML = `
+      <p class="mb-2"><strong>Fecha:</strong> ${formatDate(n.date)}</p>
+      <p class="mb-3">${n.message}</p>
+    `;
+    
     const inner = document.getElementById('galleryInner');
     inner.innerHTML = '';
+    
+    // Mostrar todas las imágenes (principal + subattachments)
     n.images.forEach((src, i)=>{
       const d = document.createElement('div');
       d.className = 'carousel-item'+(i===0?' active':'');
-      d.innerHTML = `<img class="d-block w-100" style="max-height:420px;object-fit:cover" src="${src}" alt="${n.title} ${i+1}">`;
+      d.innerHTML = `<img class="d-block w-100" style="max-height:500px;object-fit:contain;background:#000" src="${src}" alt="${n.title} - Imagen ${i+1}">`;
       inner.appendChild(d);
     });
+    
     modal.show();
   }
 
