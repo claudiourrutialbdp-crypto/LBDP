@@ -209,7 +209,7 @@
 
   function currentList(){
     const list = (state.category==='Todas') ? NEWS : NEWS.filter(n=>n.category===state.category);
-    return [...list].sort((a,b)=>a.date<b.date?1:-1);
+    return [...list].sort((a,b)=>new Date(b.date) - new Date(a.date));
   }
 
   function render(){
@@ -219,6 +219,12 @@
     const items = list.slice((state.page-1)*state.pageSize, state.page*state.pageSize);
 
     grid.innerHTML = '';
+    
+    if (items.length === 0) {
+      grid.innerHTML = '<div class="col-12 text-center text-muted py-5">No hay noticias disponibles</div>';
+      return;
+    }
+    
     items.forEach((n, idx)=>{
       const col = document.createElement('div');
       col.className = 'col-12 col-sm-6 col-lg-4 reveal';
@@ -228,7 +234,7 @@
           <img class="thumb" src="${n.images[0]}" alt="${n.title}">
           <div class="card-body">
             <span class="badge badge-liceo small">${n.category}</span>
-            <p class="text-muted small mb-1">${new Date(n.date).toLocaleDateString()}</p>
+            <p class="text-muted small mb-1">${formatDate(n.date)}</p>
             <h3 class="h6">${n.title}</h3>
             <p class="small text-secondary">${n.excerpt}</p>
             <button class="btn btn-sm btn-primary-liceo" data-id="${n.id}">Ver detalle</button>
