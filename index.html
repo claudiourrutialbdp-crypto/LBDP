@@ -545,24 +545,29 @@
   // Año en footer
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Render últimas 5 noticias + stagger reveal
+  // Render últimas 3 noticias + stagger reveal
   function renderLatestNews() {
-    const latest = [...NEWS].sort((a,b)=>a.date<b.date?1:-1).slice(0,5);
+    const latest = [...NEWS].sort((a,b)=>new Date(b.date) - new Date(a.date)).slice(0,3);
     const latestContainer = document.getElementById('latestNews');
     latestContainer.innerHTML = '';
     
+    if (latest.length === 0) {
+      latestContainer.innerHTML = '<div class="col-12 text-center text-muted">No hay noticias disponibles</div>';
+      return;
+    }
+    
     latest.forEach((n, idx) => {
       const col = document.createElement('div');
-      col.className = 'col-12 col-sm-6 col-lg-4 col-xxl-3 reveal';
+      col.className = 'col-12 col-sm-6 col-lg-4 reveal';
       col.style.transitionDelay = `${idx*60}ms`;
       col.innerHTML = `
         <article class="card h-100 card-hover" role="article">
           <img class="thumb" src="${n.images[0]}" alt="${n.title}">
           <div class="card-body">
-            <p class="text-muted small mb-1">${new Date(n.date).toLocaleDateString()}</p>
+            <p class="text-muted small mb-1">${formatDate(n.date)}</p>
             <h3 class="h6">${n.title}</h3>
             <p class="small text-secondary">${n.excerpt}</p>
-            <a href="./noticias.html#${n.id}" class="link-success">Ver detalle</a>
+            <a href="./noticias.html#${n.id}" class="btn btn-sm btn-primary-liceo">Ver detalle</a>
           </div>
         </article>`;
       latestContainer.appendChild(col);
