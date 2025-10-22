@@ -504,6 +504,7 @@
   <button class="back-to-top" id="backTop" aria-label="Ir arriba" title="Ir arriba"><i class="bi bi-chevron-up"></i></button>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/news-loader.js"></script>
   <script>
   // ------- Cargar datos desde JSON ---------
   let NEWS = [];
@@ -512,15 +513,12 @@
   // Cargar noticias desde JSON
   async function loadNews() {
     try {
-      const response = await fetch('./data/news.json');
-      NEWS = await response.json();
+      await loadNewsFromJSON();
+      NEWS = NEWS_DATA;
       renderLatestNews();
     } catch (error) {
       console.error('Error cargando noticias:', error);
-      // Fallback a datos por defecto
-      NEWS = [
-        {id:'n1', title:'Inicio de Clases 2025', date:'2025-03-04', category:'Comunicados', excerpt:'Bienvenida al año escolar 2025.', images:['https://images.pexels.com/photos/33415773/pexels-photo-33415773.jpeg','https://images.unsplash.com/photo-1524995997946-a1c2e315a42f']},
-      ];
+      NEWS = [];
       renderLatestNews();
     }
   }
