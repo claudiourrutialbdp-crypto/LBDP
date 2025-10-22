@@ -271,19 +271,36 @@
     
     document.getElementById('newsTitle').textContent = n.title;
     document.getElementById('newsMeta').innerHTML = `
-      <p class="mb-2"><strong>Fecha:</strong> ${formatDate(n.date)}</p>
-      <p class="mb-3">${n.message}</p>
+      <p class="mb-2"><i class="bi bi-calendar3 me-2"></i><strong>Fecha:</strong> ${formatDate(n.date)}</p>
+      <p class="mb-3 lead">${n.message}</p>
+      <hr class="my-3">
+      <p class="small text-muted mb-2"><i class="bi bi-images me-2"></i><strong>Galería de imágenes (${n.images.length})</strong></p>
     `;
     
     const inner = document.getElementById('galleryInner');
+    const indicators = document.getElementById('galleryIndicators');
     inner.innerHTML = '';
+    indicators.innerHTML = '';
     
     // Mostrar todas las imágenes (principal + subattachments)
     n.images.forEach((src, i)=>{
+      // Agregar imagen al carrusel
       const d = document.createElement('div');
       d.className = 'carousel-item'+(i===0?' active':'');
-      d.innerHTML = `<img class="d-block w-100" style="max-height:500px;object-fit:contain;background:#000" src="${src}" alt="${n.title} - Imagen ${i+1}">`;
+      d.innerHTML = `<img class="d-block w-100" style="max-height:500px;object-fit:contain;background:#f8f9fa" src="${src}" alt="${n.title} - Imagen ${i+1}">`;
       inner.appendChild(d);
+      
+      // Agregar indicador
+      const indicator = document.createElement('button');
+      indicator.type = 'button';
+      indicator.setAttribute('data-bs-target', '#galleryCarousel');
+      indicator.setAttribute('data-bs-slide-to', i);
+      indicator.setAttribute('aria-label', `Imagen ${i+1}`);
+      if (i === 0) {
+        indicator.className = 'active';
+        indicator.setAttribute('aria-current', 'true');
+      }
+      indicators.appendChild(indicator);
     });
     
     modal.show();
