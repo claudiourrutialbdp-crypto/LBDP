@@ -518,11 +518,15 @@
         const filter = button.getAttribute('data-filter');
         
         tallerItems.forEach(item => {
-          if (filter === 'all' || item.getAttribute('data-category') === filter) {
-            item.style.display = 'block';
-            setTimeout(() => item.classList.add('reveal'), 10);
+          const itemCategory = item.getAttribute('data-category');
+          const parentCol = item.parentElement;
+          
+          if (filter === 'all' || itemCategory === filter) {
+            parentCol.style.display = '';
+            item.classList.add('visible');
           } else {
-            item.style.display = 'none';
+            parentCol.style.display = 'none';
+            item.classList.remove('visible');
           }
         });
       });
