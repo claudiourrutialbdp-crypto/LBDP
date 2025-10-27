@@ -6,5 +6,29 @@
     "cat": "Comunicados",
     "pinned": true,
     "createdAt": "2025-07-01T10:00:00Z"
+  },
+  {
+    "id": "m2",
+    "title": "Feria de Ciencias",
+    "body": "Viernes 15 de noviembre, presentación de proyectos científicos.",
+    "cat": "Eventos",
+    "pinned": false,
+    "createdAt": "2025-07-02T14:30:00Z"
+  },
+  {
+    "id": "m3",
+    "title": "Entrega de Notas",
+    "body": "Recordatorio: entrega de notas del segundo semestre el 20 de noviembre.",
+    "cat": "Académico",
+    "pinned": false,
+    "createdAt": "2025-07-03T09:15:00Z"
+  },
+  {
+    "id": "m4",
+    "title": "Uniforme de Invierno",
+    "body": "A partir del lunes usar uniforme de invierno completo.",
+    "cat": "Recordatorio",
+    "pinned": true,
+    "createdAt": "2025-07-04T08:00:00Z"
   }
 ]
