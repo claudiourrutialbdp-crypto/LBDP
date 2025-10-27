@@ -359,35 +359,6 @@
       </div>
 
       <div class="mural p-3 rounded">
-        <form id="muralForm" class="row g-2 align-items-end">
-          <div class="col-12 col-md-3">
-            <label class="form-label small" for="mTitle" id="mTitleLabel">Título</label>
-            <input id="mTitle" class="form-control form-control-sm" required maxlength="60" />
-          </div>
-          <div class="col-12 col-md-5">
-            <label class="form-label small" for="mBody" id="mBodyLabel">Mensaje</label>
-            <input id="mBody" class="form-control form-control-sm" required maxlength="140" />
-          </div>
-          <div class="col-6 col-md-2">
-            <label class="form-label small" for="mCat" id="mCatLabel">Categoría</label>
-            <select id="mCat" class="form-select form-select-sm">
-              <option>Comunicados</option>
-              <option>Eventos</option>
-              <option>Académico</option>
-              <option>Recordatorio</option>
-            </select>
-          </div>
-          <div class="col-6 col-md-1">
-            <div class="form-check" title="Fijar en la parte superior">
-              <input class="form-check-input" type="checkbox" id="mPin" />
-              <label class="form-check-label small" for="mPin" id="mPinLabel">Fijar</label>
-            </div>
-          </div>
-          <div class="col-12 col-md-1 d-grid">
-            <button class="btn btn-sm btn-primary-liceo" type="submit" id="mAddBtn">Agregar</button>
-          </div>
-        </form>
-
         <div class="mural-grid mt-3" id="muralGrid" aria-live="polite"></div>
       </div>
     </div>
@@ -535,10 +506,6 @@
         { id:'a1', title:'Reunión de Apoderados', body:'Jueves 19:00 en sala de clases.', cat:'Comunicados', pinned:true, createdAt:'2025-07-01T10:00:00Z' },
       ];
     }
-    // Combinar con datos locales existentes
-    const localNotes = JSON.parse(localStorage.getItem(MURAL_KEY) || '[]');
-    const combinedNotes = [...MURAL_NOTES, ...localNotes.filter(note => !MURAL_NOTES.some(n => n.id === note.id))];
-    localStorage.setItem(MURAL_KEY, JSON.stringify(combinedNotes));
     renderNotes();
   }
 
@@ -604,17 +571,13 @@
   }
   updateParallax();
 
-  // --------- Diario Mural (localStorage + JSON) ----------
-  const MURAL_KEY = 'mural_notes_v1';
+  // --------- Diario Mural (Solo lectura desde JSON) ----------
+  let MURAL_NOTES = [];
   const muralGrid = document.getElementById('muralGrid');
   const muralFilter = document.getElementById('muralFilter');
-  const form = document.getElementById('muralForm');
 
   function loadNotes(){
-    return JSON.parse(localStorage.getItem(MURAL_KEY)||'[]');
-  }
-  function saveNotes(list){
-    localStorage.setItem(MURAL_KEY, JSON.stringify(list));
+    return MURAL_NOTES;
   }
   function renderNotes(){
     const list = loadNotes();
@@ -636,39 +599,14 @@
           </div>
           <h3 class="h6 mt-1 mb-1">${n.title}</h3>
           <p class="small mb-2">${n.body}</p>
-          <div class="d-flex gap-2">
-            <button class="btn btn-sm btn-outline-secondary" aria-label="Fijar" data-act="pin" data-id="${n.id}"><i class="bi bi-pin-angle"></i></button>
-            <button class="btn btn-sm btn-outline-danger" aria-label="Eliminar" data-act="del" data-id="${n.id}"><i class="bi bi-trash"></i></button>
-          </div>
         </article>`;
       muralGrid.appendChild(div.firstElementChild);
     });
-    document.querySelectorAll('#muralGrid [data-act]').forEach(btn=>{
-      btn.addEventListener('click', (e)=>{
-        const id = btn.getAttribute('data-id');
-        const act = btn.getAttribute('data-act');
-        const list = loadNotes();
-        const idx = list.findIndex(x=>x.id===id);
-        if(idx<0) return;
-        if(act==='del'){ list.splice(idx,1); }
-        if(act==='pin'){ list[idx].pinned = !list[idx].pinned; }
-        saveNotes(list); renderNotes();
-      });
-    });
+
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   }
 
-  form.addEventListener('submit', (e)=>{
-    e.preventDefault();
-    const title = document.getElementById('mTitle').value.trim();
-    const body = document.getElementById('mBody').value.trim();
-    const cat = document.getElementById('mCat').value;
-    const pinned = document.getElementById('mPin').checked;
-    if(!title || !body) return;
-    const list = loadNotes();
-    list.push({ id: crypto.randomUUID(), title, body, cat, pinned, createdAt: new Date().toISOString() });
-    saveNotes(list); form.reset(); renderNotes();
-  });
+
   muralFilter.addEventListener('change', renderNotes);
 
   // Inicializar datos
