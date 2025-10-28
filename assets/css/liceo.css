@@ -384,15 +384,28 @@ body{
   text-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
+.hero-text-backdrop {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 .hero-title {
   font-size: clamp(2.5rem, 6vw, 5rem);
   font-weight: 800;
   line-height: 1.1;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-align: center;
   animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
@@ -416,9 +429,12 @@ body{
   font-size: clamp(1.1rem, 2.2vw, 1.4rem);
   font-weight: 400;
   opacity: 0.95;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
   line-height: 1.6;
+  text-align: center;
   animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
   opacity: 0;
   animation-fill-mode: forwards;
@@ -847,6 +863,12 @@ body{
   .hero-subtitle {
     font-size: 1.1rem;
     margin-bottom: 2rem;
+  }
+  
+  .hero-text-backdrop {
+    padding: 2rem 1.5rem;
+    border-radius: 15px;
+    margin: 0 1rem;
   }
   
   .card-icon {
