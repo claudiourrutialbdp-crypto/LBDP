@@ -611,9 +611,26 @@
 
   muralFilter.addEventListener('change', renderNotes);
 
+  // Inicializar IntersectionObserver para animaciones reveal
+  io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  // Función para observar elementos reveal
+  function observeRevealElements() {
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  }
+
   // Inicializar datos
   loadNews();
   loadMuralData();
+  
+  // Inicializar animaciones reveal
+  observeRevealElements();
 
   </script>
 </body>
