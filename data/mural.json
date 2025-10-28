@@ -9,42 +9,26 @@
   },
   {
     "id": "m2",
-    "title": "Feria Científica Escolar",
-    "body": "Invitamos a toda la comunidad a participar en nuestra Feria Científica el 15 de agosto. ¡Ven y conoce los proyectos de nuestros estudiantes!",
+    "title": "Feria de Ciencias",
+    "body": "Viernes 15 de noviembre, presentación de proyectos científicos.",
     "cat": "Eventos",
-    "pinned": true,
-    "createdAt": "2025-07-10T14:30:00Z"
+    "pinned": false,
+    "createdAt": "2025-07-02T14:30:00Z"
   },
   {
     "id": "m3",
-    "title": "Entrega de Notas Primer Semestre",
-    "body": "Las notas del primer semestre estarán disponibles en la plataforma el día lunes 5 de agosto.",
+    "title": "Entrega de Notas",
+    "body": "Recordatorio: entrega de notas del segundo semestre el 20 de noviembre.",
     "cat": "Académico",
     "pinned": false,
-    "createdAt": "2025-07-15T09:00:00Z"
+    "createdAt": "2025-07-03T09:15:00Z"
   },
   {
     "id": "m4",
-    "title": "Día del Estudiante",
-    "body": "Celebraremos el Día del Estudiante el viernes 10 de agosto con actividades recreativas y deportivas. ¡No faltes!",
-    "cat": "Eventos",
-    "pinned": false,
-    "createdAt": "2025-07-18T11:00:00Z"
-  },
-  {
-    "id": "m5",
-    "title": "Pago de Mensualidad Agosto",
-    "body": "Recordatorio: El pago de la mensualidad de agosto vence el día 10. Evite recargos pagando a tiempo.",
+    "title": "Uniforme de Invierno",
+    "body": "A partir del lunes usar uniforme de invierno completo.",
     "cat": "Recordatorio",
-    "pinned": false,
-    "createdAt": "2025-07-20T08:00:00Z"
-  },
-  {
-    "id": "m6",
-    "title": "Taller de Robótica - Inscripciones Abiertas",
-    "body": "Quedan cupos disponibles para el taller de robótica. Inscripciones hasta el 30 de julio en secretaría.",
-    "cat": "Comunicados",
-    "pinned": false,
-    "createdAt": "2025-07-22T10:30:00Z"
+    "pinned": true,
+    "createdAt": "2025-07-04T08:00:00Z"
   }
 ]
