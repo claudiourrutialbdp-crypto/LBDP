@@ -348,9 +348,7 @@ body{
   position: relative;
   height: 100vh;
   min-height: 700px;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
+  width: 100%;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -389,6 +387,11 @@ body{
   width: auto;
 }
 
+.hero-text-container {
+  max-width: 70%;
+  margin: 0 auto;
+}
+
 .hero-text-backdrop {
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(10px);
@@ -397,7 +400,6 @@ body{
   padding: 3rem 2rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  max-width: 70%;
   width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
@@ -872,12 +874,14 @@ body{
     margin-bottom: 2rem;
   }
   
+  .hero-text-container {
+    max-width: 90%;
+  }
+  
   .hero-text-backdrop {
     padding: 2rem 1.5rem;
     border-radius: 15px;
-    margin: 0 1rem;
-    max-width: calc(100vw - 2rem);
-    width: auto;
+    width: 100%;
   }
   
   .card-icon {
