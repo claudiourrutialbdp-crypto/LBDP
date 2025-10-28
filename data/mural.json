@@ -1,10 +1,50 @@
 [
   {
     "id": "m1",
-    "title": "Reunión de Apoderados",
-    "body": "Jueves 19:00 en sala de clases.",
+    "title": "Reunión de Apoderados - Julio",
+    "body": "Se convoca a reunión de apoderados el jueves 25 de julio a las 19:00 hrs en sala de clases. Asistencia obligatoria.",
     "cat": "Comunicados",
     "pinned": true,
     "createdAt": "2025-07-01T10:00:00Z"
+  },
+  {
+    "id": "m2",
+    "title": "Feria Científica Escolar",
+    "body": "Invitamos a toda la comunidad a participar en nuestra Feria Científica el 15 de agosto. ¡Ven y conoce los proyectos de nuestros estudiantes!",
+    "cat": "Eventos",
+    "pinned": true,
+    "createdAt": "2025-07-10T14:30:00Z"
+  },
+  {
+    "id": "m3",
+    "title": "Entrega de Notas Primer Semestre",
+    "body": "Las notas del primer semestre estarán disponibles en la plataforma el día lunes 5 de agosto.",
+    "cat": "Académico",
+    "pinned": false,
+    "createdAt": "2025-07-15T09:00:00Z"
+  },
+  {
+    "id": "m4",
+    "title": "Día del Estudiante",
+    "body": "Celebraremos el Día del Estudiante el viernes 10 de agosto con actividades recreativas y deportivas. ¡No faltes!",
+    "cat": "Eventos",
+    "pinned": false,
+    "createdAt": "2025-07-18T11:00:00Z"
+  },
+  {
+    "id": "m5",
+    "title": "Pago de Mensualidad Agosto",
+    "body": "Recordatorio: El pago de la mensualidad de agosto vence el día 10. Evite recargos pagando a tiempo.",
+    "cat": "Recordatorio",
+    "pinned": false,
+    "createdAt": "2025-07-20T08:00:00Z"
+  },
+  {
+    "id": "m6",
+    "title": "Taller de Robótica - Inscripciones Abiertas",
+    "body": "Quedan cupos disponibles para el taller de robótica. Inscripciones hasta el 30 de julio en secretaría.",
+    "cat": "Comunicados",
+    "pinned": false,
+    "createdAt": "2025-07-22T10:30:00Z"
   }
 ]
