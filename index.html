@@ -359,36 +359,7 @@
       </div>
 
       <div class="mural p-3 rounded">
-        <form id="muralForm" class="row g-2 align-items-end">
-          <div class="col-12 col-md-3">
-            <label class="form-label small" for="mTitle" id="mTitleLabel">Título</label>
-            <input id="mTitle" class="form-control form-control-sm" required maxlength="60" />
-          </div>
-          <div class="col-12 col-md-5">
-            <label class="form-label small" for="mBody" id="mBodyLabel">Mensaje</label>
-            <input id="mBody" class="form-control form-control-sm" required maxlength="140" />
-          </div>
-          <div class="col-6 col-md-2">
-            <label class="form-label small" for="mCat" id="mCatLabel">Categoría</label>
-            <select id="mCat" class="form-select form-select-sm">
-              <option>Comunicados</option>
-              <option>Eventos</option>
-              <option>Académico</option>
-              <option>Recordatorio</option>
-            </select>
-          </div>
-          <div class="col-6 col-md-1">
-            <div class="form-check" title="Fijar en la parte superior">
-              <input class="form-check-input" type="checkbox" id="mPin" />
-              <label class="form-check-label small" for="mPin" id="mPinLabel">Fijar</label>
-            </div>
-          </div>
-          <div class="col-12 col-md-1 d-grid">
-            <button class="btn btn-sm btn-primary-liceo" type="submit" id="mAddBtn">Agregar</button>
-          </div>
-        </form>
-
-        <div class="mural-grid mt-3" id="muralGrid" aria-live="polite"></div>
+        <div class="mural-grid" id="muralGrid" aria-live="polite"></div>
       </div>
     </div>
   </section>
