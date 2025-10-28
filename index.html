@@ -575,71 +575,54 @@
   }
   updateParallax();
 
-  // --------- Diario Mural (localStorage + JSON) ----------
-  const MURAL_KEY = 'mural_notes_v1';
+  // --------- Diario Mural (solo lectura desde JSON) ----------
+  let MURAL_NOTES = [];
   const muralGrid = document.getElementById('muralGrid');
   const muralFilter = document.getElementById('muralFilter');
-  const form = document.getElementById('muralForm');
 
-  function loadNotes(){
-    return JSON.parse(localStorage.getItem(MURAL_KEY)||'[]');
+  async function loadMuralData() {
+    try {
+      const response = await fetch('./data/mural.json');
+      MURAL_NOTES = await response.json();
+      renderNotes();
+    } catch (error) {
+      console.error('Error cargando datos del mural:', error);
+      MURAL_NOTES = [];
+      renderNotes();
+    }
   }
-  function saveNotes(list){
-    localStorage.setItem(MURAL_KEY, JSON.stringify(list));
-  }
+
   function renderNotes(){
-    const list = loadNotes();
     const cat = muralFilter.value;
-    const sorted = [...list].sort((a,b)=> (a.pinned===b.pinned ? (a.createdAt<b.createdAt?1:-1) : (a.pinned? -1:1)));
+    const sorted = [...MURAL_NOTES].sort((a,b)=> (a.pinned===b.pinned ? (a.createdAt<b.createdAt?1:-1) : (a.pinned? -1:1)));
     const filtered = cat==='all' ? sorted : sorted.filter(n=>n.cat===cat);
     muralGrid.innerHTML = '';
+    
+    if (filtered.length === 0) {
+      muralGrid.innerHTML = '<div class="text-center text-muted py-4">No hay comunicados disponibles</div>';
+      return;
+    }
+    
     filtered.forEach((n, idx)=>{
       const div = document.createElement('div');
       const rot = ((idx%5)-2)*0.6; // pequeña variación
       div.innerHTML = `
         <article class="note ${n.pinned?'note-pinned':''} reveal" style="--r:${rot}deg" aria-label="${n.title}">
-          <div class="d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center justify-content-between mb-2">
             <div>
               <span class="badge bg-warning-subtle text-dark border">${n.cat}</span>
-              ${n.pinned?'<span class="badge bg-info-subtle text-dark border"><i class="bi bi-pin-angle"></i> Pin</span>':''}
+              ${n.pinned?'<span class="badge bg-info-subtle text-dark border"><i class="bi bi-pin-angle-fill"></i> Destacado</span>':''}
             </div>
-            <small class="text-muted">${new Date(n.createdAt).toLocaleDateString()}</small>
+            <small class="text-muted">${new Date(n.createdAt).toLocaleDateString('es-CL')}</small>
           </div>
-          <h3 class="h6 mt-1 mb-1">${n.title}</h3>
-          <p class="small mb-2">${n.body}</p>
-          <div class="d-flex gap-2">
-            <button class="btn btn-sm btn-outline-secondary" aria-label="Fijar" data-act="pin" data-id="${n.id}"><i class="bi bi-pin-angle"></i></button>
-            <button class="btn btn-sm btn-outline-danger" aria-label="Eliminar" data-act="del" data-id="${n.id}"><i class="bi bi-trash"></i></button>
-          </div>
+          <h3 class="h6 fw-bold mb-1">${n.title}</h3>
+          <p class="small mb-0">${n.body}</p>
         </article>`;
       muralGrid.appendChild(div.firstElementChild);
-    });
-    document.querySelectorAll('#muralGrid [data-act]').forEach(btn=>{
-      btn.addEventListener('click', (e)=>{
-        const id = btn.getAttribute('data-id');
-        const act = btn.getAttribute('data-act');
-        const list = loadNotes();
-        const idx = list.findIndex(x=>x.id===id);
-        if(idx<0) return;
-        if(act==='del'){ list.splice(idx,1); }
-        if(act==='pin'){ list[idx].pinned = !list[idx].pinned; }
-        saveNotes(list); renderNotes();
-      });
     });
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   }
 
-  form.addEventListener('submit', (e)=>{
-    e.preventDefault();
-    const title = document.getElementById('mTitle').value.trim();
-    const body = document.getElementById('mBody').value.trim();
-    const cat = document.getElementById('mCat').value;
-    const pinned = document.getElementById('mPin').checked;
-    if(!title || !body) return;
-    const list = loadNotes();
-    list.push({ id: crypto.randomUUID(), title, body, cat, pinned, createdAt: new Date().toISOString() });
-    saveNotes(list); form.reset(); renderNotes();
-  });
   muralFilter.addEventListener('change', renderNotes);
 
   // Inicializar datos
