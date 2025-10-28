@@ -363,7 +363,7 @@
       </div>
 
       <div class="mural p-3 rounded">
-        <div class="mural-grid" id="muralGrid" aria-live="polite"></div>
+        <div class="mural-grid mt-3" id="muralGrid" aria-live="polite"></div>
       </div>
     </div>
   </section>
@@ -497,6 +497,24 @@
     }
   }
 
+  // Cargar datos del mural desde JSON
+  async function loadMuralData() {
+    try {
+      const response = await fetch('./data/mural.json');
+      MURAL_NOTES = await response.json();
+    } catch (error) {
+      console.error('Error cargando datos del mural:', error);
+      // Fallback a datos por defecto
+      MURAL_NOTES = [
+        { id:'a1', title:'Reunión de Apoderados', body:'Jueves 19:00 en sala de clases.', cat:'Comunicados', pinned:true, createdAt:'2025-07-01T10:00:00Z' },
+      ];
+    }
+    renderNotes();
+  }
+
+  // Año en footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+
   // Render últimas 3 noticias + stagger reveal
   function renderLatestNews() {
     const latest = [...NEWS].sort((a,b)=>new Date(b.date) - new Date(a.date)).slice(0,3);
@@ -545,20 +563,12 @@
     });
   }
 
-  // --------- Diario Mural (solo lectura desde JSON) ----------
-  let MURAL_NOTES = []; // Array para almacenar las notas del mural
-  let muralGrid, muralFilter;
+  // --------- Diario Mural (Solo lectura desde JSON) ----------
+  const muralGrid = document.getElementById('muralGrid');
+  const muralFilter = document.getElementById('muralFilter');
 
-  async function loadMuralData() {
-    try {
-      const response = await fetch('./data/mural.json');
-      MURAL_NOTES = await response.json();
-      renderNotes();
-    } catch (error) {
-      console.error('Error cargando datos del mural:', error);
-      MURAL_NOTES = [];
-      renderNotes();
-    }
+  function loadNotes(){
+    return MURAL_NOTES;
   }
 
   function renderNotes(){
@@ -587,82 +597,23 @@
               <span class="badge bg-warning-subtle text-dark border">${n.cat}</span>
               ${n.pinned?'<span class="badge bg-info-subtle text-dark border"><i class="bi bi-pin-angle-fill"></i> Destacado</span>':''}
             </div>
-            <small class="text-muted">${new Date(n.createdAt).toLocaleDateString('es-CL')}</small>
+            <small class="text-muted">${new Date(n.createdAt).toLocaleDateString()}</small>
           </div>
-          <h3 class="h6 fw-bold mb-1">${n.title}</h3>
-          <p class="small mb-0">${n.body}</p>
+          <h3 class="h6 mt-1 mb-1">${n.title}</h3>
+          <p class="small mb-2">${n.body}</p>
         </article>`;
       muralGrid.appendChild(div.firstElementChild);
     });
-    observeRevealElements();
+
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   }
 
-  // Función para observar elementos reveal
-  function observeRevealElements() {
-    if (io) {
-      document.querySelectorAll('.reveal').forEach(el => {
-        if (!el.classList.contains('observed')) {
-          io.observe(el);
-          el.classList.add('observed');
-        }
-      });
-    }
-  }
 
-  // Inicializar cuando el DOM esté listo
-  document.addEventListener('DOMContentLoaded', function() {
-    // Año en footer
-    const yearElement = document.getElementById('year');
-    if (yearElement) {
-      yearElement.textContent = new Date().getFullYear();
-    }
-    
-    // Inicializar elementos del mural
-    muralGrid = document.getElementById('muralGrid');
-    muralFilter = document.getElementById('muralFilter');
-    
-    // Event listener para filtro del mural
-    if (muralFilter) {
-      muralFilter.addEventListener('change', renderNotes);
-    }
-    
-    // Inicializar IntersectionObserver para animaciones reveal
-    io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
-    
-    // Observar elementos reveal existentes
-    observeRevealElements();
-    
-    // Inicializar scroll effects
-    backTop = document.getElementById('backTop');
-    navbar = document.querySelector('.navbar-liceo');
-    
-    if (backTop) {
-      backTop.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
-    }
-    
-    window.addEventListener('scroll', () => {
-      if (navbar) {
-        navbar.classList.toggle('navbar-elevated', window.scrollY > 12);
-      }
-      if (backTop) {
-        backTop.classList.toggle('show', window.scrollY > 240);
-      }
-      updateParallax();
-    });
-    
-    // Inicializar parallax
-    updateParallax();
-    
-    // Cargar datos
-    loadNews();
-    loadMuralData();
-  });
+  muralFilter.addEventListener('change', renderNotes);
+
+  // Inicializar datos
+  loadNews();
+  loadMuralData();
 
   </script>
 </body>
