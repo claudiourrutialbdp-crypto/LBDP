@@ -493,9 +493,6 @@
     }
   }
 
-  // Año en footer
-  document.getElementById('year').textContent = new Date().getFullYear();
-
   // Render últimas 3 noticias + stagger reveal
   function renderLatestNews() {
     const latest = [...NEWS].sort((a,b)=>new Date(b.date) - new Date(a.date)).slice(0,3);
@@ -557,8 +554,7 @@
 
   // --------- Diario Mural (solo lectura desde JSON) ----------
   let MURAL_NOTES = [];
-  const muralGrid = document.getElementById('muralGrid');
-  const muralFilter = document.getElementById('muralFilter');
+  let muralGrid, muralFilter;
 
   async function loadMuralData() {
     try {
@@ -573,6 +569,11 @@
   }
 
   function renderNotes(){
+    if (!muralGrid || !muralFilter) {
+      console.error('Elementos del mural no inicializados');
+      return;
+    }
+    
     const cat = muralFilter.value;
     const sorted = [...MURAL_NOTES].sort((a,b)=> (a.pinned===b.pinned ? (a.createdAt<b.createdAt?1:-1) : (a.pinned? -1:1)));
     const filtered = cat==='all' ? sorted : sorted.filter(n=>n.cat===cat);
@@ -603,11 +604,27 @@
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   }
 
-  muralFilter.addEventListener('change', renderNotes);
-
-  // Inicializar datos
-  loadNews();
-  loadMuralData();
+  // Inicializar cuando el DOM esté listo
+  document.addEventListener('DOMContentLoaded', function() {
+    // Año en footer
+    const yearElement = document.getElementById('year');
+    if (yearElement) {
+      yearElement.textContent = new Date().getFullYear();
+    }
+    
+    // Inicializar elementos del mural
+    muralGrid = document.getElementById('muralGrid');
+    muralFilter = document.getElementById('muralFilter');
+    
+    // Event listener para filtro del mural
+    if (muralFilter) {
+      muralFilter.addEventListener('change', renderNotes);
+    }
+    
+    // Cargar datos
+    loadNews();
+    loadMuralData();
+  });
 
   </script>
 </body>
