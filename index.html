@@ -479,7 +479,6 @@
   <script>
   // ------- Cargar datos desde JSON ---------
   let NEWS = [];
-  let MURAL_NOTES = [];
 
   // Cargar noticias desde JSON
   async function loadNews() {
@@ -492,25 +491,6 @@
       NEWS = [];
       renderLatestNews();
     }
-  }
-
-  // Cargar datos del mural desde JSON
-  async function loadMuralData() {
-    try {
-      const response = await fetch('./data/mural.json');
-      MURAL_NOTES = await response.json();
-    } catch (error) {
-      console.error('Error cargando datos del mural:', error);
-      // Fallback a datos por defecto
-      MURAL_NOTES = [
-        { id:'a1', title:'Reunión de Apoderados', body:'Jueves 19:00 en sala de clases.', cat:'Comunicados', pinned:true, createdAt:'2025-07-01T10:00:00Z' },
-      ];
-    }
-    // Combinar con datos locales existentes
-    const localNotes = JSON.parse(localStorage.getItem(MURAL_KEY) || '[]');
-    const combinedNotes = [...MURAL_NOTES, ...localNotes.filter(note => !MURAL_NOTES.some(n => n.id === note.id))];
-    localStorage.setItem(MURAL_KEY, JSON.stringify(combinedNotes));
-    renderNotes();
   }
 
   // Año en footer
