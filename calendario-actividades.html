@@ -141,35 +141,12 @@
 
   </main>
 
-  <!-- Footer -->
-  <div id="footer"></div>
-
   <button class="back-to-top" id="backTop" aria-label="Ir arriba" title="Ir arriba">
     <i class="bi bi-chevron-up"></i>
   </button>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./js/calendar.js"></script>
-  <script>
-    // Cargar componentes
-    async function loadComponent(elementId, filePath) {
-      try {
-        const response = await fetch(filePath);
-        const html = await response.text();
-        document.getElementById(elementId).innerHTML = html;
-      } catch (error) {
-        console.error(`Error cargando ${filePath}:`, error);
-      }
-    }
-
-    // Cargar todos los componentes
-    Promise.all([
-      loadComponent('topbar', './components/topbar.html'),
-      loadComponent('navbar', './components/navbar.html'),
-      loadComponent('footer', './components/footer.html')
-    ]).then(() => {
-      initializePage();
-    });
 
     function initializePage() {
       // Año en footer
