@@ -1,0 +1,243 @@
+[
+  {
+    "id": 1,
+    "fecha": "2025-03-04",
+    "titulo": "Acto de Inicio de Año",
+    "descripcion": "Ceremonia de bienvenida al año escolar",
+    "categoria": "Ceremonia",
+    "lugar": "Patio Central",
+    "hora": "08:30",
+    "timestamp": "2025-03-04T08:30:00"
+  },
+  {
+    "id": 2,
+    "fecha": "2025-03-15",
+    "titulo": "Reunión de Apoderados 1º Medio",
+    "descripcion": "Primera reunión del año para padres de 1º medio",
+    "categoria": "Reunión",
+    "lugar": "Sala 101",
+    "hora": "19:00",
+    "timestamp": "2025-03-15T19:00:00"
+  },
+  {
+    "id": 3,
+    "fecha": "2025-03-22",
+    "titulo": "Charla de Orientación Vocacional",
+    "descripcion": "Charla para estudiantes de 4º medio",
+    "categoria": "Académico",
+    "lugar": "Auditorio",
+    "hora": "14:30",
+    "timestamp": "2025-03-22T14:30:00"
+  },
+  {
+    "id": 4,
+    "fecha": "2025-04-02",
+    "titulo": "Feria de Ciencias",
+    "descripcion": "Exposición de proyectos científicos",
+    "categoria": "Académico",
+    "lugar": "Gimnasio",
+    "hora": "10:00",
+    "timestamp": "2025-04-02T10:00:00"
+  },
+  {
+    "id": 5,
+    "fecha": "2025-04-18",
+    "titulo": "Día del Patrimonio",
+    "descripcion": "Actividades culturales y patrimoniales",
+    "categoria": "Cultural",
+    "lugar": "Todo el Liceo",
+    "hora": "09:00",
+    "timestamp": "2025-04-18T09:00:00"
+  },
+  {
+    "id": 6,
+    "fecha": "2025-05-01",
+    "titulo": "Día del Trabajo",
+    "descripcion": "Feriado nacional",
+    "categoria": "Feriado",
+    "lugar": "",
+    "hora": "",
+    "timestamp": "2025-05-01T00:00:00"
+  },
+  {
+    "id": 7,
+    "fecha": "2025-05-11",
+    "titulo": "Día del Alumno",
+    "descripcion": "Celebración del día del estudiante",
+    "categoria": "Celebración",
+    "lugar": "Patio Central",
+    "hora": "11:00",
+    "timestamp": "2025-05-11T11:00:00"
+  },
+  {
+    "id": 8,
+    "fecha": "2025-05-21",
+    "titulo": "Glorias Navales",
+    "descripcion": "Acto conmemorativo",
+    "categoria": "Ceremonia",
+    "lugar": "Auditorio",
+    "hora": "10:00",
+    "timestamp": "2025-05-21T10:00:00"
+  },
+  {
+    "id": 9,
+    "fecha": "2025-06-15",
+    "titulo": "Muestra de Talleres",
+    "descripcion": "Presentación de trabajos de talleres extraescolares",
+    "categoria": "Cultural",
+    "lugar": "Gimnasio",
+    "hora": "15:00",
+    "timestamp": "2025-06-15T15:00:00"
+  },
+  {
+    "id": 10,
+    "fecha": "2025-06-29",
+    "titulo": "San Pedro y San Pablo",
+    "descripcion": "Feriado nacional",
+    "categoria": "Feriado",
+    "lugar": "",
+    "hora": "",
+    "timestamp": "2025-06-29T00:00:00"
+  },
+  {
+    "id": 11,
+    "fecha": "2025-07-01",
+    "titulo": "Entrega de Informes 1º Semestre",
+    "descripcion": "Entrega de notas primer semestre",
+    "categoria": "Académico",
+    "lugar": "Salas de clase",
+    "hora": "17:00",
+    "timestamp": "2025-07-01T17:00:00"
+  },
+  {
+    "id": 12,
+    "fecha": "2025-07-15",
+    "titulo": "Vacaciones de Invierno - Inicio",
+    "descripcion": "Inicio del receso invernal",
+    "categoria": "Vacaciones",
+    "lugar": "",
+    "hora": "",
+    "timestamp": "2025-07-15T00:00:00"
+  },
+  {
+    "id": 13,
+    "fecha": "2025-08-01",
+    "titulo": "Regreso de Vacaciones",
+    "descripcion": "Vuelta a clases después del receso",
+    "categoria": "Académico",
+    "lugar": "Todo el Liceo",
+    "hora": "08:00",
+    "timestamp": "2025-08-01T08:00:00"
+  },
+  {
+    "id": 14,
+    "fecha": "2025-08-17",
+    "titulo": "Día de la Independencia",
+    "descripcion": "Feriado patrio",
+    "categoria": "Feriado",
+    "lugar": "",
+    "hora": "",
+    "timestamp": "2025-08-17T00:00:00"
+  },
+  {
+    "id": 15,
+    "fecha": "2025-08-18",
+    "titulo": "Glorias del Ejército",
+    "descripcion": "Feriado patrio",
+    "categoria": "Feriado",
+    "lugar": "",
+    "hora": "",
+    "timestamp": "2025-08-18T00:00:00"
+  },
+  {
+    "id": 16,
+    "fecha": "2025-09-12",
+    "titulo": "Olimpiadas Deportivas",
+    "descripcion": "Competencias inter-cursos",
+    "categoria": "Deportivo",
+    "lugar": "Cancha",
+    "hora": "09:00",
+    "timestamp": "2025-09-12T09:00:00"
+  },
+  {
+    "id": 17,
+    "fecha": "2025-09-18",
+    "titulo": "Fiestas Patrias",
+    "descripcion": "Celebración de la independencia",
+    "categoria": "Celebración",
+    "lugar": "Todo el Liceo",
+    "hora": "10:00",
+    "timestamp": "2025-09-18T10:00:00"
+  },
+  {
+    "id": 18,
+    "fecha": "2025-10-12",
+    "titulo": "Día de la Raza",
+    "descripcion": "Feriado nacional",
+    "categoria": "Feriado",
+    "lugar": "",
+    "hora": "",
+    "timestamp": "2025-10-12T00:00:00"
+  },
+  {
+    "id": 19,
+    "fecha": "2025-10-31",
+    "titulo": "Día del Profesor",
+    "descripcion": "Celebración del día del educador",
+    "categoria": "Celebración",
+    "lugar": "Auditorio",
+    "hora": "11:00",
+    "timestamp": "2025-10-31T11:00:00"
+  },
+  {
+    "id": 20,
+    "fecha": "2025-11-01",
+    "titulo": "Día de Todos los Santos",
+    "descripcion": "Feriado nacional",
+    "categoria": "Feriado",
+    "lugar": "",
+    "hora": "",
+    "timestamp": "2025-11-01T00:00:00"
+  },
+  {
+    "id": 21,
+    "fecha": "2025-11-15",
+    "titulo": "Graduación 4º Medio",
+    "descripcion": "Ceremonia de licenciatura",
+    "categoria": "Ceremonia",
+    "lugar": "Auditorio",
+    "hora": "19:00",
+    "timestamp": "2025-11-15T19:00:00"
+  },
+  {
+    "id": 22,
+    "fecha": "2025-12-08",
+    "titulo": "Inmaculada Concepción",
+    "descripcion": "Feriado nacional",
+    "categoria": "Feriado",
+    "lugar": "",
+    "hora": "",
+    "timestamp": "2025-12-08T00:00:00"
+  },
+  {
+    "id": 23,
+    "fecha": "2025-12-15",
+    "titulo": "Clausura Año Escolar",
+    "descripcion": "Ceremonia de cierre del año",
+    "categoria": "Ceremonia",
+    "lugar": "Patio Central",
+    "hora": "10:00",
+    "timestamp": "2025-12-15T10:00:00"
+  },
+  {
+    "id": 24,
+    "fecha": "2025-12-25",
+    "titulo": "Navidad",
+    "descripcion": "Feriado nacional",
+    "categoria": "Feriado",
+    "lugar": "",
+    "hora": "",
+    "timestamp": "2025-12-25T00:00:00"
+  }
+]
+
