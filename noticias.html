@@ -94,9 +94,11 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./js/news-loader.js"></script>
   <script>
-  // Cargar noticias desde JSON
+  // Variables globales
   let NEWS = [];
+  let state, grid, pageInfo, prevBtn, nextBtn;
   
+  // Cargar noticias desde JSON
   async function loadNews() {
     try {
       await loadNewsFromJSON();
@@ -109,11 +111,13 @@
     }
   }
 
-  const state = { page: 1, pageSize: 6, category: 'Todas' };
-  const grid = document.getElementById('newsGrid');
-  const pageInfo = document.getElementById('pageInfo');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
+  // Inicializar cuando el DOM esté listo
+  document.addEventListener('DOMContentLoaded', () => {
+    state = { page: 1, pageSize: 6, category: 'Todas' };
+    grid = document.getElementById('newsGrid');
+    pageInfo = document.getElementById('pageInfo');
+    prevBtn = document.getElementById('prevBtn');
+    nextBtn = document.getElementById('nextBtn');
 
   function currentList(){
     const list = (state.category==='Todas') ? NEWS : NEWS.filter(n=>n.category===state.category);
@@ -209,21 +213,26 @@
     modal.show();
   }
 
-  document.getElementById('year').textContent = new Date().getFullYear();
-  
-  // Inicializar
-  loadNews();
-  
-  if(location.hash){ 
-    const id=location.hash.replace('#',''); 
-    setTimeout(() => {
-      if(NEWS.find(n=>n.id===id)) openDetail(id);
-    }, 500);
-  }
+    // Inicializar
+    loadNews();
+    
+    if(location.hash){ 
+      const id=location.hash.replace('#',''); 
+      setTimeout(() => {
+        if(NEWS.find(n=>n.id===id)) openDetail(id);
+      }, 500);
+    }
 
-  const backTop=document.getElementById('backTop');
-  window.addEventListener('scroll',()=>{ backTop.classList.toggle('show', window.scrollY>240); document.querySelector('.navbar-liceo').classList.toggle('navbar-elevated', window.scrollY>12); });
-  backTop.addEventListener('click',()=> window.scrollTo({top:0, behavior:'smooth'}));
+    const backTop=document.getElementById('backTop');
+    window.addEventListener('scroll',()=>{ 
+      backTop.classList.toggle('show', window.scrollY>240); 
+      const navbar = document.querySelector('.navbar-liceo');
+      if (navbar) {
+        navbar.classList.toggle('navbar-elevated', window.scrollY>12);
+      }
+    });
+    backTop.addEventListener('click',()=> window.scrollTo({top:0, behavior:'smooth'}));
+  }); // Fin DOMContentLoaded
   </script>
 
   <!-- Footer -->
