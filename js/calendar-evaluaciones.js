@@ -1,12 +1,12 @@
 /**
  * Calendario de Evaluaciones con Filtro por Curso
- * Similar al calendario de actividades pero filtrado por curso
+ * Carga datos desde JSON con estructura completa de evaluaciones
  */
 
 class EvaluacionesCalendar {
-  constructor(containerId, csvFile) {
+  constructor(containerId, dataFile) {
     this.container = document.getElementById(containerId);
-    this.csvFile = csvFile;
+    this.dataFile = dataFile;
     this.evaluaciones = [];
     this.currentDate = new Date();
     this.currentMonth = this.currentDate.getMonth();
@@ -18,15 +18,24 @@ class EvaluacionesCalendar {
       'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
     ];
     
-    this.dayNames = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+    // Empezar con lunes
+    this.dayNames = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
     
-    this.tipoColors = {
+    this.estrategiaColors = {
       'Prueba': 'bg-danger text-white',
+      'Prueba Escrita': 'bg-danger text-white',
       'Oral': 'bg-warning text-dark',
+      'Examen Oral': 'bg-warning text-dark',
       'Laboratorio': 'bg-info text-white',
+      'Trabajo de Laboratorio': 'bg-info text-white',
       'Ensayo': 'bg-primary text-white',
+      'Trabajo Escrito': 'bg-primary text-white',
       'Práctica': 'bg-success text-white',
-      'Disertación': 'bg-secondary text-white'
+      'Evaluación Práctica': 'bg-success text-white',
+      'Disertación': 'bg-secondary text-white',
+      'Presentación': 'bg-secondary text-white',
+      'Proyecto': 'bg-dark text-white',
+      'Taller': 'bg-purple text-white'
     };
     
     this.init();
@@ -40,7 +49,7 @@ class EvaluacionesCalendar {
   }
   
   extractCursos() {
-    // Extraer cursos únicos del CSV
+    // Extraer cursos únicos del JSON
     const cursosSet = new Set();
     this.evaluaciones.forEach(evaluacion => {
       if (evaluacion.curso && evaluacion.curso.trim() !== '') {
@@ -52,9 +61,19 @@ class EvaluacionesCalendar {
   
   async loadEvaluaciones() {
     try {
-      const response = await fetch(this.csvFile);
-      const csvText = await response.text();
-      this.evaluaciones = this.parseCSV(csvText);
+      const response = await fetch(this.dataFile);
+      
+      // Detectar si es JSON o CSV por la extensión del archivo
+      if (this.dataFile.endsWith('.json')) {
+        const jsonData = await response.json();
+        this.evaluaciones = jsonData;
+      } else if (this.dataFile.endsWith('.csv')) {
+        const csvText = await response.text();
+        this.evaluaciones = this.parseCSV(csvText);
+      } else {
+        console.error('Formato de archivo no soportado');
+        this.evaluaciones = [];
+      }
     } catch (error) {
       console.error('Error cargando evaluaciones:', error);
       this.evaluaciones = [];
@@ -81,128 +100,167 @@ class EvaluacionesCalendar {
   }
   
   render() {
+    if (!this.container) return;
+    
     this.container.innerHTML = `
-      <div class="calendar-container">
-        <!-- Controles del Calendario -->
-        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
-          <div class="d-flex align-items-center gap-3">
-            <button class="btn btn-outline-primary btn-sm" id="prevMonth">
-              <i class="bi bi-chevron-left"></i>
-            </button>
-            <h3 class="h5 mb-0" id="monthYear">
-              ${this.monthNames[this.currentMonth]} ${this.currentYear}
-            </h3>
-            <button class="btn btn-outline-primary btn-sm" id="nextMonth">
-              <i class="bi bi-chevron-right"></i>
-            </button>
+      <div class="calendar-widget">
+        <div class="calendar-header">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="h5 mb-0">${this.monthNames[this.currentMonth]} ${this.currentYear}</h2>
+            <div class="btn-group">
+              <button id="prevMonth" class="btn btn-outline-primary btn-sm">
+                <i class="bi bi-chevron-left"></i>
+              </button>
+              <button id="todayBtn" class="btn btn-outline-primary btn-sm">Hoy</button>
+              <button id="nextMonth" class="btn btn-outline-primary btn-sm">
+                <i class="bi bi-chevron-right"></i>
+              </button>
+            </div>
           </div>
           
-          <div class="d-flex align-items-center gap-3 flex-wrap">
-            <button class="btn btn-outline-secondary btn-sm" id="todayBtn">Hoy</button>
-            <select class="form-select form-select-sm" id="cursoFilter" style="width: auto;">
+          <div class="mb-3">
+            <label for="cursoFilter" class="form-label small">Filtrar por curso:</label>
+            <select id="cursoFilter" class="form-select form-select-sm">
               <option value="all">Todos los cursos</option>
               ${this.cursos.map(curso => `<option value="${curso}">${curso}</option>`).join('')}
             </select>
           </div>
         </div>
         
-        <!-- Vista del Calendario -->
-        <div class="calendar-grid" id="calendarGrid">
+        <div class="calendar-grid">
+          ${this.renderDayHeaders()}
           ${this.renderCalendarGrid()}
         </div>
         
-        <!-- Lista de Evaluaciones del Mes -->
         <div class="mt-4">
-          <h4 class="h6 mb-3">Evaluaciones del Mes</h4>
-          <div class="activities-list" id="evaluacionesList">
-            ${this.renderEvaluacionesList()}
+          <h3 class="h6 mb-3">
+            <i class="bi bi-list-ul me-2"></i>Evaluaciones del Mes
+            ${this.selectedCurso !== 'all' ? `<span class="badge bg-primary ms-2">${this.selectedCurso}</span>` : ''}
+          </h3>
+          <div class="list-group">
+            ${this.renderMonthList()}
           </div>
         </div>
       </div>
     `;
+  }
+  
+  renderDayHeaders() {
+    return this.dayNames.map(day => 
+      `<div class="calendar-day-header">${day}</div>`
+    ).join('');
   }
   
   renderCalendarGrid() {
     const firstDay = new Date(this.currentYear, this.currentMonth, 1);
     const lastDay = new Date(this.currentYear, this.currentMonth + 1, 0);
+    
+    // Ajustar para que la semana empiece el lunes
+    const dayOfWeek = firstDay.getDay();
+    const diff = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+    
     const startDate = new Date(firstDay);
-    startDate.setDate(startDate.getDate() - firstDay.getDay());
+    startDate.setDate(startDate.getDate() - diff);
     
-    let html = `
-      <div class="calendar-header">
-        ${this.dayNames.map(day => `<div class="calendar-day-name">${day}</div>`).join('')}
-      </div>
-      <div class="calendar-body">
-    `;
+    let html = '';
+    let currentDate = new Date(startDate);
     
-    const currentDate = new Date(startDate);
-    
+    // Renderizar 6 semanas para cubrir todos los casos
     for (let week = 0; week < 6; week++) {
-      html += '<div class="calendar-week">';
-      
       for (let day = 0; day < 7; day++) {
-        const dayEvaluaciones = this.getEvaluacionesForDate(currentDate);
         const isCurrentMonth = currentDate.getMonth() === this.currentMonth;
         const isToday = this.isToday(currentDate);
-        const hasEvaluaciones = dayEvaluaciones.length > 0;
+        const evaluaciones = this.getEvaluacionesForDate(currentDate);
+        const hasEvaluaciones = evaluaciones.length > 0;
+        
+        let classes = 'calendar-day';
+        if (!isCurrentMonth) classes += ' other-month';
+        if (isToday) classes += ' today';
+        if (hasEvaluaciones) classes += ' has-event';
         
         html += `
-          <div class="calendar-day ${isCurrentMonth ? 'current-month' : 'other-month'} ${isToday ? 'today' : ''} ${hasEvaluaciones ? 'has-evaluaciones' : ''}" 
-               data-date="${currentDate.toISOString().split('T')[0]}">
+          <div class="${classes}" data-date="${currentDate.toISOString().split('T')[0]}">
             <div class="day-number">${currentDate.getDate()}</div>
-            <div class="day-evaluaciones">
-              ${dayEvaluaciones.slice(0, 2).map(evaluacion => `
-                <div class="evaluacion-dot ${this.tipoColors[evaluacion.tipo] || 'bg-secondary'}" 
-                     title="${evaluacion.asignatura} - ${evaluacion.curso}">
-                  <small>${evaluacion.asignatura.substring(0, 12)}${evaluacion.asignatura.length > 12 ? '...' : ''}</small>
-                </div>
-              `).join('')}
-              ${dayEvaluaciones.length > 2 ? `<small class="text-muted">+${dayEvaluaciones.length - 2} más</small>` : ''}
-            </div>
+            ${hasEvaluaciones ? `
+              <div class="event-indicators">
+                ${evaluaciones.slice(0, 3).map(ev => {
+                  const colorClass = this.estrategiaColors[ev.estrategia_evaluacion] || 'bg-secondary text-white';
+                  return `<span class="badge ${colorClass} badge-sm">${ev.asignatura}</span>`;
+                }).join('')}
+                ${evaluaciones.length > 3 ? `<small class="text-muted">+${evaluaciones.length - 3} más</small>` : ''}
+              </div>
+            ` : ''}
           </div>
         `;
         
         currentDate.setDate(currentDate.getDate() + 1);
       }
-      
-      html += '</div>';
-      
-      // Si ya pasamos del mes actual y no hay más evaluaciones, terminamos
-      if (currentDate.getMonth() !== this.currentMonth && week > 3) {
-        break;
-      }
     }
     
-    html += '</div>';
     return html;
   }
   
-  renderEvaluacionesList() {
-    const monthEvaluaciones = this.getEvaluacionesForMonth();
+  renderMonthList() {
+    const evaluaciones = this.getEvaluacionesForMonth();
     
-    if (monthEvaluaciones.length === 0) {
-      return '<p class="text-muted">No hay evaluaciones programadas para este mes' + 
-             (this.selectedCurso !== 'all' ? ' en el curso seleccionado' : '') + '.</p>';
+    if (evaluaciones.length === 0) {
+      return `
+        <div class="list-group-item text-center text-muted py-4">
+          <i class="bi bi-calendar-x fs-1 d-block mb-2"></i>
+          No hay evaluaciones programadas para este mes
+          ${this.selectedCurso !== 'all' ? ` en ${this.selectedCurso}` : ''}
+        </div>
+      `;
     }
     
-    return monthEvaluaciones.map(evaluacion => `
-      <div class="activity-item card mb-2">
-        <div class="card-body p-3">
-          <div class="d-flex justify-content-between align-items-start">
-            <div class="flex-grow-1">
-              <div class="d-flex align-items-center gap-2 mb-1 flex-wrap">
-                <span class="badge ${this.tipoColors[evaluacion.tipo] || 'bg-secondary'}">${evaluacion.tipo}</span>
-                <span class="badge bg-primary">${evaluacion.curso}</span>
-                <small class="text-muted">${new Date(evaluacion.fecha).toLocaleDateString('es-CL')}</small>
-                ${evaluacion.hora ? `<small class="text-muted"><i class="bi bi-clock me-1"></i>${evaluacion.hora}</small>` : ''}
-              </div>
-              <h6 class="mb-1">${evaluacion.asignatura}</h6>
-              ${evaluacion.sala ? `<small class="text-primary"><i class="bi bi-geo-alt me-1"></i>${evaluacion.sala}</small>` : ''}
-            </div>
+    return evaluaciones.map(evaluacion => {
+      const colorClass = this.estrategiaColors[evaluacion.estrategia_evaluacion] || 'bg-secondary text-white';
+      const fecha = new Date(evaluacion.fecha + 'T00:00:00');
+      const fechaStr = fecha.toLocaleDateString('es-CL', { 
+        weekday: 'short', 
+        day: 'numeric', 
+        month: 'short' 
+      });
+      
+      return `
+      <div class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between align-items-start mb-2">
+          <div>
+            <h5 class="mb-1">
+              <span class="badge ${colorClass} me-2">${evaluacion.estrategia_evaluacion}</span>
+              ${evaluacion.asignatura}
+            </h5>
+            <p class="mb-1 text-muted small">
+              <i class="bi bi-person me-1"></i>${evaluacion.profesor} 
+              <span class="ms-3"><i class="bi bi-mortarboard me-1"></i>${evaluacion.curso}</span>
+            </p>
           </div>
+          <small class="text-primary fw-bold">
+            <i class="bi bi-calendar3 me-1"></i>${fechaStr}
+          </small>
         </div>
+        
+        <div class="mb-2">
+          <strong class="small text-secondary">Contenido:</strong>
+          <p class="mb-1 small">${evaluacion.contenido}</p>
+        </div>
+        
+        ${evaluacion.indicadores_evaluacion ? `
+        <div class="mb-2">
+          <strong class="small text-secondary">Indicadores de Evaluación:</strong>
+          <p class="mb-1 small">${evaluacion.indicadores_evaluacion}</p>
+        </div>
+        ` : ''}
+        
+        ${evaluacion.retroalimentacion ? `
+        <div class="mb-0">
+          <strong class="small text-secondary">Retroalimentación:</strong>
+          <p class="mb-0 small">${evaluacion.retroalimentacion}</p>
+        </div>
+        ` : ''}
       </div>
-    `).join('');
+    `;
+    }).join('');
   }
   
   getEvaluacionesForDate(date) {
@@ -217,7 +275,7 @@ class EvaluacionesCalendar {
   
   getEvaluacionesForMonth() {
     return this.evaluaciones.filter(evaluacion => {
-      const evaluacionDate = new Date(evaluacion.fecha);
+      const evaluacionDate = new Date(evaluacion.fecha + 'T00:00:00');
       const matchesMonth = evaluacionDate.getMonth() === this.currentMonth && 
                           evaluacionDate.getFullYear() === this.currentYear;
       const matchesCurso = this.selectedCurso === 'all' || evaluacion.curso === this.selectedCurso;
@@ -232,70 +290,62 @@ class EvaluacionesCalendar {
   
   attachEventListeners() {
     // Navegación de meses
-    document.getElementById('prevMonth').addEventListener('click', () => {
-      this.currentMonth--;
-      if (this.currentMonth < 0) {
-        this.currentMonth = 11;
-        this.currentYear--;
-      }
-      this.render();
-      this.attachEventListeners();
-    });
+    const prevBtn = document.getElementById('prevMonth');
+    const nextBtn = document.getElementById('nextMonth');
+    const todayBtn = document.getElementById('todayBtn');
+    const cursoFilter = document.getElementById('cursoFilter');
     
-    document.getElementById('nextMonth').addEventListener('click', () => {
-      this.currentMonth++;
-      if (this.currentMonth > 11) {
-        this.currentMonth = 0;
-        this.currentYear++;
-      }
-      this.render();
-      this.attachEventListeners();
-    });
-    
-    // Botón "Hoy"
-    document.getElementById('todayBtn').addEventListener('click', () => {
-      const today = new Date();
-      this.currentMonth = today.getMonth();
-      this.currentYear = today.getFullYear();
-      this.render();
-      this.attachEventListeners();
-    });
-    
-    // Filtro de cursos
-    const cursoFilterElement = document.getElementById('cursoFilter');
-    cursoFilterElement.value = this.selectedCurso;
-    cursoFilterElement.addEventListener('change', (e) => {
-      this.selectedCurso = e.target.value;
-      this.render();
-      this.attachEventListeners();
-    });
-    
-    // Click en días del calendario
-    document.querySelectorAll('.calendar-day').forEach(dayEl => {
-      dayEl.addEventListener('click', (e) => {
-        const date = e.currentTarget.getAttribute('data-date');
-        this.showDayDetails(date);
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        this.currentMonth--;
+        if (this.currentMonth < 0) {
+          this.currentMonth = 11;
+          this.currentYear--;
+        }
+        this.render();
+        this.attachEventListeners();
       });
-    });
-  }
-  
-  showDayDetails(dateString) {
-    const evaluaciones = this.evaluaciones.filter(evaluacion => {
-      const matchesDate = evaluacion.fecha === dateString;
-      const matchesCurso = this.selectedCurso === 'all' || evaluacion.curso === this.selectedCurso;
-      return matchesDate && matchesCurso;
-    });
-    const date = new Date(dateString);
-    
-    if (evaluaciones.length === 0) {
-      return;
     }
     
-    // Simple modal/alert con detalles del día
-    const evaluacionesList = evaluaciones.map(evaluacion => 
-      `• ${evaluacion.asignatura} (${evaluacion.tipo}) - ${evaluacion.curso} ${evaluacion.hora ? `a las ${evaluacion.hora}` : ''} ${evaluacion.sala ? `en ${evaluacion.sala}` : ''}`
-    ).join('\n');
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        this.currentMonth++;
+        if (this.currentMonth > 11) {
+          this.currentMonth = 0;
+          this.currentYear++;
+        }
+        this.render();
+        this.attachEventListeners();
+      });
+    }
     
-    alert(`Evaluaciones del ${date.toLocaleDateString('es-CL')}:\n\n${evaluacionesList}`);
+    // Botón "Hoy"
+    if (todayBtn) {
+      todayBtn.addEventListener('click', () => {
+        const today = new Date();
+        this.currentMonth = today.getMonth();
+        this.currentYear = today.getFullYear();
+        this.render();
+        this.attachEventListeners();
+      });
+    }
+    
+    // Filtro de cursos
+    if (cursoFilter) {
+      cursoFilter.value = this.selectedCurso;
+      cursoFilter.addEventListener('change', (e) => {
+        this.selectedCurso = e.target.value;
+        this.render();
+        this.attachEventListeners();
+      });
+    }
   }
 }
+
+// Inicializar calendario cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', () => {
+  if (typeof EvaluacionesCalendar !== 'undefined') {
+    new EvaluacionesCalendar('calendar', './data/evaluaciones.json');
+  }
+});
+

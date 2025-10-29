@@ -128,33 +128,23 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./js/calendar-evaluaciones.js"></script>
-
-    function initializePage() {
-      // Año en footer
-      const yearElement = document.getElementById('year');
-      if (yearElement) {
-        yearElement.textContent = new Date().getFullYear();
-      }
-
+  <script>
+    // Inicializar funcionalidades cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', () => {
       // Back to top
       const backTop = document.getElementById('backTop');
-      window.addEventListener('scroll', () => {
-        const navbar = document.querySelector('.navbar-liceo');
-        if (navbar) {
-          navbar.classList.toggle('navbar-elevated', window.scrollY > 12);
-        }
-        backTop.classList.toggle('show', window.scrollY > 240);
-      });
-      
-      backTop.addEventListener('click', () => {
-        window.scrollTo({top: 0, behavior: 'smooth'});
-      });
-
-      // Inicializar calendario de evaluaciones
-      if (typeof EvaluacionesCalendar !== 'undefined') {
-        new EvaluacionesCalendar('calendar', './data/evaluaciones.csv');
-      } else {
-        console.error('EvaluacionesCalendar no está disponible');
+      if (backTop) {
+        window.addEventListener('scroll', () => {
+          const navbar = document.querySelector('.navbar-liceo');
+          if (navbar) {
+            navbar.classList.toggle('navbar-elevated', window.scrollY > 12);
+          }
+          backTop.classList.toggle('show', window.scrollY > 240);
+        });
+        
+        backTop.addEventListener('click', () => {
+          window.scrollTo({top: 0, behavior: 'smooth'});
+        });
       }
 
       // Reveal animation
@@ -165,7 +155,7 @@
       }, {threshold: 0.2});
       
       document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    }
+    });
   </script>
 
   <!-- Footer -->
