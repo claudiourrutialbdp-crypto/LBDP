@@ -13,39 +13,7 @@
 </head>
 <body>
   <!-- Topbar -->
-  <div id="topbar"></div>
-
-  <!-- Navbar -->
-  <div id="navbar"></div>
-
-  <main class="container py-4">
-    <nav aria-label="breadcrumb" class="mb-3">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="./index.html">Inicio</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Calendario de Evaluaciones</li>
-      </ol>
-    </nav>
-    
-    <div class="text-center mb-4">
-      <h1 class="h3 text-gradient mb-3">Calendario de Evaluaciones</h1>
-      <p class="text-muted">Consulta las fechas de pruebas y evaluaciones por curso</p>
-    </div>
-
-    <!-- Calendario Interactivo -->
-    <div id="calendar" class="mb-5"></div>
-
-    <!-- Información adicional -->
-    <div class="row g-4 mb-4">
-      <div class="col-lg-4 col-md-6">
-        <div class="card card-feature h-100">
-          <div class="card-body text-center p-4">
-            <div class="bg-danger text-white rounded-circle mx-auto d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-              <i class="bi bi-file-earmark-text"></i>
-            </div>
-            <h3 class="h6 text-primary-liceo">Pruebas Escritas</h3>
-            <p class="small text-muted">Evaluaciones teóricas de las diferentes asignaturas</p>
-          </div>
-        </div>
+  <div id="topbar-container"></div>
       </div>
       
       <div class="col-lg-4 col-md-6">
@@ -190,5 +158,6 @@
       document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     }
   </script>
+  <script src="./js/load-components.js"></script>
 </body>
 </html>

@@ -12,113 +12,11 @@
 </head>
 <body>
   <!-- Topbar -->
-  <div class="topbar bg-primary-liceo text-white py-1 small sticky-top" style="z-index:1060">
-    <div class="container d-flex justify-content-between align-items-center">
-      <div class="d-flex gap-3 align-items-center">
-        <a href="mailto:contacto@liceo.edu.cl" class="d-inline-flex align-items-center gap-1">
-          <i class="bi bi-envelope icon"></i>
-          <span>contacto@liceo.edu.cl</span>
-        </a>
-        <a href="tel:+56223456789" class="d-none d-sm-inline-flex align-items-center gap-1">
-          <i class="bi bi-telephone icon"></i>
-          <span>+56 2 2345 6789</span>
-        </a>
-      </div>
-      <div class="d-flex gap-2">
-        <a href="#" aria-label="Facebook" class="social-link">
-          <i class="bi bi-facebook"></i>
-        </a>
-        <a href="#" aria-label="Instagram" class="social-link">
-          <i class="bi bi-instagram"></i>
-        </a>
-      </div>
-    </div>
+  <div id="topbar-container"></div>
   </div>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg bg-white sticky-top navbar-liceo" aria-label="Principal">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center gap-2" href="./index.html" aria-label="Inicio">
-        <span class="rounded" style="width:32px;height:32px;background:var(--aqua);display:inline-block"></span>
-        <strong id="brandName">Liceo</strong>
-      </a>
-      
-      <button class="navbar-toggler border-0 p-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Abrir menú">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      
-      <div class="collapse navbar-collapse" id="navbarMain">
-        <div class="d-lg-none d-flex justify-content-between align-items-center p-3 border-bottom mb-2">
-          <span class="fw-semibold text-primary">Menú de Navegación</span>
-          <button type="button" class="btn-close" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-label="Cerrar menú"></button>
-        </div>
-        
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navList">
-          <li class="nav-item">
-            <a class="nav-link" href="./index.html">Inicio</a>
-          </li>
-          <li class="nav-item dropdown position-static">
-            <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown" aria-expanded="false">Institución</a>
-            <div class="dropdown-menu dropdown-mega shadow-lg border-0 p-4">
-              <div class="row">
-                <div class="col-lg-3 mb-3">
-                  <div class="col-title">Nuestra Historia</div>
-                  <a href="./nosotros-historia.html">Historia del Liceo</a>
-                  <a href="./nosotros-mision.html">Misión y Visión</a>
-                </div>
-                <div class="col-lg-3 mb-3">
-                  <div class="col-title">Comunidad</div>
-                  <a href="./nosotros-comunidad.html">Comunidad Educativa</a>
-                  <a href="./nosotros-pme.html">Plan de Mejoramiento</a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="nav-item dropdown position-static">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Vida Escolar</a>
-            <div class="dropdown-menu dropdown-mega shadow-lg border-0 p-4">
-              <div class="row">
-                <div class="col-lg-3 mb-3">
-                  <div class="col-title">Académico</div>
-                  <a href="./oferta.html">Oferta Educativa</a>
-                  <a href="./calendario-evaluaciones.html">Calendario Evaluaciones</a>
-                </div>
-                <div class="col-lg-3 mb-3">
-                  <div class="col-title">Actividades</div>
-                  <a href="./calendario-actividades.html">Calendario de Actividades</a>
-                  <a href="./talleres.html">Talleres Extraescolares</a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./noticias.html">Noticias</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./uniforme.html">Uniforme</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./documentos.html">Documentos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./contacto.html">Contacto</a>
-          </li>
-        </ul>
-        <div class="navbar-nav">
-          <div class="nav-item d-none d-lg-block">
-            <a href="./admision.html" class="btn btn-primary-liceo btn-sm">
-              <i class="bi bi-person-plus me-1"></i>Postula Aquí
-            </a>
-          </div>
-          <div class="nav-item d-lg-none mt-3 mb-2">
-            <a href="./admision.html" class="btn btn-primary-liceo w-100">
-              <i class="bi bi-person-plus me-2"></i>Proceso de Admisión
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
+  <div id="navbar-container"></div>
 
   <!-- Hero Section -->
   <section class="hero-section" style="height: 60vh; min-height: 400px;">
@@ -304,83 +202,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="footer mt-5 py-5">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-3 col-md-6">
-          <h3 class="footer-section-title">Mapa del Sitio</h3>
-          <ul class="list-unstyled">
-            <li><a href="./index.html" class="footer-link">Inicio</a></li>
-            <li><a href="./nosotros-historia.html" class="footer-link">Nuestra Historia</a></li>
-            <li><a href="./nosotros-mision.html" class="footer-link">Misión y Visión</a></li>
-            <li><a href="./oferta.html" class="footer-link">Oferta Educativa</a></li>
-            <li><a href="./noticias.html" class="footer-link">Noticias</a></li>
-            <li><a href="./documentos.html" class="footer-link">Documentos</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <h3 class="footer-section-title">Vida Escolar</h3>
-          <ul class="list-unstyled">
-            <li><a href="./calendario-actividades.html" class="footer-link">Calendario de Actividades</a></li>
-            <li><a href="./calendario-evaluaciones.html" class="footer-link">Evaluaciones</a></li>
-            <li><a href="./talleres.html" class="footer-link">Talleres Extraescolares</a></li>
-            <li><a href="./uniforme.html" class="footer-link">Uniforme Escolar</a></li>
-            <li><a href="./admision.html" class="footer-link">Proceso de Admisión</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <h3 class="footer-section-title">Contacto</h3>
-          <div class="footer-contact-item">
-            <i class="bi bi-envelope"></i>
-            <a href="mailto:contacto@liceo.edu.cl" class="footer-link">contacto@liceo.edu.cl</a>
-          </div>
-          <div class="footer-contact-item">
-            <i class="bi bi-telephone"></i>
-            <a href="tel:+56223456789" class="footer-link">+56 2 2345 6789</a>
-          </div>
-          <div class="footer-contact-item">
-            <i class="bi bi-geo-alt"></i>
-            <span>Av. Educativa 1234, Santiago, Chile</span>
-          </div>
-          <div class="footer-contact-item">
-            <i class="bi bi-clock"></i>
-            <span>Lun - Vie: 8:00 - 18:00 hrs</span>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <h3 class="footer-section-title">Síguenos</h3>
-          <p class="text-muted mb-3">Mantente conectado con nuestra comunidad educativa</p>
-          <div class="d-flex gap-3 flex-wrap">
-            <a href="#" aria-label="Facebook" class="footer-social-link">
-              <i class="bi bi-facebook"></i>
-            </a>
-            <a href="#" aria-label="Instagram" class="footer-social-link">
-              <i class="bi bi-instagram"></i>
-            </a>
-            <a href="#" aria-label="Twitter" class="footer-social-link">
-              <i class="bi bi-twitter"></i>
-            </a>
-            <a href="#" aria-label="YouTube" class="footer-social-link">
-              <i class="bi bi-youtube"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div class="row align-items-center">
-          <div class="col-md-6 text-center text-md-start">
-            <p class="mb-0">© <span id="year"></span> Liceo. Todos los derechos reservados.</p>
-          </div>
-          <div class="col-md-6 text-center text-md-end">
-            <div class="d-inline-flex gap-3">
-              <a href="#" class="small">Términos y Condiciones</a>
-              <a href="#" class="small">Política de Privacidad</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <div id="footer-container"></div>
 
   <button class="back-to-top" id="backTop" aria-label="Ir arriba" title="Ir arriba"><i class="bi bi-chevron-up"></i></button>
 
@@ -401,5 +223,6 @@
     });
     backTop.addEventListener('click',()=> window.scrollTo({top:0, behavior:'smooth'}));
   </script>
+  <script src="./js/load-components.js"></script>
 </body>
 </html>
