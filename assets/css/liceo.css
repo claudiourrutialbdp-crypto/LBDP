@@ -407,9 +407,9 @@ body{
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.2;
   margin-bottom: 1.5rem;
   background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
   -webkit-background-clip: text;
@@ -417,6 +417,8 @@ body{
   background-clip: text;
   text-align: center;
   animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  word-wrap: normal;
+  overflow-wrap: normal;
 }
 
 @keyframes fadeInUp {
@@ -866,7 +868,7 @@ body{
   }
   
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 1.5rem;
   }
   
