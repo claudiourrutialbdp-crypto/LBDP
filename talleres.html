@@ -527,13 +527,13 @@
         
         tallerItems.forEach(item => {
           const itemCategory = item.getAttribute('data-category');
-          const parentCol = item.parentElement;
+          const parentCol = item.closest('.col-lg-4, .col-md-6');
           
           if (filter === 'all' || itemCategory === filter) {
-            parentCol.style.display = '';
+            if (parentCol) parentCol.style.display = '';
             item.classList.add('visible');
           } else {
-            parentCol.style.display = 'none';
+            if (parentCol) parentCol.style.display = 'none';
             item.classList.remove('visible');
           }
         });
