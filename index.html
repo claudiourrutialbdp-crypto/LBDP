@@ -305,9 +305,6 @@
     renderNotes();
   }
 
-  // Año en footer
-  document.getElementById('year').textContent = new Date().getFullYear();
-
   // Render últimas 3 noticias + stagger reveal
   function renderLatestNews() {
     const latest = [...NEWS].sort((a,b)=>new Date(b.date) - new Date(a.date)).slice(0,3);
