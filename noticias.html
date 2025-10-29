@@ -96,35 +96,17 @@
   <script>
   // Variables globales
   let NEWS = [];
-  let state, grid, pageInfo, prevBtn, nextBtn;
+  let state, grid, pageInfo, prevBtn, nextBtn, modal;
   
-  // Cargar noticias desde JSON
-  async function loadNews() {
-    try {
-      await loadNewsFromJSON();
-      NEWS = NEWS_DATA;
-      render();
-    } catch (error) {
-      console.error('Error cargando noticias:', error);
-      NEWS = [];
-      render();
-    }
-  }
-
-  // Inicializar cuando el DOM esté listo
-  document.addEventListener('DOMContentLoaded', () => {
-    state = { page: 1, pageSize: 6, category: 'Todas' };
-    grid = document.getElementById('newsGrid');
-    pageInfo = document.getElementById('pageInfo');
-    prevBtn = document.getElementById('prevBtn');
-    nextBtn = document.getElementById('nextBtn');
-
+  // Funciones globales (deben estar fuera de DOMContentLoaded para ser accesibles)
   function currentList(){
     const list = (state.category==='Todas') ? NEWS : NEWS.filter(n=>n.category===state.category);
     return [...list].sort((a,b)=>new Date(b.date) - new Date(a.date));
   }
 
   function render(){
+    if (!grid) return;
+    
     const list = currentList();
     const totalPages = Math.max(1, Math.ceil(list.length/state.pageSize));
     state.page = Math.min(state.page, totalPages);
@@ -155,23 +137,28 @@
       grid.appendChild(col);
     });
 
-    pageInfo.textContent = `${state.page} / ${Math.max(1, Math.ceil(list.length/state.pageSize))}`;
-    prevBtn.disabled = state.page===1; nextBtn.disabled = state.page>=totalPages;
+    if (pageInfo) {
+      pageInfo.textContent = `${state.page} / ${Math.max(1, Math.ceil(list.length/state.pageSize))}`;
+    }
+    if (prevBtn) prevBtn.disabled = state.page===1;
+    if (nextBtn) nextBtn.disabled = state.page>=totalPages;
 
     document.querySelectorAll('#newsGrid button[data-id]').forEach(btn=>{
       btn.addEventListener('click',()=> openDetail(btn.getAttribute('data-id')));
     });
 
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    const ioElements = document.querySelectorAll('.reveal');
+    if (ioElements.length > 0 && typeof io !== 'undefined') {
+      ioElements.forEach(el=>io.observe(el));
+    }
   }
 
-  const io=new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); }); }, {threshold:.2});
+  const io = new IntersectionObserver((entries)=>{ 
+    entries.forEach(e=>{ 
+      if(e.isIntersecting) e.target.classList.add('visible'); 
+    }); 
+  }, {threshold:.2});
 
-  prevBtn.addEventListener('click',()=>{ state.page=Math.max(1, state.page-1); render(); });
-  nextBtn.addEventListener('click',()=>{ state.page=state.page+1; render(); });
-  document.getElementById('category').addEventListener('change',(e)=>{ state.category=e.target.value; state.page=1; render(); });
-
-  const modal = new bootstrap.Modal(document.getElementById('newsModal'));
   function openDetail(id){
     const n = NEWS.find(x=>x.id===id);
     if(!n) return;
@@ -210,12 +197,68 @@
       indicators.appendChild(indicator);
     });
     
-    modal.show();
+    if (modal) {
+      modal.show();
+    }
   }
 
-    // Inicializar
+  // Cargar noticias desde JSON
+  async function loadNews() {
+    try {
+      await loadNewsFromJSON();
+      NEWS = NEWS_DATA;
+      render();
+    } catch (error) {
+      console.error('Error cargando noticias:', error);
+      NEWS = [];
+      render();
+    }
+  }
+
+  // Inicializar cuando el DOM esté listo
+  document.addEventListener('DOMContentLoaded', () => {
+    // Inicializar variables
+    state = { page: 1, pageSize: 6, category: 'Todas' };
+    grid = document.getElementById('newsGrid');
+    pageInfo = document.getElementById('pageInfo');
+    prevBtn = document.getElementById('prevBtn');
+    nextBtn = document.getElementById('nextBtn');
+    
+    // Inicializar modal
+    const modalElement = document.getElementById('newsModal');
+    if (modalElement) {
+      modal = new bootstrap.Modal(modalElement);
+    }
+
+    // Event listeners para paginación
+    if (prevBtn) {
+      prevBtn.addEventListener('click',()=>{ 
+        state.page=Math.max(1, state.page-1); 
+        render(); 
+      });
+    }
+    
+    if (nextBtn) {
+      nextBtn.addEventListener('click',()=>{ 
+        state.page=state.page+1; 
+        render(); 
+      });
+    }
+    
+    // Event listener para categorías
+    const categorySelect = document.getElementById('category');
+    if (categorySelect) {
+      categorySelect.addEventListener('change',(e)=>{ 
+        state.category=e.target.value; 
+        state.page=1; 
+        render(); 
+      });
+    }
+
+    // Inicializar carga de noticias
     loadNews();
     
+    // Manejar hash en URL
     if(location.hash){ 
       const id=location.hash.replace('#',''); 
       setTimeout(() => {
@@ -223,15 +266,18 @@
       }, 500);
     }
 
+    // Back to top button
     const backTop=document.getElementById('backTop');
-    window.addEventListener('scroll',()=>{ 
-      backTop.classList.toggle('show', window.scrollY>240); 
-      const navbar = document.querySelector('.navbar-liceo');
-      if (navbar) {
-        navbar.classList.toggle('navbar-elevated', window.scrollY>12);
-      }
-    });
-    backTop.addEventListener('click',()=> window.scrollTo({top:0, behavior:'smooth'}));
+    if (backTop) {
+      window.addEventListener('scroll',()=>{ 
+        backTop.classList.toggle('show', window.scrollY>240); 
+        const navbar = document.querySelector('.navbar-liceo');
+        if (navbar) {
+          navbar.classList.toggle('navbar-elevated', window.scrollY>12);
+        }
+      });
+      backTop.addEventListener('click',()=> window.scrollTo({top:0, behavior:'smooth'}));
+    }
   }); // Fin DOMContentLoaded
   </script>
 
