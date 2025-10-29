@@ -18,9 +18,8 @@
   <link href="./assets/css/liceo.css" rel="stylesheet">
 </head>
 <body>
-   <!-- Topbar -->
+  <!-- Topbar -->
   <div id="topbar-container"></div>
-  </div>
 
   <!-- Navbar -->
   <div id="navbar-container"></div>
@@ -82,6 +81,10 @@
   window.addEventListener('scroll',()=> { backTop.classList.toggle('show', window.scrollY>240); document.querySelector('.navbar-liceo').classList.toggle('navbar-elevated', window.scrollY>12); });
   backTop.addEventListener('click',()=> window.scrollTo({top:0, behavior:'smooth'}));
   </script>
+
+  <!-- Footer -->
+  <div id="footer-container"></div>
+
   <script src="./js/load-components.js"></script>
 </body>
 </html>
