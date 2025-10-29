@@ -1,71 +1,51 @@
 /* Estilos para el Calendario Avanzado */
 
-.calendar-container {
+.calendar-widget {
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   padding: 1.5rem;
 }
 
+.calendar-header {
+  margin-bottom: 1.5rem;
+}
+
 .calendar-grid {
-  background: #f8fafc;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background: #e2e8f0;
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid #e2e8f0;
 }
 
-.calendar-header {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  background: var(--primary);
+.calendar-day-header {
+  background: var(--primary, #1418c4);
   color: white;
-}
-
-.calendar-day-name {
   padding: 0.75rem 0.5rem;
   text-align: center;
   font-weight: 600;
   font-size: 0.875rem;
-  border-right: 1px solid rgba(255,255,255,0.2);
-}
-
-.calendar-day-name:last-child {
-  border-right: none;
-}
-
-.calendar-body {
-  background: white;
-}
-
-.calendar-week {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.calendar-week:last-child {
-  border-bottom: none;
 }
 
 .calendar-day {
   min-height: 100px;
   padding: 0.5rem;
-  border-right: 1px solid #e2e8f0;
   cursor: pointer;
   transition: all 0.2s ease;
   position: relative;
   background: white;
-}
-
-.calendar-day:last-child {
-  border-right: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .calendar-day:hover {
   background: #f1f5f9;
   transform: scale(1.02);
   z-index: 10;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .calendar-day.other-month {
@@ -79,22 +59,22 @@
 
 .calendar-day.today {
   background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-  border: 2px solid var(--primary);
+  border: 2px solid var(--primary, #1418c4);
 }
 
 .calendar-day.today .day-number {
-  color: var(--primary);
+  color: var(--primary, #1418c4);
   font-weight: 700;
 }
 
-.calendar-day.has-activities::before {
+.calendar-day.has-event::after {
   content: '';
   position: absolute;
   top: 4px;
   right: 4px;
   width: 8px;
   height: 8px;
-  background: var(--aqua);
+  background: var(--aqua, #00d4ff);
   border-radius: 50%;
   animation: pulse 2s infinite;
 }
@@ -108,66 +88,65 @@
 .day-number {
   font-weight: 600;
   font-size: 1rem;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
   color: #1e293b;
 }
 
-.day-activities {
+.event-indicators {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
+  flex: 1;
 }
 
-.activity-dot {
-  padding: 2px 4px;
-  border-radius: 4px;
+.event-indicators .badge {
   font-size: 0.7rem;
-  line-height: 1.2;
-  margin-bottom: 1px;
+  padding: 2px 4px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  max-width: 100%;
 }
 
-.activity-item {
+.badge-sm {
+  font-size: 0.65rem !important;
+  padding: 2px 4px !important;
+}
+
+/* Lista de eventos del mes */
+.list-group-item {
   transition: all 0.2s ease;
   border: 1px solid #e2e8f0;
 }
 
-.activity-item:hover {
-  border-color: var(--primary);
+.list-group-item:hover {
+  border-color: var(--primary, #1418c4);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(20, 24, 196, 0.1);
 }
 
-.activities-list {
-  max-height: 400px;
-  overflow-y: auto;
-  padding-right: 0.5rem;
-}
-
 /* Scrollbar personalizada */
-.activities-list::-webkit-scrollbar {
+.list-group::-webkit-scrollbar {
   width: 6px;
 }
 
-.activities-list::-webkit-scrollbar-track {
+.list-group::-webkit-scrollbar-track {
   background: #f1f5f9;
   border-radius: 3px;
 }
 
-.activities-list::-webkit-scrollbar-thumb {
+.list-group::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 3px;
 }
 
-.activities-list::-webkit-scrollbar-thumb:hover {
+.list-group::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .calendar-container {
+  .calendar-widget {
     padding: 1rem;
   }
   
@@ -176,7 +155,7 @@
     padding: 0.25rem;
   }
   
-  .calendar-day-name {
+  .calendar-day-header {
     padding: 0.5rem 0.25rem;
     font-size: 0.75rem;
   }
@@ -185,30 +164,30 @@
     font-size: 0.875rem;
   }
   
-  .activity-dot {
+  .event-indicators .badge {
     font-size: 0.6rem;
     padding: 1px 2px;
-  }
-  
-  .activities-list {
-    max-height: 300px;
   }
 }
 
 @media (max-width: 576px) {
   .calendar-day {
     min-height: 60px;
+    padding: 0.2rem;
   }
   
-  .activity-dot small {
-    display: none;
+  .day-number {
+    font-size: 0.75rem;
+    margin-bottom: 0.25rem;
   }
   
-  .activity-dot {
-    width: 100%;
-    height: 8px;
-    border-radius: 2px;
-    padding: 0;
+  .event-indicators .badge {
+    font-size: 0.5rem;
+    padding: 1px 2px;
+  }
+  
+  .event-indicators small {
+    font-size: 0.5rem;
   }
 }
 
@@ -224,18 +203,25 @@
   }
 }
 
-.calendar-container {
+.calendar-widget {
   animation: fadeInUp 0.5s ease-out;
 }
 
-.activity-item {
+.list-group-item {
   animation: fadeInUp 0.3s ease-out;
 }
 
-.activity-item:nth-child(odd) {
+.list-group-item:nth-child(odd) {
+  animation-delay: 0.05s;
+}
+
+.list-group-item:nth-child(even) {
   animation-delay: 0.1s;
 }
 
-.activity-item:nth-child(even) {
-  animation-delay: 0.2s;
+/* Clase para morado */
+.bg-purple {
+  background-color: #9333ea !important;
+  color: white !important;
 }
+
