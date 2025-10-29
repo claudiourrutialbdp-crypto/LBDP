@@ -133,7 +133,10 @@ class AdvancedCalendar {
     const firstDay = new Date(this.currentYear, this.currentMonth, 1);
     const lastDay = new Date(this.currentYear, this.currentMonth + 1, 0);
     const startDate = new Date(firstDay);
-    startDate.setDate(startDate.getDate() - firstDay.getDay());
+    // Ajustar para que la semana inicie en lunes (0=domingo, 1=lunes, etc.)
+    const dayOfWeek = firstDay.getDay();
+    const diff = dayOfWeek === 0 ? 6 : dayOfWeek - 1; // Si es domingo (0), retroceder 6 días
+    startDate.setDate(startDate.getDate() - diff);
     
     let html = `
       <div class="calendar-header">
