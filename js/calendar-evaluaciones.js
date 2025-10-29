@@ -11,7 +11,7 @@ class EvaluacionesCalendar {
     this.currentDate = new Date();
     this.currentMonth = this.currentDate.getMonth();
     this.currentYear = this.currentDate.getFullYear();
-    this.selectedCurso = 'all';
+    this.selectedCurso = null; // Iniciar sin curso seleccionado
     
     this.monthNames = [
       'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
@@ -118,29 +118,35 @@ class EvaluacionesCalendar {
             </div>
           </div>
           
-          <div class="mb-3">
-            <label for="cursoFilter" class="form-label small">Filtrar por curso:</label>
-            <select id="cursoFilter" class="form-select form-select-sm">
-              <option value="all">Todos los cursos</option>
-              ${this.cursos.map(curso => `<option value="${curso}">${curso}</option>`).join('')}
-            </select>
+          <div class="row g-3 mb-3">
+            <div class="col-md-8">
+              <label for="cursoFilter" class="form-label small">Seleccionar curso:</label>
+              <select id="cursoFilter" class="form-select form-select-sm">
+                <option value="">Seleccione un curso...</option>
+                ${this.cursos.map(curso => `<option value="${curso}" ${this.selectedCurso === curso ? 'selected' : ''}>${curso}</option>`).join('')}
+              </select>
+            </div>
+            <div class="col-md-4 d-flex align-items-end">
+              <button id="printBtn" class="btn btn-primary btn-sm w-100" ${!this.selectedCurso ? 'disabled' : ''}>
+                <i class="bi bi-printer me-2"></i>Imprimir PDF
+              </button>
+            </div>
           </div>
+          
+          ${!this.selectedCurso ? `
+            <div class="alert alert-info alert-sm mb-0">
+              <i class="bi bi-info-circle me-2"></i>
+              Selecciona un curso para ver las evaluaciones
+            </div>
+          ` : ''}
         </div>
         
-        <div class="calendar-grid">
-          ${this.renderDayHeaders()}
-          ${this.renderCalendarGrid()}
-        </div>
-        
-        <div class="mt-4">
-          <h3 class="h6 mb-3">
-            <i class="bi bi-list-ul me-2"></i>Evaluaciones del Mes
-            ${this.selectedCurso !== 'all' ? `<span class="badge bg-primary ms-2">${this.selectedCurso}</span>` : ''}
-          </h3>
-          <div class="list-group">
-            ${this.renderMonthList()}
+        ${this.selectedCurso ? `
+          <div class="calendar-grid">
+            ${this.renderDayHeaders()}
+            ${this.renderCalendarGrid()}
           </div>
-        </div>
+        ` : ''}
       </div>
     `;
   }
@@ -178,14 +184,16 @@ class EvaluacionesCalendar {
         if (isToday) classes += ' today';
         if (hasEvaluaciones) classes += ' has-event';
         
+        const dateString = currentDate.toISOString().split('T')[0];
+        
         html += `
-          <div class="${classes}" data-date="${currentDate.toISOString().split('T')[0]}">
+          <div class="${classes}" data-date="${dateString}">
             <div class="day-number">${currentDate.getDate()}</div>
             ${hasEvaluaciones ? `
               <div class="event-indicators">
                 ${evaluaciones.slice(0, 3).map(ev => {
                   const colorClass = this.estrategiaColors[ev.estrategia_evaluacion] || 'bg-secondary text-white';
-                  return `<span class="badge ${colorClass} badge-sm">${ev.asignatura}</span>`;
+                  return `<button class="badge ${colorClass} badge-sm eval-badge" data-eval-id="${ev.id}">${ev.asignatura}</button>`;
                 }).join('')}
                 ${evaluaciones.length > 3 ? `<small class="text-muted">+${evaluaciones.length - 3} más</small>` : ''}
               </div>
@@ -200,85 +208,26 @@ class EvaluacionesCalendar {
     return html;
   }
   
-  renderMonthList() {
-    const evaluaciones = this.getEvaluacionesForMonth();
-    
-    if (evaluaciones.length === 0) {
-      return `
-        <div class="list-group-item text-center text-muted py-4">
-          <i class="bi bi-calendar-x fs-1 d-block mb-2"></i>
-          No hay evaluaciones programadas para este mes
-          ${this.selectedCurso !== 'all' ? ` en ${this.selectedCurso}` : ''}
-        </div>
-      `;
-    }
-    
-    return evaluaciones.map(evaluacion => {
-      const colorClass = this.estrategiaColors[evaluacion.estrategia_evaluacion] || 'bg-secondary text-white';
-      const fecha = new Date(evaluacion.fecha + 'T00:00:00');
-      const fechaStr = fecha.toLocaleDateString('es-CL', { 
-        weekday: 'short', 
-        day: 'numeric', 
-        month: 'short' 
-      });
-      
-      return `
-      <div class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between align-items-start mb-2">
-          <div>
-            <h5 class="mb-1">
-              <span class="badge ${colorClass} me-2">${evaluacion.estrategia_evaluacion}</span>
-              ${evaluacion.asignatura}
-            </h5>
-            <p class="mb-1 text-muted small">
-              <i class="bi bi-person me-1"></i>${evaluacion.profesor} 
-              <span class="ms-3"><i class="bi bi-mortarboard me-1"></i>${evaluacion.curso}</span>
-            </p>
-          </div>
-          <small class="text-primary fw-bold">
-            <i class="bi bi-calendar3 me-1"></i>${fechaStr}
-          </small>
-        </div>
-        
-        <div class="mb-2">
-          <strong class="small text-secondary">Contenido:</strong>
-          <p class="mb-1 small">${evaluacion.contenido}</p>
-        </div>
-        
-        ${evaluacion.indicadores_evaluacion ? `
-        <div class="mb-2">
-          <strong class="small text-secondary">Indicadores de Evaluación:</strong>
-          <p class="mb-1 small">${evaluacion.indicadores_evaluacion}</p>
-        </div>
-        ` : ''}
-        
-        ${evaluacion.retroalimentacion ? `
-        <div class="mb-0">
-          <strong class="small text-secondary">Retroalimentación:</strong>
-          <p class="mb-0 small">${evaluacion.retroalimentacion}</p>
-        </div>
-        ` : ''}
-      </div>
-    `;
-    }).join('');
-  }
-  
   getEvaluacionesForDate(date) {
+    if (!this.selectedCurso) return [];
+    
     const dateString = date.toISOString().split('T')[0];
     return this.evaluaciones.filter(evaluacion => {
       const evaluacionDate = evaluacion.fecha;
       const matchesDate = evaluacionDate === dateString;
-      const matchesCurso = this.selectedCurso === 'all' || evaluacion.curso === this.selectedCurso;
+      const matchesCurso = evaluacion.curso === this.selectedCurso;
       return matchesDate && matchesCurso;
     });
   }
   
   getEvaluacionesForMonth() {
+    if (!this.selectedCurso) return [];
+    
     return this.evaluaciones.filter(evaluacion => {
       const evaluacionDate = new Date(evaluacion.fecha + 'T00:00:00');
       const matchesMonth = evaluacionDate.getMonth() === this.currentMonth && 
                           evaluacionDate.getFullYear() === this.currentYear;
-      const matchesCurso = this.selectedCurso === 'all' || evaluacion.curso === this.selectedCurso;
+      const matchesCurso = evaluacion.curso === this.selectedCurso;
       return matchesMonth && matchesCurso;
     }).sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
   }
@@ -288,12 +237,242 @@ class EvaluacionesCalendar {
     return date.toDateString() === today.toDateString();
   }
   
+  showEvaluacionModal(evaluacionId) {
+    const evaluacion = this.evaluaciones.find(e => e.id === evaluacionId);
+    if (!evaluacion) return;
+    
+    const fecha = new Date(evaluacion.fecha + 'T00:00:00');
+    const fechaStr = fecha.toLocaleDateString('es-CL', { 
+      weekday: 'long', 
+      day: 'numeric', 
+      month: 'long',
+      year: 'numeric'
+    });
+    
+    const colorClass = this.estrategiaColors[evaluacion.estrategia_evaluacion] || 'bg-secondary text-white';
+    
+    // Crear modal si no existe
+    let modal = document.getElementById('evaluacionModal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'evaluacionModal';
+      modal.className = 'modal fade';
+      modal.innerHTML = `
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="evaluacionModalTitle"></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body" id="evaluacionModalBody"></div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+    }
+    
+    // Actualizar contenido
+    document.getElementById('evaluacionModalTitle').innerHTML = `
+      <span class="badge ${colorClass} me-2">${evaluacion.estrategia_evaluacion}</span>
+      ${evaluacion.asignatura}
+    `;
+    
+    document.getElementById('evaluacionModalBody').innerHTML = `
+      <div class="mb-3">
+        <h6 class="text-muted mb-2"><i class="bi bi-calendar3 me-2"></i>Fecha</h6>
+        <p class="mb-0">${fechaStr}</p>
+      </div>
+      
+      <div class="mb-3">
+        <h6 class="text-muted mb-2"><i class="bi bi-person me-2"></i>Profesor</h6>
+        <p class="mb-0">${evaluacion.profesor}</p>
+      </div>
+      
+      <div class="mb-3">
+        <h6 class="text-muted mb-2"><i class="bi bi-mortarboard me-2"></i>Curso</h6>
+        <p class="mb-0">${evaluacion.curso}</p>
+      </div>
+      
+      <div class="mb-3">
+        <h6 class="text-muted mb-2"><i class="bi bi-book me-2"></i>Contenido</h6>
+        <p class="mb-0">${evaluacion.contenido}</p>
+      </div>
+      
+      ${evaluacion.indicadores_evaluacion ? `
+        <div class="mb-3">
+          <h6 class="text-muted mb-2"><i class="bi bi-check2-square me-2"></i>Indicadores de Evaluación</h6>
+          <p class="mb-0">${evaluacion.indicadores_evaluacion}</p>
+        </div>
+      ` : ''}
+      
+      ${evaluacion.retroalimentacion ? `
+        <div class="mb-0">
+          <h6 class="text-muted mb-2"><i class="bi bi-chat-left-text me-2"></i>Retroalimentación</h6>
+          <p class="mb-0">${evaluacion.retroalimentacion}</p>
+        </div>
+      ` : ''}
+    `;
+    
+    // Mostrar modal
+    const bsModal = new bootstrap.Modal(modal);
+    bsModal.show();
+  }
+  
+  printToPDF() {
+    if (!this.selectedCurso) return;
+    
+    const evaluaciones = this.getEvaluacionesForMonth();
+    const monthName = this.monthNames[this.currentMonth];
+    
+    // Crear ventana de impresión
+    const printWindow = window.open('', '', 'width=800,height=600');
+    
+    const html = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Calendario de Evaluaciones - ${monthName} ${this.currentYear}</title>
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #333;
+          }
+          h1 {
+            color: #1418c4;
+            border-bottom: 3px solid #1418c4;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+          }
+          h2 {
+            color: #666;
+            font-size: 1.2em;
+            margin-top: 10px;
+            margin-bottom: 15px;
+          }
+          .eval-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            page-break-inside: avoid;
+          }
+          .eval-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+          }
+          .eval-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #1418c4;
+          }
+          .eval-date {
+            color: #666;
+            font-size: 0.9em;
+          }
+          .eval-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 8px;
+          }
+          .eval-info {
+            margin: 8px 0;
+            font-size: 0.95em;
+          }
+          .eval-label {
+            font-weight: bold;
+            color: #666;
+          }
+          .no-evaluaciones {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+          }
+          @media print {
+            body { margin: 0; }
+            .eval-item { page-break-inside: avoid; }
+          }
+        </style>
+      </head>
+      <body>
+        <h1>Calendario de Evaluaciones</h1>
+        <h2>${this.selectedCurso} - ${monthName} ${this.currentYear}</h2>
+        
+        ${evaluaciones.length === 0 ? `
+          <div class="no-evaluaciones">
+            <p>No hay evaluaciones programadas para este mes</p>
+          </div>
+        ` : evaluaciones.map(ev => {
+          const fecha = new Date(ev.fecha + 'T00:00:00');
+          const fechaStr = fecha.toLocaleDateString('es-CL', { 
+            weekday: 'long', 
+            day: 'numeric', 
+            month: 'long'
+          });
+          
+          return `
+            <div class="eval-item">
+              <div class="eval-header">
+                <div>
+                  <span class="eval-badge" style="background: #dc3545; color: white;">${ev.estrategia_evaluacion}</span>
+                  <span class="eval-title">${ev.asignatura}</span>
+                </div>
+                <div class="eval-date">${fechaStr}</div>
+              </div>
+              
+              <div class="eval-info">
+                <span class="eval-label">Profesor:</span> ${ev.profesor}
+              </div>
+              
+              <div class="eval-info">
+                <span class="eval-label">Contenido:</span> ${ev.contenido}
+              </div>
+              
+              ${ev.indicadores_evaluacion ? `
+                <div class="eval-info">
+                  <span class="eval-label">Indicadores:</span> ${ev.indicadores_evaluacion}
+                </div>
+              ` : ''}
+              
+              ${ev.retroalimentacion ? `
+                <div class="eval-info">
+                  <span class="eval-label">Retroalimentación:</span> ${ev.retroalimentacion}
+                </div>
+              ` : ''}
+            </div>
+          `;
+        }).join('')}
+        
+        <script>
+          window.onload = function() {
+            window.print();
+            setTimeout(function() { window.close(); }, 100);
+          }
+        </script>
+      </body>
+      </html>
+    `;
+    
+    printWindow.document.write(html);
+    printWindow.document.close();
+  }
+  
   attachEventListeners() {
     // Navegación de meses
     const prevBtn = document.getElementById('prevMonth');
     const nextBtn = document.getElementById('nextMonth');
     const todayBtn = document.getElementById('todayBtn');
     const cursoFilter = document.getElementById('cursoFilter');
+    const printBtn = document.getElementById('printBtn');
     
     if (prevBtn) {
       prevBtn.addEventListener('click', () => {
@@ -332,13 +511,28 @@ class EvaluacionesCalendar {
     
     // Filtro de cursos
     if (cursoFilter) {
-      cursoFilter.value = this.selectedCurso;
       cursoFilter.addEventListener('change', (e) => {
-        this.selectedCurso = e.target.value;
+        this.selectedCurso = e.target.value || null;
         this.render();
         this.attachEventListeners();
       });
     }
+    
+    // Botón imprimir
+    if (printBtn) {
+      printBtn.addEventListener('click', () => {
+        this.printToPDF();
+      });
+    }
+    
+    // Event listeners para badges de evaluaciones
+    document.querySelectorAll('.eval-badge').forEach(badge => {
+      badge.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const evalId = parseInt(badge.getAttribute('data-eval-id'));
+        this.showEvaluacionModal(evalId);
+      });
+    });
   }
 }
 
