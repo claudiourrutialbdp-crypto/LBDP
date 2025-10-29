@@ -321,45 +321,48 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
-    },{threshold:.2});
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-    
-    const backTop = document.getElementById('backTop');
-    window.addEventListener('scroll',()=>{
-      const nav = document.querySelector('.navbar-liceo');
-      nav.classList.toggle('navbar-elevated', window.scrollY>12);
-      backTop.classList.toggle('show', window.scrollY>240);
-    });
-    backTop.addEventListener('click',()=> window.scrollTo({top:0, behavior:'smooth'}));
+    // Esperar a que se carguen los componentes
+    document.addEventListener('DOMContentLoaded', () => {
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+      },{threshold:.2});
+      document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+      
+      const backTop = document.getElementById('backTop');
+      window.addEventListener('scroll',()=>{
+        const nav = document.querySelector('.navbar-liceo');
+        if (nav) {
+          nav.classList.toggle('navbar-elevated', window.scrollY>12);
+        }
+        backTop.classList.toggle('show', window.scrollY>240);
+      });
+      backTop.addEventListener('click',()=> window.scrollTo({top:0, behavior:'smooth'}));
 
-    // Filtro de talleres
-    const filterButtons = document.querySelectorAll('[data-filter]');
-    const tallerItems = document.querySelectorAll('.taller-item');
+      // Filtro de talleres
+      const filterButtons = document.querySelectorAll('[data-filter]');
+      const tallerItems = document.querySelectorAll('.taller-item');
 
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        // Remover active de todos los botones
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        // Agregar active al botón clickeado
-        button.classList.add('active');
-        
-        const filter = button.getAttribute('data-filter');
-        
-        tallerItems.forEach(item => {
-          const itemCategory = item.getAttribute('data-category');
-          const parentCol = item.closest('.col-lg-4, .col-md-6');
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Remover active de todos los botones
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          // Agregar active al botón clickeado
+          button.classList.add('active');
           
-          if (filter === 'all' || itemCategory === filter) {
-            if (parentCol) parentCol.style.display = '';
-            item.classList.add('visible');
-          } else {
-            if (parentCol) parentCol.style.display = 'none';
-            item.classList.remove('visible');
-          }
+          const filter = button.getAttribute('data-filter');
+          
+          tallerItems.forEach(item => {
+            const itemCategory = item.getAttribute('data-category');
+            const parentCol = item.closest('.col-lg-4, .col-md-6');
+            
+            if (filter === 'all' || itemCategory === filter) {
+              if (parentCol) parentCol.style.display = '';
+              item.classList.add('visible');
+            } else {
+              if (parentCol) parentCol.style.display = 'none';
+              item.classList.remove('visible');
+            }
+          });
         });
       });
     });
