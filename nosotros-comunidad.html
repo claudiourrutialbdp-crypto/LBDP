@@ -434,15 +434,8 @@
   </button>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    function initializePage() {
-      // Año en footer
-      const yearElement = document.getElementById('year');
-      if (yearElement) {
-        yearElement.textContent = new Date().getFullYear();
-      }
-
-      // Back to top
+  <script>
+    // Back to top
       const backTop = document.getElementById('backTop');
       window.addEventListener('scroll', () => {
         const navbar = document.querySelector('.navbar-liceo');
@@ -456,15 +449,14 @@
         window.scrollTo({top: 0, behavior: 'smooth'});
       });
 
-      // Reveal animation
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) e.target.classList.add('visible');
-        });
-      }, {threshold: 0.2});
-      
-      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    }
+    // Reveal animation
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, {threshold: 0.2});
+    
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   </script>
 
   <!-- Footer -->
