@@ -4,9 +4,9 @@
  */
 
 class AdvancedCalendar {
-  constructor(containerId, csvFile) {
+  constructor(containerId, dataFile) {
     this.container = document.getElementById(containerId);
-    this.csvFile = csvFile;
+    this.dataFile = dataFile;
     this.activities = [];
     this.currentDate = new Date();
     this.currentMonth = this.currentDate.getMonth();
@@ -42,9 +42,19 @@ class AdvancedCalendar {
   
   async loadActivities() {
     try {
-      const response = await fetch(this.csvFile);
-      const csvText = await response.text();
-      this.activities = this.parseCSV(csvText);
+      const response = await fetch(this.dataFile);
+      
+      // Detectar si es JSON o CSV por la extensión del archivo
+      if (this.dataFile.endsWith('.json')) {
+        const jsonData = await response.json();
+        this.activities = jsonData;
+      } else if (this.dataFile.endsWith('.csv')) {
+        const csvText = await response.text();
+        this.activities = this.parseCSV(csvText);
+      } else {
+        console.error('Formato de archivo no soportado');
+        this.activities = [];
+      }
     } catch (error) {
       console.error('Error cargando actividades:', error);
       this.activities = [];
