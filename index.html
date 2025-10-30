@@ -254,17 +254,6 @@
 
       <div class="mural p-3 rounded">
         <div class="mural-grid mt-3" id="muralGrid" aria-live="polite"></div>
-        
-        <!-- Paginación del Diario Mural -->
-        <div class="d-flex justify-content-between align-items-center mt-3" id="muralPagination">
-          <button id="muralPrevBtn" class="btn btn-outline-primary-liceo btn-sm" disabled>
-            <i class="bi bi-chevron-left me-1"></i>Anterior
-          </button>
-          <div class="text-muted small" id="muralPageInfo">Página 1 de 1</div>
-          <button id="muralNextBtn" class="btn btn-outline-primary-liceo btn-sm" disabled>
-            Siguiente<i class="bi bi-chevron-right ms-1"></i>
-          </button>
-        </div>
       </div>
     </div>
   </section>
@@ -369,15 +358,9 @@
     });
   }
 
-  // --------- Diario Mural (Solo lectura desde JSON) con Paginación ----------
+  // --------- Diario Mural (Solo lectura desde JSON) - Todas las entradas ----------
   const muralGrid = document.getElementById('muralGrid');
   const muralFilter = document.getElementById('muralFilter');
-  const muralPrevBtn = document.getElementById('muralPrevBtn');
-  const muralNextBtn = document.getElementById('muralNextBtn');
-  const muralPageInfo = document.getElementById('muralPageInfo');
-  
-  let currentMuralPage = 1;
-  const notesPerPage = 6;
 
   function loadNotes(){
     return MURAL_NOTES;
@@ -396,20 +379,15 @@
     }
     
     const filtered = getFilteredNotes();
-    const totalPages = Math.ceil(filtered.length / notesPerPage);
-    const startIdx = (currentMuralPage - 1) * notesPerPage;
-    const endIdx = startIdx + notesPerPage;
-    const paginated = filtered.slice(startIdx, endIdx);
     
     muralGrid.innerHTML = '';
     
     if (filtered.length === 0) {
       muralGrid.innerHTML = '<div class="text-center text-muted py-4">No hay comunicados disponibles</div>';
-      updateMuralPagination(0, 0);
       return;
     }
     
-    paginated.forEach((n, idx)=>{
+    filtered.forEach((n, idx)=>{
       const div = document.createElement('div');
       const rot = ((idx%5)-2)*0.6; // pequeña variación
       div.innerHTML = `
@@ -428,57 +406,13 @@
     });
 
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-    updateMuralPagination(filtered.length, totalPages);
   }
 
-  function updateMuralPagination(totalNotes, totalPages) {
-    if (!muralPageInfo || !muralPrevBtn || !muralNextBtn) return;
-    
-    if (totalNotes === 0 || totalPages <= 1) {
-      // Ocultar paginación si no hay notas o solo hay una página
-      document.getElementById('muralPagination').style.display = 'none';
-      return;
-    }
-    
-    document.getElementById('muralPagination').style.display = 'flex';
-    muralPageInfo.textContent = `Página ${currentMuralPage} de ${totalPages}`;
-    
-    // Deshabilitar/habilitar botones según la página actual
-    muralPrevBtn.disabled = currentMuralPage === 1;
-    muralNextBtn.disabled = currentMuralPage === totalPages;
-  }
-
-  function changeMuralPage(direction) {
-    const filtered = getFilteredNotes();
-    const totalPages = Math.ceil(filtered.length / notesPerPage);
-    
-    if (direction === 'next' && currentMuralPage < totalPages) {
-      currentMuralPage++;
-      renderNotes();
-      // Scroll suave al inicio del mural
-      document.getElementById('mural').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else if (direction === 'prev' && currentMuralPage > 1) {
-      currentMuralPage--;
-      renderNotes();
-      // Scroll suave al inicio del mural
-      document.getElementById('mural').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
-
-  // Event listeners
+  // Event listener para filtro
   if (muralFilter) {
     muralFilter.addEventListener('change', () => {
-      currentMuralPage = 1; // Reset a la primera página al cambiar filtro
       renderNotes();
     });
-  }
-
-  if (muralPrevBtn) {
-    muralPrevBtn.addEventListener('click', () => changeMuralPage('prev'));
-  }
-
-  if (muralNextBtn) {
-    muralNextBtn.addEventListener('click', () => changeMuralPage('next'));
   }
 
   // Inicializar IntersectionObserver para animaciones reveal
@@ -501,6 +435,59 @@
   
   // Inicializar animaciones reveal
   observeRevealElements();
+
+  // ===== Manejo de Scroll para Navbar y Botón Back-to-Top =====
+  // Esperar a que el DOM esté listo y los componentes cargados
+  document.addEventListener('DOMContentLoaded', function() {
+    // Pequeño delay para asegurar que los componentes estén cargados
+    setTimeout(function() {
+      const navbar = document.querySelector('.navbar-liceo');
+      const backTop = document.getElementById('backTop');
+      
+      console.log('Navbar encontrado:', navbar ? 'Sí' : 'No');
+      console.log('BackTop encontrado:', backTop ? 'Sí' : 'No');
+      
+      // Función que se ejecuta en cada scroll
+      function handleScroll() {
+        const scrollY = window.scrollY || window.pageYOffset;
+        
+        // Navbar elevado después de 12px de scroll
+        if (navbar) {
+          if (scrollY > 12) {
+            navbar.classList.add('navbar-elevated');
+          } else {
+            navbar.classList.remove('navbar-elevated');
+          }
+        }
+        
+        // Botón back-to-top visible después de 240px
+        if (backTop) {
+          if (scrollY > 240) {
+            backTop.classList.add('show');
+          } else {
+            backTop.classList.remove('show');
+          }
+        }
+      }
+      
+      // Event listener para scroll
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      
+      // Click en botón back-to-top
+      if (backTop) {
+        backTop.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      }
+      
+      // Ejecutar una vez al cargar para estado inicial
+      handleScroll();
+    }, 100);
+  });
 
   </script>
   <script src="./js/load-components.js"></script>
