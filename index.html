@@ -369,32 +369,15 @@
     });
   }
 
-  // --------- Diario Mural con Paginación Adaptativa (2 filas siempre) ----------
+  // --------- Diario Mural (Solo lectura desde JSON) con Paginación ----------
   const muralGrid = document.getElementById('muralGrid');
   const muralFilter = document.getElementById('muralFilter');
-  const muralPagination = document.getElementById('muralPagination');
   const muralPrevBtn = document.getElementById('muralPrevBtn');
   const muralNextBtn = document.getElementById('muralNextBtn');
   const muralPageInfo = document.getElementById('muralPageInfo');
   
   let currentMuralPage = 1;
-
-  // Función para calcular cuántas notas caben por página según la resolución
-  function getNotesPerPage() {
-    const width = window.innerWidth;
-    
-    if (width <= 576) {
-      return 2; // Mobile: 1 columna × 2 filas = 2 notas
-    } else if (width <= 768) {
-      return 4; // Tablet pequeño: 2 columnas × 2 filas = 4 notas
-    } else if (width <= 992) {
-      return 6; // Tablet: 3 columnas × 2 filas = 6 notas
-    } else if (width <= 1200) {
-      return 8; // Desktop pequeño: 4 columnas × 2 filas = 8 notas
-    } else {
-      return 10; // Desktop grande: 5 columnas × 2 filas = 10 notas
-    }
-  }
+  const notesPerPage = 6;
 
   function loadNotes(){
     return MURAL_NOTES;
@@ -413,14 +396,7 @@
     }
     
     const filtered = getFilteredNotes();
-    const notesPerPage = getNotesPerPage();
     const totalPages = Math.ceil(filtered.length / notesPerPage);
-    
-    // Ajustar página actual si es necesario
-    if (currentMuralPage > totalPages && totalPages > 0) {
-      currentMuralPage = totalPages;
-    }
-    
     const startIdx = (currentMuralPage - 1) * notesPerPage;
     const endIdx = startIdx + notesPerPage;
     const paginated = filtered.slice(startIdx, endIdx);
@@ -456,15 +432,15 @@
   }
 
   function updateMuralPagination(totalNotes, totalPages) {
-    if (!muralPageInfo || !muralPrevBtn || !muralNextBtn || !muralPagination) return;
+    if (!muralPageInfo || !muralPrevBtn || !muralNextBtn) return;
     
     if (totalNotes === 0 || totalPages <= 1) {
       // Ocultar paginación si no hay notas o solo hay una página
-      muralPagination.style.display = 'none';
+      document.getElementById('muralPagination').style.display = 'none';
       return;
     }
     
-    muralPagination.style.display = 'flex';
+    document.getElementById('muralPagination').style.display = 'flex';
     muralPageInfo.textContent = `Página ${currentMuralPage} de ${totalPages}`;
     
     // Deshabilitar/habilitar botones según la página actual
@@ -474,7 +450,6 @@
 
   function changeMuralPage(direction) {
     const filtered = getFilteredNotes();
-    const notesPerPage = getNotesPerPage();
     const totalPages = Math.ceil(filtered.length / notesPerPage);
     
     if (direction === 'next' && currentMuralPage < totalPages) {
@@ -490,7 +465,7 @@
     }
   }
 
-  // Event listener para filtro
+  // Event listeners
   if (muralFilter) {
     muralFilter.addEventListener('change', () => {
       currentMuralPage = 1; // Reset a la primera página al cambiar filtro
@@ -498,7 +473,6 @@
     });
   }
 
-  // Event listeners para paginación
   if (muralPrevBtn) {
     muralPrevBtn.addEventListener('click', () => changeMuralPage('prev'));
   }
@@ -506,17 +480,6 @@
   if (muralNextBtn) {
     muralNextBtn.addEventListener('click', () => changeMuralPage('next'));
   }
-
-  // Event listener para redimensionar ventana (recalcular paginación)
-  let resizeTimeout;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      // Al cambiar tamaño, recalcular desde página 1
-      currentMuralPage = 1;
-      renderNotes();
-    }, 300);
-  });
 
   // Inicializar IntersectionObserver para animaciones reveal
   io = new IntersectionObserver((entries) => {
