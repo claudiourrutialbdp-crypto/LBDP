@@ -253,6 +253,8 @@ body{
   z-index: 1050 !important;
   background: rgba(255, 255, 255, 0.95) !important;
   backdrop-filter: blur(20px);
+  position: sticky !important;
+  top: 0 !important;
 }
 .navbar-liceo .nav-link{ 
   color: var(--text-light); 
@@ -546,10 +548,45 @@ body{
   100% { background-position: -200% 0; }
 }
 
-/* Back to top */
-.back-to-top{ position: fixed; right: 16px; bottom: 16px; width: 48px; height: 48px; border-radius: 999px; background: var(--aqua); color:#0b0b0b; display:flex; align-items:center; justify-content:center; box-shadow: 0 8px 24px rgba(2,8,20,.15); border:0; opacity:0; pointer-events:none; transition: opacity .25s ease; z-index: 1050; }
-.back-to-top.show{ opacity:1; pointer-events:auto; }
-.back-to-top:focus{ outline: 3px solid #000; outline-offset:2px; }
+/* Back to top - Botón de volver arriba */
+.back-to-top { 
+  position: fixed; 
+  right: 24px; 
+  bottom: 24px; 
+  width: 56px; 
+  height: 56px; 
+  border-radius: 50%; 
+  background: var(--gradient-aqua);
+  color: white; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  box-shadow: var(--shadow-aqua);
+  border: 0; 
+  opacity: 0; 
+  visibility: hidden;
+  pointer-events: none; 
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1050;
+  font-size: 1.5rem;
+}
+
+.back-to-top.show { 
+  opacity: 1; 
+  visibility: visible;
+  pointer-events: auto; 
+}
+
+.back-to-top:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(23, 226, 201, 0.4);
+  background: var(--aqua);
+}
+
+.back-to-top:focus { 
+  outline: 3px solid var(--aqua); 
+  outline-offset: 2px; 
+}
 
 /* Footer moderno y elegante */
 .footer{ 
@@ -900,40 +937,15 @@ body{
     width: 40px;
     height: 40px;
   }
+  
+  /* Back to top responsive en móviles */
+  .back-to-top {
+    right: 16px;
+    bottom: 16px;
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
+  }
 }
 
 /* Efectos adicionales para elementos específicos */
-.back-to-top {
-  position: fixed;
-  right: 24px;
-  bottom: 24px;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--gradient-secondary);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-pink);
-  border: 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 1050;
-}
-
-.back-to-top.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.back-to-top:hover {
-  transform: translateY(-4px) scale(1.1);
-  box-shadow: 0 15px 35px rgba(236, 72, 153, 0.4);
-}
-
-.back-to-top:focus {
-  outline: 3px solid var(--secondary-light);
-  outline-offset: 2px;
-}
