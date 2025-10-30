@@ -34,4 +34,40 @@ document.addEventListener('DOMContentLoaded', async function() {
   if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
   }
+  
+  // Inicializar funcionalidad del navbar y back-to-top después de cargar componentes
+  initScrollEffects();
 });
+
+/**
+ * Inicializar efectos de scroll para navbar y botón back-to-top
+ */
+function initScrollEffects() {
+  const navbar = document.querySelector('.navbar-liceo');
+  const backTop = document.getElementById('backTop');
+  
+  // Manejar scroll para navbar elevado y botón back-to-top
+  window.addEventListener('scroll', function() {
+    const scrollY = window.scrollY;
+    
+    // Agregar clase navbar-elevated cuando se hace scroll
+    if (navbar) {
+      navbar.classList.toggle('navbar-elevated', scrollY > 12);
+    }
+    
+    // Mostrar botón back-to-top cuando se baja más de 240px
+    if (backTop) {
+      backTop.classList.toggle('show', scrollY > 240);
+    }
+  });
+  
+  // Click en botón back-to-top para volver arriba
+  if (backTop) {
+    backTop.addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+}
