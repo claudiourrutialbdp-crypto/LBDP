@@ -152,28 +152,37 @@
   <script src="./js/load-components.js"></script>
   <script src="./js/calendar.js"></script>
   <script>
-    // Esperar a que se carguen los componentes antes de inicializar
-    document.addEventListener('DOMContentLoaded', () => {
+    // Esperar a que se carguen los componentes y el DOM
+    window.addEventListener('load', () => {
       // Back to top
       const backTop = document.getElementById('backTop');
-      window.addEventListener('scroll', () => {
-        const navbar = document.querySelector('.navbar-liceo');
-        if (navbar) {
-          navbar.classList.toggle('navbar-elevated', window.scrollY > 12);
-        }
-        backTop.classList.toggle('show', window.scrollY > 240);
-      });
-      
-      backTop.addEventListener('click', () => {
-        window.scrollTo({top: 0, behavior: 'smooth'});
-      });
-
-      // Inicializar calendario con JSON
-      if (typeof AdvancedCalendar !== 'undefined') {
-        new AdvancedCalendar('calendar', './data/activities.json');
-      } else {
-        console.error('AdvancedCalendar no está disponible');
+      if (backTop) {
+        window.addEventListener('scroll', () => {
+          const navbar = document.querySelector('.navbar-liceo');
+          if (navbar) {
+            navbar.classList.toggle('navbar-elevated', window.scrollY > 12);
+          }
+          backTop.classList.toggle('show', window.scrollY > 240);
+        });
+        
+        backTop.addEventListener('click', () => {
+          window.scrollTo({top: 0, behavior: 'smooth'});
+        });
       }
+
+      // Inicializar calendario con JSON después de que todo se haya cargado
+      setTimeout(() => {
+        const calendarEl = document.getElementById('calendar');
+        if (calendarEl && typeof AdvancedCalendar !== 'undefined') {
+          console.log('Inicializando calendario...');
+          new AdvancedCalendar('calendar', './data/activities.json');
+        } else {
+          console.error('Calendario no disponible:', {
+            element: !!calendarEl,
+            class: typeof AdvancedCalendar !== 'undefined'
+          });
+        }
+      }, 100);
 
       // Reveal animation
       const io = new IntersectionObserver((entries) => {
