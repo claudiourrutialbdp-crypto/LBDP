@@ -254,6 +254,17 @@
 
       <div class="mural p-3 rounded">
         <div class="mural-grid mt-3" id="muralGrid" aria-live="polite"></div>
+        
+        <!-- Paginación del Diario Mural -->
+        <div class="d-flex justify-content-between align-items-center mt-3" id="muralPagination">
+          <button id="muralPrevBtn" class="btn btn-outline-primary-liceo btn-sm" disabled>
+            <i class="bi bi-chevron-left me-1"></i>Anterior
+          </button>
+          <div class="text-muted small" id="muralPageInfo">Página 1 de 1</div>
+          <button id="muralNextBtn" class="btn btn-outline-primary-liceo btn-sm" disabled>
+            Siguiente<i class="bi bi-chevron-right ms-1"></i>
+          </button>
+        </div>
       </div>
     </div>
   </section>
@@ -358,12 +369,24 @@
     });
   }
 
-  // --------- Diario Mural (Solo lectura desde JSON) ----------
+  // --------- Diario Mural (Solo lectura desde JSON) con Paginación ----------
   const muralGrid = document.getElementById('muralGrid');
   const muralFilter = document.getElementById('muralFilter');
+  const muralPrevBtn = document.getElementById('muralPrevBtn');
+  const muralNextBtn = document.getElementById('muralNextBtn');
+  const muralPageInfo = document.getElementById('muralPageInfo');
+  
+  let currentMuralPage = 1;
+  const notesPerPage = 6;
 
   function loadNotes(){
     return MURAL_NOTES;
+  }
+
+  function getFilteredNotes() {
+    const cat = muralFilter.value;
+    const sorted = [...MURAL_NOTES].sort((a,b)=> (a.pinned===b.pinned ? (a.createdAt<b.createdAt?1:-1) : (a.pinned? -1:1)));
+    return cat==='all' ? sorted : sorted.filter(n=>n.cat===cat);
   }
 
   function renderNotes(){
@@ -372,17 +395,21 @@
       return;
     }
     
-    const cat = muralFilter.value;
-    const sorted = [...MURAL_NOTES].sort((a,b)=> (a.pinned===b.pinned ? (a.createdAt<b.createdAt?1:-1) : (a.pinned? -1:1)));
-    const filtered = cat==='all' ? sorted : sorted.filter(n=>n.cat===cat);
+    const filtered = getFilteredNotes();
+    const totalPages = Math.ceil(filtered.length / notesPerPage);
+    const startIdx = (currentMuralPage - 1) * notesPerPage;
+    const endIdx = startIdx + notesPerPage;
+    const paginated = filtered.slice(startIdx, endIdx);
+    
     muralGrid.innerHTML = '';
     
     if (filtered.length === 0) {
       muralGrid.innerHTML = '<div class="text-center text-muted py-4">No hay comunicados disponibles</div>';
+      updateMuralPagination(0, 0);
       return;
     }
     
-    filtered.forEach((n, idx)=>{
+    paginated.forEach((n, idx)=>{
       const div = document.createElement('div');
       const rot = ((idx%5)-2)*0.6; // pequeña variación
       div.innerHTML = `
@@ -401,10 +428,58 @@
     });
 
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    updateMuralPagination(filtered.length, totalPages);
   }
 
+  function updateMuralPagination(totalNotes, totalPages) {
+    if (!muralPageInfo || !muralPrevBtn || !muralNextBtn) return;
+    
+    if (totalNotes === 0 || totalPages <= 1) {
+      // Ocultar paginación si no hay notas o solo hay una página
+      document.getElementById('muralPagination').style.display = 'none';
+      return;
+    }
+    
+    document.getElementById('muralPagination').style.display = 'flex';
+    muralPageInfo.textContent = `Página ${currentMuralPage} de ${totalPages}`;
+    
+    // Deshabilitar/habilitar botones según la página actual
+    muralPrevBtn.disabled = currentMuralPage === 1;
+    muralNextBtn.disabled = currentMuralPage === totalPages;
+  }
 
-  muralFilter.addEventListener('change', renderNotes);
+  function changeMuralPage(direction) {
+    const filtered = getFilteredNotes();
+    const totalPages = Math.ceil(filtered.length / notesPerPage);
+    
+    if (direction === 'next' && currentMuralPage < totalPages) {
+      currentMuralPage++;
+      renderNotes();
+      // Scroll suave al inicio del mural
+      document.getElementById('mural').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else if (direction === 'prev' && currentMuralPage > 1) {
+      currentMuralPage--;
+      renderNotes();
+      // Scroll suave al inicio del mural
+      document.getElementById('mural').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // Event listeners
+  if (muralFilter) {
+    muralFilter.addEventListener('change', () => {
+      currentMuralPage = 1; // Reset a la primera página al cambiar filtro
+      renderNotes();
+    });
+  }
+
+  if (muralPrevBtn) {
+    muralPrevBtn.addEventListener('click', () => changeMuralPage('prev'));
+  }
+
+  if (muralNextBtn) {
+    muralNextBtn.addEventListener('click', () => changeMuralPage('next'));
+  }
 
   // Inicializar IntersectionObserver para animaciones reveal
   io = new IntersectionObserver((entries) => {
