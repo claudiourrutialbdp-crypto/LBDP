@@ -63,24 +63,28 @@
             <h2 class="h4 text-primary-liceo mb-3">
               <i class="bi bi-database-fill me-2"></i>Información que Recopilamos
             </h2>
-            <p class="mb-3">Podemos recopilar los siguientes tipos de información personal:</p>
+            <p class="mb-3">En nuestro sitio web, recopilamos únicamente la siguiente información:</p>
             
             <div class="accordion" id="accordionInfo">
               <div class="accordion-item border">
                 <h3 class="accordion-header">
                   <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                    <strong>1. Información de Estudiantes y Apoderados</strong>
+                    <strong>1. Información del Formulario de Contacto</strong>
                   </button>
                 </h3>
                 <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionInfo">
                   <div class="accordion-body">
-                    <ul class="mb-0">
-                      <li>Nombre completo, RUT y fecha de nacimiento</li>
-                      <li>Dirección de residencia y datos de contacto (teléfono, email)</li>
-                      <li>Información académica (notas, asistencia, comportamiento)</li>
-                      <li>Antecedentes médicos relevantes para el cuidado del estudiante</li>
-                      <li>Datos de apoderados y tutores legales</li>
+                    <p class="mb-2"><strong>Datos recopilados cuando nos contactas:</strong></p>
+                    <ul class="mb-3">
+                      <li><strong>Nombre:</strong> Para identificar quién nos contacta</li>
+                      <li><strong>Correo electrónico:</strong> Para poder responderte</li>
+                      <li><strong>Mensaje:</strong> El contenido de tu consulta o comentario</li>
                     </ul>
+                    
+                    <div class="alert alert-info mb-0" role="alert">
+                      <i class="bi bi-info-circle-fill me-2"></i>
+                      <strong>Importante:</strong> Esta información se almacena <strong>únicamente en tu navegador</strong> usando localStorage, no se envía a ningún servidor externo. Los datos permanecen en tu dispositivo y puedes eliminarlos en cualquier momento desde la configuración de tu navegador.
+                    </div>
                   </div>
                 </div>
               </div>
@@ -88,17 +92,28 @@
               <div class="accordion-item border">
                 <h3 class="accordion-header">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                    <strong>2. Información del Sitio Web</strong>
+                    <strong>2. Información de Navegación (Automática)</strong>
                   </button>
                 </h3>
                 <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionInfo">
                   <div class="accordion-body">
-                    <ul class="mb-0">
-                      <li>Dirección IP y datos de navegación</li>
-                      <li>Tipo de navegador y sistema operativo</li>
-                      <li>Páginas visitadas y tiempo de permanencia</li>
-                      <li>Información proporcionada en formularios de contacto</li>
+                    <p class="mb-2"><strong>Datos técnicos que se recopilan automáticamente al navegar:</strong></p>
+                    <ul class="mb-3">
+                      <li><strong>Preferencia de idioma:</strong> Para recordar tu elección (almacenado en localStorage)</li>
+                      <li><strong>Posición de scroll:</strong> Para el funcionamiento del botón "Volver arriba"</li>
+                      <li><strong>Estado de componentes:</strong> Para mostrar/ocultar elementos según tu interacción</li>
                     </ul>
+                    
+                    <div class="alert alert-warning mb-0" role="alert">
+                      <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                      <strong>Nota:</strong> Nuestro sitio web <strong>NO utiliza</strong>:
+                      <ul class="mb-0 mt-2">
+                        <li>❌ Google Analytics ni herramientas de seguimiento de terceros</li>
+                        <li>❌ Cookies de publicidad o marketing</li>
+                        <li>❌ Píxeles de seguimiento (Facebook Pixel, etc.)</li>
+                        <li>❌ Seguimiento entre sitios (cross-site tracking)</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -106,16 +121,51 @@
               <div class="accordion-item border">
                 <h3 class="accordion-header">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                    <strong>3. Información del Personal</strong>
+                    <strong>3. Servicios de Terceros Integrados</strong>
                   </button>
                 </h3>
                 <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionInfo">
                   <div class="accordion-body">
+                    <p class="mb-2"><strong>Únicamente utilizamos:</strong></p>
+                    
+                    <div class="mb-3">
+                      <div class="d-flex gap-2 align-items-start mb-2">
+                        <i class="bi bi-map text-primary mt-1"></i>
+                        <div>
+                          <strong>Google Maps Embed</strong>
+                          <p class="small text-muted mb-0">Mapa embebido en la página de contacto. Google puede recopilar datos de navegación según su propia política de privacidad.</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="alert alert-secondary mb-0" role="alert">
+                      <i class="bi bi-shield-check me-2"></i>
+                      <strong>Importante:</strong> Para servicios de terceros como Google Maps, te recomendamos revisar sus respectivas políticas de privacidad:
+                      <ul class="mb-0 mt-2">
+                        <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Política de Privacidad de Google</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item border">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                    <strong>4. Información Institucional (Fuera del Sitio Web)</strong>
+                  </button>
+                </h3>
+                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionInfo">
+                  <div class="accordion-body">
+                    <p class="mb-2"><strong>Información manejada directamente por el Liceo (no a través del sitio web):</strong></p>
                     <ul class="mb-0">
-                      <li>Datos personales y profesionales de docentes y administrativos</li>
-                      <li>Antecedentes laborales y académicos</li>
-                      <li>Información de nómina y remuneraciones</li>
+                      <li>Datos personales de estudiantes matriculados (RUT, nombre, dirección, contactos)</li>
+                      <li>Información académica (notas, asistencia, comportamiento)</li>
+                      <li>Antecedentes médicos relevantes proporcionados por apoderados</li>
+                      <li>Datos de apoderados y tutores legales</li>
+                      <li>Información laboral del personal docente y administrativo</li>
                     </ul>
+                    <p class="small text-muted mt-2 mb-0">Esta información se maneja según los procedimientos institucionales del Liceo y está protegida por la Ley N° 19.628 sobre Protección de la Vida Privada.</p>
                   </div>
                 </div>
               </div>
@@ -129,41 +179,77 @@
             <h2 class="h4 text-primary-liceo mb-3">
               <i class="bi bi-gear-fill me-2"></i>Uso de la Información
             </h2>
-            <p class="mb-3">Utilizamos la información personal recopilada para:</p>
-            <div class="row g-3">
+            
+            <h3 class="h5 text-primary-liceo mb-3">En el Sitio Web:</h3>
+            <p class="mb-3">La información recopilada a través del sitio web se utiliza <strong>únicamente</strong> para:</p>
+            <div class="row g-3 mb-4">
               <div class="col-md-6">
                 <div class="d-flex gap-2">
                   <i class="bi bi-check-circle-fill text-success mt-1"></i>
+                  <span><strong>Responder consultas:</strong> Usar tu email y nombre para contestar tus preguntas</span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex gap-2">
+                  <i class="bi bi-check-circle-fill text-success mt-1"></i>
+                  <span><strong>Mejorar la navegación:</strong> Recordar tus preferencias de idioma</span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex gap-2">
+                  <i class="bi bi-check-circle-fill text-success mt-1"></i>
+                  <span><strong>Funcionalidad del sitio:</strong> Habilitar características como el botón "Volver arriba"</span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex gap-2">
+                  <i class="bi bi-check-circle-fill text-success mt-1"></i>
+                  <span><strong>Información geográfica:</strong> Mostrar la ubicación del Liceo en el mapa</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="alert alert-primary" role="alert">
+              <i class="bi bi-info-circle-fill me-2"></i>
+              <strong>Importante:</strong> Los datos del formulario de contacto se almacenan <strong>solo en tu navegador</strong> y no se envían automáticamente al Liceo. Si deseas que respondamos tu consulta, debes enviarnos un correo electrónico directamente.
+            </div>
+            
+            <h3 class="h5 text-primary-liceo mb-3 mt-4">En la Institución Educativa:</h3>
+            <p class="mb-3">La información manejada directamente por el Liceo (fuera del sitio web) se utiliza para:</p>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="d-flex gap-2">
+                  <i class="bi bi-mortarboard-fill text-primary mt-1"></i>
                   <span>Gestionar el proceso educativo y académico</span>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="d-flex gap-2">
-                  <i class="bi bi-check-circle-fill text-success mt-1"></i>
+                  <i class="bi bi-chat-dots-fill text-primary mt-1"></i>
                   <span>Comunicarnos con estudiantes, apoderados y personal</span>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="d-flex gap-2">
-                  <i class="bi bi-check-circle-fill text-success mt-1"></i>
+                  <i class="bi bi-graph-up text-primary mt-1"></i>
                   <span>Mejorar nuestros servicios educativos</span>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="d-flex gap-2">
-                  <i class="bi bi-check-circle-fill text-success mt-1"></i>
+                  <i class="bi bi-file-text text-primary mt-1"></i>
                   <span>Cumplir con obligaciones legales y regulatorias</span>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="d-flex gap-2">
-                  <i class="bi bi-check-circle-fill text-success mt-1"></i>
+                  <i class="bi bi-calendar-event text-primary mt-1"></i>
                   <span>Informar sobre actividades y eventos escolares</span>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="d-flex gap-2">
-                  <i class="bi bi-check-circle-fill text-success mt-1"></i>
+                  <i class="bi bi-shield-check text-primary mt-1"></i>
                   <span>Garantizar la seguridad de nuestra comunidad</span>
                 </div>
               </div>
@@ -271,23 +357,67 @@
           </div>
         </div>
 
-        <!-- Cookies -->
+        <!-- Cookies y Almacenamiento Local -->
         <div class="card card-feature mb-4">
           <div class="card-body p-4">
             <h2 class="h4 text-primary-liceo mb-3">
-              <i class="bi bi-cookie me-2"></i>Uso de Cookies
+              <i class="bi bi-database me-2"></i>Cookies y Almacenamiento Local
             </h2>
-            <p>
-              Nuestro sitio web utiliza cookies para mejorar su experiencia de navegación. Las cookies son pequeños archivos de texto almacenados en su dispositivo que nos ayudan a:
+            
+            <div class="alert alert-success mb-4" role="alert">
+              <i class="bi bi-shield-check me-2"></i>
+              <strong>Buenas noticias:</strong> Nuestro sitio web <strong>NO utiliza cookies tradicionales</strong> de seguimiento, publicidad o analytics.
+            </div>
+            
+            <h3 class="h5 text-primary-liceo mb-3">¿Qué utilizamos?</h3>
+            <p class="mb-3">
+              En lugar de cookies, utilizamos <strong>localStorage</strong>, una tecnología de almacenamiento local que guarda datos <strong>únicamente en tu navegador</strong>, sin enviarlos a ningún servidor. Esta es una alternativa más respetuosa con tu privacidad.
             </p>
-            <ul>
-              <li>Recordar sus preferencias de navegación</li>
-              <li>Analizar el tráfico del sitio web</li>
-              <li>Mejorar la funcionalidad del sitio</li>
+            
+            <h3 class="h5 text-primary-liceo mb-3">Datos almacenados localmente:</h3>
+            <div class="row g-3 mb-4">
+              <div class="col-md-6">
+                <div class="card h-100 border-start border-primary border-3">
+                  <div class="card-body">
+                    <h4 class="h6 text-primary-liceo">
+                      <i class="bi bi-chat-left-text me-2"></i>Formulario de Contacto
+                    </h4>
+                    <p class="small mb-2"><strong>Clave:</strong> <code>contact_submissions</code></p>
+                    <p class="small mb-0">Guarda los mensajes que envías a través del formulario de contacto. Estos datos permanecen solo en tu dispositivo.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-6">
+                <div class="card h-100 border-start border-info border-3">
+                  <div class="card-body">
+                    <h4 class="h6 text-info">
+                      <i class="bi bi-translate me-2"></i>Preferencia de Idioma
+                    </h4>
+                    <p class="small mb-2"><strong>Clave:</strong> <code>lang</code></p>
+                    <p class="small mb-0">Recuerda tu preferencia de idioma (español/inglés) para mostrarte el contenido en el idioma que prefieres.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <h3 class="h5 text-primary-liceo mb-3">Control de tus datos:</h3>
+            <p>Puedes eliminar estos datos en cualquier momento:</p>
+            <ul class="mb-3">
+              <li><strong>Chrome/Edge:</strong> Configuración → Privacidad y seguridad → Borrar datos de navegación → Cookies y datos de sitios</li>
+              <li><strong>Firefox:</strong> Opciones → Privacidad y seguridad → Cookies y datos de sitios → Limpiar datos</li>
+              <li><strong>Safari:</strong> Preferencias → Privacidad → Gestionar datos de sitios web</li>
             </ul>
-            <p>
-              Puede configurar su navegador para rechazar cookies, aunque esto puede afectar algunas funcionalidades del sitio.
-            </p>
+            
+            <div class="alert alert-info mb-0" role="alert">
+              <i class="bi bi-lightbulb me-2"></i>
+              <strong>Nota técnica:</strong> Si borras los datos de localStorage, perderás:
+              <ul class="mb-0 mt-2">
+                <li>Tu preferencia de idioma (se restaurará al español por defecto)</li>
+                <li>Los mensajes guardados en el formulario de contacto (si los había)</li>
+              </ul>
+              No afectará tu capacidad de navegar el sitio normalmente.
+            </div>
           </div>
         </div>
 
@@ -384,4 +514,3 @@
   </script>
 </body>
 </html>
-
