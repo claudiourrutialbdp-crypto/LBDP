@@ -14,13 +14,18 @@
   padding: 1.5rem;
 }
 
-.calendar-header {
+.calendar-header-old {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 1px;
   background: var(--primary, #1418c4);
   border-radius: 8px 8px 0 0;
   overflow: hidden;
+}
+
+.calendar-header {
+  /* Estilos para la cabecera del calendario con controles */
+  margin-bottom: 1rem;
 }
 
 .calendar-day-name {
