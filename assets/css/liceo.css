@@ -272,10 +272,15 @@ nav.navbar-liceo{
   background: rgba(255, 255, 255, 0.95) !important;
   backdrop-filter: blur(20px);
   position: fixed !important;
-  top: 0 !important;
+  top: 36px !important;  /* Altura fija del topbar */
   left: 0 !important;
   right: 0 !important;
   width: 100% !important;
+}
+
+/* Ajustar body para compensar topbar + navbar fijos */
+body {
+  padding-top: 100px !important; /* Aproximadamente topbar (36px) + navbar (64px) */
 }
 .navbar-liceo .nav-link{ 
   color: var(--text-light); 
