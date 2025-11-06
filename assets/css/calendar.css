@@ -14,7 +14,8 @@
   padding: 1.5rem;
 }
 
-.calendar-header-old {
+/* Cabecera con días de la semana (calendario-actividades.html) */
+.calendar-header {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 1px;
@@ -23,9 +24,14 @@
   overflow: hidden;
 }
 
-.calendar-header {
-  /* Estilos para la cabecera del calendario con controles */
+/* Cabecera con controles de navegación y filtros (calendario-evaluaciones.html) */
+.calendar-widget .calendar-header {
+  display: block;
+  background: transparent;
+  border-radius: 0;
   margin-bottom: 1rem;
+  gap: 0;
+  overflow: visible;
 }
 
 .calendar-day-name {
