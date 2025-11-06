@@ -222,6 +222,17 @@ body{
   box-shadow: var(--shadow-colored);
 }
 
+/* Contenedores de componentes para sticky */
+#topbar-container,
+#navbar-container {
+  position: relative !important;
+  z-index: 1040;
+}
+
+#navbar-container {
+  z-index: 1050 !important;
+}
+
 /* Topbar con z-index inferior al navbar */
 .topbar { 
   z-index: 1040 !important; 
@@ -247,14 +258,18 @@ body{
 }
 
 /* Navbar con z-index superior y efectos hover mejorados */
-.navbar-liceo{ 
+.navbar-liceo,
+.navbar.navbar-liceo,
+nav.navbar-liceo{ 
   box-shadow: var(--shadow-md); 
   transition: all .3s cubic-bezier(0.4, 0, 0.2, 1); 
   z-index: 1050 !important;
   background: rgba(255, 255, 255, 0.95) !important;
   backdrop-filter: blur(20px);
+  position: -webkit-sticky !important;
   position: sticky !important;
   top: 0 !important;
+  width: 100% !important;
 }
 .navbar-liceo .nav-link{ 
   color: var(--text-light); 
