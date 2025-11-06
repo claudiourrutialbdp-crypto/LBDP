@@ -46,6 +46,14 @@ function initScrollEffects() {
   const navbar = document.querySelector('.navbar-liceo');
   const backTop = document.getElementById('backTop');
   
+  // Forzar estilos sticky en el navbar
+  if (navbar) {
+    navbar.style.position = 'sticky';
+    navbar.style.top = '0';
+    navbar.style.zIndex = '1050';
+    navbar.style.width = '100%';
+  }
+  
   // Manejar scroll para navbar elevado y botón back-to-top
   window.addEventListener('scroll', function() {
     const scrollY = window.scrollY;
