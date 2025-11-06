@@ -43,23 +43,38 @@ document.addEventListener('DOMContentLoaded', async function() {
  * Inicializar efectos de scroll para navbar y botón back-to-top
  */
 function initScrollEffects() {
+  const topbar = document.querySelector('.topbar');
   const navbar = document.querySelector('.navbar-liceo');
   const backTop = document.getElementById('backTop');
   
-  // Forzar estilos fixed en el navbar (más confiable que sticky)
+  // Forzar estilos fixed en el topbar
+  if (topbar) {
+    topbar.style.position = 'fixed';
+    topbar.style.top = '0';
+    topbar.style.left = '0';
+    topbar.style.right = '0';
+    topbar.style.zIndex = '1060';
+    topbar.style.width = '100%';
+  }
+  
+  // Calcular altura del topbar
+  const topbarHeight = topbar ? topbar.offsetHeight : 0;
+  
+  // Forzar estilos fixed en el navbar (debajo del topbar)
   if (navbar) {
     navbar.style.position = 'fixed';
-    navbar.style.top = '0';
+    navbar.style.top = topbarHeight + 'px';
     navbar.style.left = '0';
     navbar.style.right = '0';
     navbar.style.zIndex = '1050';
     navbar.style.width = '100%';
   }
   
-  // Agregar padding-top al body para compensar el navbar fixed
+  // Agregar padding-top al body para compensar topbar + navbar fixed
   const navbarHeight = navbar ? navbar.offsetHeight : 0;
-  if (navbarHeight > 0) {
-    document.body.style.paddingTop = navbarHeight + 'px';
+  const totalHeight = topbarHeight + navbarHeight;
+  if (totalHeight > 0) {
+    document.body.style.paddingTop = totalHeight + 'px';
   }
   
   // Manejar scroll para navbar elevado y botón back-to-top
