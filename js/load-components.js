@@ -46,12 +46,20 @@ function initScrollEffects() {
   const navbar = document.querySelector('.navbar-liceo');
   const backTop = document.getElementById('backTop');
   
-  // Forzar estilos sticky en el navbar
+  // Forzar estilos fixed en el navbar (más confiable que sticky)
   if (navbar) {
-    navbar.style.position = 'sticky';
+    navbar.style.position = 'fixed';
     navbar.style.top = '0';
+    navbar.style.left = '0';
+    navbar.style.right = '0';
     navbar.style.zIndex = '1050';
     navbar.style.width = '100%';
+  }
+  
+  // Agregar padding-top al body para compensar el navbar fixed
+  const navbarHeight = navbar ? navbar.offsetHeight : 0;
+  if (navbarHeight > 0) {
+    document.body.style.paddingTop = navbarHeight + 'px';
   }
   
   // Manejar scroll para navbar elevado y botón back-to-top
