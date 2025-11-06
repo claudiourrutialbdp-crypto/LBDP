@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', async function() {
   }
   
   // Inicializar funcionalidad del navbar y back-to-top después de cargar componentes
-  initScrollEffects();
+  // Usar setTimeout para asegurar que los elementos están completamente renderizados
+  setTimeout(initScrollEffects, 50);
 });
 
 /**
@@ -57,8 +58,14 @@ function initScrollEffects() {
     topbar.style.width = '100%';
   }
   
-  // Calcular altura del topbar
-  const topbarHeight = topbar ? topbar.offsetHeight : 0;
+  // Calcular altura del topbar (forzar recalculo)
+  let topbarHeight = 0;
+  if (topbar) {
+    // Forzar reflow para obtener altura correcta
+    topbar.style.display = 'block';
+    topbarHeight = topbar.offsetHeight;
+    console.log('Topbar height:', topbarHeight);
+  }
   
   // Forzar estilos fixed en el navbar (debajo del topbar)
   if (navbar) {
@@ -68,11 +75,13 @@ function initScrollEffects() {
     navbar.style.right = '0';
     navbar.style.zIndex = '1050';
     navbar.style.width = '100%';
+    console.log('Navbar top position:', topbarHeight + 'px');
   }
   
   // Agregar padding-top al body para compensar topbar + navbar fixed
   const navbarHeight = navbar ? navbar.offsetHeight : 0;
   const totalHeight = topbarHeight + navbarHeight;
+  console.log('Total height (topbar + navbar):', totalHeight);
   if (totalHeight > 0) {
     document.body.style.paddingTop = totalHeight + 'px';
   }
