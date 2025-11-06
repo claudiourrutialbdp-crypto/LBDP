@@ -58,14 +58,20 @@
   gap: 1px;
 }
 
+/* Contenedor del grid del calendario (calendario-actividades.html) */
 .calendar-grid {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+/* Grid para calendario-evaluaciones.html */
+.calendar-widget .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 1px;
   background: #e5e7eb;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  overflow: hidden;
   padding: 1px;
 }
 
