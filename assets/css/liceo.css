@@ -222,14 +222,15 @@ body{
   box-shadow: var(--shadow-colored);
 }
 
-/* Contenedores de componentes para sticky */
-#topbar-container,
-#navbar-container {
+/* Contenedores de componentes */
+#topbar-container {
   position: relative !important;
   z-index: 1040;
 }
 
 #navbar-container {
+  position: sticky !important;  /* Sticky para que el navbar dentro pueda funcionar */
+  top: 0 !important;
   z-index: 1050 !important;
 }
 
