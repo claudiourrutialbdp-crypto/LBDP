@@ -46,12 +46,6 @@ function initScrollEffects() {
   const navbar = document.querySelector('.navbar-liceo');
   const backTop = document.getElementById('backTop');
   
-  // Agregar padding-top al body para compensar el navbar fixed
-  if (navbar) {
-    const navbarHeight = navbar.offsetHeight;
-    document.body.style.paddingTop = navbarHeight + 'px';
-  }
-  
   // Manejar scroll para navbar elevado y botón back-to-top
   window.addEventListener('scroll', function() {
     const scrollY = window.scrollY;

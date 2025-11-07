@@ -267,8 +267,8 @@ nav.navbar-liceo{
   z-index: 1050 !important;
   background: rgba(255, 255, 255, 0.95) !important;
   backdrop-filter: blur(20px);
-  position: fixed !important;
-  top: 0 !important;  /* Navbar en la parte superior cuando hace scroll */
+  position: sticky !important;  /* Sticky para que se quede fijo después del topbar */
+  top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   width: 100% !important;
