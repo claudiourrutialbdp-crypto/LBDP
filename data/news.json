@@ -179,7 +179,7 @@
               "media": {
                 "image": {
                   "height": 720,
-                  "src": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1",
+                  "src": "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1200&q=80",
                   "width": 1280
                 }
               },
@@ -191,7 +191,7 @@
                     "media": {
                       "image": {
                         "height": 720,
-                        "src": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f",
+                        "src": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80",
                         "width": 1280
                       }
                     }
@@ -200,7 +200,7 @@
                     "media": {
                       "image": {
                         "height": 720,
-                        "src": "https://images.unsplash.com/photo-1523240795612-9a054b0db644",
+                        "src": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80",
                         "width": 1280
                       }
                     }
@@ -214,4 +214,3 @@
     ]
   }
 }
-
