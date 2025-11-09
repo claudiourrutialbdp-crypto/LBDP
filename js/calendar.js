@@ -287,17 +287,91 @@ class AdvancedCalendar {
   
   showDayDetails(dateString) {
     const activities = this.activities.filter(activity => activity.fecha === dateString);
-    const date = new Date(dateString);
+    const date = new Date(dateString + 'T00:00:00');
     
     if (activities.length === 0) {
       return;
     }
     
-    // Simple modal/alert con detalles del día
-    const activitiesList = activities.map(activity => 
-      `• ${activity.titulo} ${activity.hora ? `(${activity.hora})` : ''}`
-    ).join('\n');
+    const fechaStr = date.toLocaleDateString('es-CL', { 
+      weekday: 'long', 
+      day: 'numeric', 
+      month: 'long',
+      year: 'numeric'
+    });
     
-    alert(`Actividades del ${date.toLocaleDateString('es-CL')}:\n\n${activitiesList}`);
+    // Crear modal si no existe
+    let modal = document.getElementById('actividadModal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'actividadModal';
+      modal.className = 'modal fade';
+      modal.innerHTML = `
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="actividadModalTitle"></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body" id="actividadModalBody"></div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+    }
+    
+    // Actualizar contenido
+    document.getElementById('actividadModalTitle').innerHTML = `
+      <i class="bi bi-calendar-event me-2"></i>
+      Actividades del día
+    `;
+    
+    // Generar lista de actividades con detalles
+    const actividadesHTML = activities.map(activity => {
+      const colorClass = this.categoryColors[activity.categoria] || 'bg-secondary text-white';
+      return `
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <h6 class="mb-0">${activity.titulo}</h6>
+              <span class="badge ${colorClass}">${activity.categoria || 'General'}</span>
+            </div>
+            ${activity.descripcion ? `
+              <p class="text-muted mb-2">${activity.descripcion}</p>
+            ` : ''}
+            <div class="d-flex flex-wrap gap-3 small text-muted">
+              ${activity.hora ? `
+                <span><i class="bi bi-clock me-1"></i>${activity.hora}</span>
+              ` : ''}
+              ${activity.lugar ? `
+                <span><i class="bi bi-geo-alt me-1"></i>${activity.lugar}</span>
+              ` : ''}
+              ${activity.responsable ? `
+                <span><i class="bi bi-person me-1"></i>${activity.responsable}</span>
+              ` : ''}
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+    
+    document.getElementById('actividadModalBody').innerHTML = `
+      <div class="mb-3">
+        <h6 class="text-muted mb-2"><i class="bi bi-calendar3 me-2"></i>Fecha</h6>
+        <p class="mb-0">${fechaStr}</p>
+      </div>
+      
+      <div class="mb-3">
+        <h6 class="text-muted mb-2"><i class="bi bi-list-ul me-2"></i>Actividades (${activities.length})</h6>
+        ${actividadesHTML}
+      </div>
+    `;
+    
+    // Mostrar modal
+    const bsModal = new bootstrap.Modal(modal);
+    bsModal.show();
   }
 }
