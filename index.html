@@ -1,18 +1,195 @@
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="./assets/img/favicon.svg" type="image/svg+xml">
-<link rel="mask-icon" href="./assets/img/safari-pinned-tab.svg" color="#1418c4">
-<meta name="theme-color" content="#1418c4">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-<link href="./assets/css/liceo.css" rel="stylesheet">
+﻿<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Liceo - Inicio</title>
+  <meta name="description"
+    content="Sitio institucional del Liceo. Noticias, documentos, calendario y diario mural digital.">
+  <meta property="og:title" content="Liceo - Inicio">
+  <meta property="og:description" content="Conoce noticias, actividades y nuestro diario mural digital.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./assets/img/campus-moderno.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="./assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="mask-icon" href="./assets/img/safari-pinned-tab.svg" color="#1418c4">
+  <meta name="theme-color" content="#1418c4">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="./assets/css/liceo.css" rel="stylesheet">
 </head>
 
 <body>
   <!-- Topbar -->
-  <div id="topbar-container"></div>
+  <!-- Topbar Component -->
+  <div class="topbar bg-primary-liceo text-white py-1 small" style="z-index:1060">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="d-flex gap-3 align-items-center">
+        <a href="mailto:contacto@liceo.edu.cl" class="d-inline-flex align-items-center gap-1">
+          <i class="bi bi-envelope icon"></i>
+          <span>contacto@liceo.edu.cl</span>
+        </a>
+        <a href="tel:+56712330863" class="d-none d-sm-inline-flex align-items-center gap-1">
+          <i class="bi bi-telephone icon"></i>
+          <span>71 233 0863</span>
+        </a>
+      </div>
+      <div class="d-flex gap-2">
+        <a href="#" aria-label="Facebook" class="social-link">
+          <i class="bi bi-facebook"></i>
+        </a>
+        <a href="#" aria-label="Instagram" class="social-link">
+          <i class="bi bi-instagram"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
 
   <!-- Navbar -->
-  <div id="navbar-container"></div>
+  <!-- Navbar Component -->
+  <nav class="navbar navbar-expand-lg bg-white sticky-top navbar-liceo" aria-label="Principal">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="./index.html" aria-label="Inicio">
+        <span class="rounded" style="width:32px;height:32px;background:var(--aqua);display:inline-block"></span>
+        <strong id="brandName">Liceo</strong>
+      </a>
+
+      <!-- Mobile menu button mejorado -->
+      <button class="navbar-toggler border-0 p-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+        aria-controls="navbarMain" aria-expanded="false" aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <!-- Mobile close button -->
+        <div class="d-lg-none d-flex justify-content-between align-items-center p-3 border-bottom mb-2">
+          <span class="fw-semibold text-primary">Menú de Navegación</span>
+          <button type="button" class="btn-close" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+            aria-label="Cerrar menú"></button>
+        </div>
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navList">
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html">Inicio</a>
+          </li>
+
+          <!-- Institución (mega) -->
+          <li class="nav-item dropdown position-static">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Institución</a>
+            <div class="dropdown-menu dropdown-mega shadow-lg border-0 p-4">
+              <div class="row">
+                <div class="col-lg-3 mb-3">
+                  <div class="col-title">Nuestra Historia</div>
+                  <a href="./nosotros-historia.html">Historia del Liceo</a>
+                  <a href="./nosotros-mision.html">Misión, Visión y Sellos</a>
+                </div>
+                <div class="col-lg-3 mb-3">
+                  <div class="col-title">Comunidad</div>
+                  <a href="./nosotros-comunidad.html">Comunidad Educativa</a>
+                  <a href="./nosotros-pme.html">Plan de Mejoramiento</a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <!-- Vida Escolar -->
+          <li class="nav-item dropdown position-static">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Vida
+              Escolar</a>
+            <div class="dropdown-menu dropdown-mega shadow-lg border-0 p-4">
+              <div class="row">
+                <div class="col-lg-3 mb-3">
+                  <div class="col-title">Académico</div>
+                  <a href="./oferta.html">Oferta Educativa</a>
+                  <a href="./calendario-evaluaciones.html">Calendario Evaluaciones</a>
+                </div>
+                <div class="col-lg-3 mb-3">
+                  <div class="col-title">Actividades</div>
+                  <a href="./calendario-actividades.html">Calendario de Actividades</a>
+                  <a href="./talleres.html">Talleres Extraescolares</a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="./noticias.html">Noticias</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./uniforme.html">Uniforme</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./documentos.html">Documentos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./contacto.html">Contacto</a>
+          </li>
+        </ul>
+
+        <!-- CTA button -->
+        <div class="navbar-nav">
+          <div class="nav-item d-none d-lg-block">
+            <a href="./admision.html" class="btn btn-primary-liceo btn-sm">
+              <i class="bi bi-person-plus me-1"></i>Postula Aquí
+            </a>
+          </div>
+
+          <!-- Mobile CTA -->
+          <div class="nav-item d-lg-none mt-3 mb-2">
+            <a href="./admision.html" class="btn btn-primary-liceo w-100">
+              <i class="bi bi-person-plus me-2"></i>Proceso de Admisión
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    // Fix para menús desplegables en modo responsive
+    document.addEventListener('DOMContentLoaded', function () {
+      // Solo en dispositivos móviles
+      if (window.innerWidth < 992) {
+        const dropdownToggles = document.querySelectorAll('.navbar .dropdown-toggle');
+
+        dropdownToggles.forEach(toggle => {
+          toggle.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const dropdownMenu = this.nextElementSibling;
+            const isShown = dropdownMenu.classList.contains('show');
+
+            // Cerrar todos los otros dropdowns
+            document.querySelectorAll('.navbar .dropdown-menu').forEach(menu => {
+              menu.classList.remove('show');
+            });
+
+            // Toggle el dropdown actual
+            if (!isShown) {
+              dropdownMenu.classList.add('show');
+              this.setAttribute('aria-expanded', 'true');
+            } else {
+              dropdownMenu.classList.remove('show');
+              this.setAttribute('aria-expanded', 'false');
+            }
+          });
+        });
+
+        // Cerrar dropdown al hacer clic en un link
+        document.querySelectorAll('.navbar .dropdown-menu a').forEach(link => {
+          link.addEventListener('click', function () {
+            document.querySelectorAll('.navbar .dropdown-menu').forEach(menu => {
+              menu.classList.remove('show');
+            });
+          });
+        });
+      }
+    });
+  </script>
+
 
   <!-- Hero Section Mejorada -->
   <section id="hero" class="hero-section position-relative overflow-hidden">
@@ -20,19 +197,16 @@
       <div class="carousel-inner h-100">
         <div class="hero-gradient"></div>
         <div class="carousel-item active h-100">
-          <img class="d-block w-100 h-100 parallax-img"
-            src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=80"
-            alt="Campus moderno" loading="lazy" style="object-fit: cover;">
+          <img class="d-block w-100 h-100 parallax-img" src="./assets/img/campus-moderno.jpg" alt="Campus moderno"
+            loading="lazy" style="object-fit: cover;">
         </div>
         <div class="carousel-item h-100">
-          <img class="d-block w-100 h-100 parallax-img"
-            src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80"
+          <img class="d-block w-100 h-100 parallax-img" src="./assets/img/edificio-institucional.jpg"
             alt="Edificio institucional" loading="lazy" style="object-fit: cover;">
         </div>
         <div class="carousel-item h-100">
-          <img class="d-block w-100 h-100 parallax-img"
-            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80"
-            alt="Edificio blanco" loading="lazy" style="object-fit: cover;">
+          <img class="d-block w-100 h-100 parallax-img" src="./assets/img/edificio-blanco.jpg" alt="Edificio blanco"
+            loading="lazy" style="object-fit: cover;">
         </div>
       </div>
 
@@ -47,7 +221,7 @@
                   <span class="text-gradient-aqua">Diego Portales</span>
                 </h1>
                 <p class="hero-subtitle reveal">
-                  "Llegando a ser, todo lo que podemos ser"
+                  Llegando a ser, lo que podemos ser
                 </p>
                 <div class="d-flex gap-3 flex-wrap justify-content-center reveal">
                   <a href="./admision.html" class="btn btn-primary-liceo btn-lg px-4 py-3">
@@ -134,11 +308,10 @@
       <div class="row align-items-center">
         <div class="col-lg-6 mb-4 mb-lg-0">
           <div class="reveal">
-            <h2 class="h3 text-gradient mb-4">¿Por qué elegir el LBDP?</h2>
+            <h2 class="h3 text-gradient mb-4">¿Por qué elegir nuestro Liceo?</h2>
             <p class="lead text-muted mb-4">
-              Somos un liceo municipal de excelencia que forma parte de la Red de Liceos Bicentenarios desde 2019.
-              Ofrecemos una educación integral de calidad que prepara a nuestros estudiantes para enfrentar con éxito
-              sus desafíos académicos, laborales y personales.
+              Somos una institución comprometida con la formación integral de nuestros estudiantes,
+              brindando educación de calidad que prepara para el futuro.
             </p>
 
             <div class="row g-3">
@@ -151,8 +324,8 @@
                     </div>
                   </div>
                   <div>
-                    <h4 class="h6 mb-1">Liceo Bicentenario de Excelencia</h4>
-                    <p class="small text-muted mb-0">Desde 2019 con puntajes nacionales en PAES (2022-2025)</p>
+                    <h4 class="h6 mb-1">Excelencia Académica</h4>
+                    <p class="small text-muted mb-0">Programa académico de alta calidad</p>
                   </div>
                 </div>
               </div>
@@ -166,8 +339,8 @@
                     </div>
                   </div>
                   <div>
-                    <h4 class="h6 mb-1">Crecimiento del 169%</h4>
-                    <p class="small text-muted mb-0">En matrícula en los últimos 6 años - 377 estudiantes en 2025</p>
+                    <h4 class="h6 mb-1">Comunidad Educativa</h4>
+                    <p class="small text-muted mb-0">Ambiente colaborativo y acogedor</p>
                   </div>
                 </div>
               </div>
@@ -181,8 +354,8 @@
                     </div>
                   </div>
                   <div>
-                    <h4 class="h6 mb-1">Metodologías Activas</h4>
-                    <p class="small text-muted mb-0">Aprendizaje Basado en Problemas y Retos</p>
+                    <h4 class="h6 mb-1">Innovación Educativa</h4>
+                    <p class="small text-muted mb-0">Metodologías modernas de enseñanza</p>
                   </div>
                 </div>
               </div>
@@ -196,8 +369,8 @@
                     </div>
                   </div>
                   <div>
-                    <h4 class="h6 mb-1">Educación Inclusiva</h4>
-                    <p class="small text-muted mb-0">27% de estudiantes atendidos por Programa PIE</p>
+                    <h4 class="h6 mb-1">Formación Integral</h4>
+                    <p class="small text-muted mb-0">Desarrollo personal y académico</p>
                   </div>
                 </div>
               </div>
@@ -217,8 +390,7 @@
         <div class="col-lg-6">
           <div class="reveal">
             <div class="position-relative">
-              <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=1200&q=80"
-                alt="Estudiantes en clase" class="img-fluid rounded-4 shadow-lg">
+              <img src="./assets/img/estudiantes.jpg" alt="Estudiantes en clase" class="img-fluid rounded-4 shadow-lg">
               <div class="position-absolute bottom-0 start-0 p-4">
                 <div class="bg-white rounded-3 p-3 shadow">
                   <div class="d-flex align-items-center gap-3">
@@ -286,281 +458,211 @@
   </section>
 
   <!-- Footer -->
-  <div id="footer-container"></div>
+  <!-- Footer Moderno y Dinámico -->
+  <footer class="footer-modern">
+    <!-- Sección Principal del Footer -->
+    <div class="footer-main">
+      <div class="container">
+        <div class="row g-4">
+          <!-- Columna 1: Identidad del Liceo -->
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-brand">
+              <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="footer-logo-circle">
+                  <i class="bi bi-mortarboard-fill"></i>
+                </div>
+                <div>
+                  <h3 class="footer-brand-title mb-0">Liceo</h3>
+                  <p class="footer-brand-subtitle mb-0">Excelencia Educativa</p>
+                </div>
+              </div>
+              <p class="footer-description">
+                Formando líderes del mañana con valores, conocimiento y compromiso. Una comunidad educativa que impulsa
+                el desarrollo integral de cada estudiante.
+              </p>
+
+              <!-- Estadísticas Rápidas -->
+              <div class="footer-stats">
+                <div class="footer-stat-item">
+                  <i class="bi bi-award-fill"></i>
+                  <div>
+                    <strong>50+</strong>
+                    <span>Años de Historia</span>
+                  </div>
+                </div>
+                <div class="footer-stat-item">
+                  <i class="bi bi-people-fill"></i>
+                  <div>
+                    <strong>500+</strong>
+                    <span>Estudiantes</span>
+                  </div>
+                </div>
+                <div class="footer-stat-item">
+                  <i class="bi bi-book-fill"></i>
+                  <div>
+                    <strong>25+</strong>
+                    <span>Profesores</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna 2: Enlaces Rápidos - Institución -->
+          <div class="col-lg-2 col-md-6">
+            <h4 class="footer-title">
+              <i class="bi bi-building me-2"></i>Institución
+            </h4>
+            <ul class="footer-links">
+              <li><a href="./index.html"><i class="bi bi-house-door"></i> Inicio</a></li>
+              <li><a href="./nosotros-historia.html"><i class="bi bi-clock-history"></i> Nuestra Historia</a></li>
+              <li><a href="./nosotros-mision.html"><i class="bi bi-bullseye"></i> Misión, Visión y Sellos</a></li>
+              <li><a href="./nosotros-pme.html"><i class="bi bi-journal-text"></i> PME</a></li>
+              <li><a href="./nosotros-comunidad.html"><i class="bi bi-people"></i> Comunidad</a></li>
+              <li><a href="./documentos.html"><i class="bi bi-file-earmark-text"></i> Documentos</a></li>
+            </ul>
+          </div>
+
+          <!-- Columna 3: Enlaces Rápidos - Educación -->
+          <div class="col-lg-2 col-md-6">
+            <h4 class="footer-title">
+              <i class="bi bi-mortarboard me-2"></i>Educación
+            </h4>
+            <ul class="footer-links">
+              <li><a href="./oferta.html"><i class="bi bi-book"></i> Oferta Educativa</a></li>
+              <li><a href="./talleres.html"><i class="bi bi-palette"></i> Talleres</a></li>
+              <li><a href="./calendario-evaluaciones.html"><i class="bi bi-calendar-check"></i> Evaluaciones</a></li>
+              <li><a href="./uniforme.html"><i class="bi bi-person-badge"></i> Uniforme</a></li>
+              <li><a href="./admision.html"><i class="bi bi-door-open"></i> Admisión</a></li>
+              <li><a href="./noticias.html"><i class="bi bi-newspaper"></i> Noticias</a></li>
+            </ul>
+          </div>
+
+          <!-- Columna 4: Contacto y Redes -->
+          <div class="col-lg-4 col-md-6">
+            <h4 class="footer-title">
+              <i class="bi bi-chat-dots me-2"></i>Contáctanos
+            </h4>
+
+            <!-- Información de Contacto -->
+            <div class="footer-contact-info">
+              <div class="footer-contact-item">
+                <div class="footer-contact-icon">
+                  <i class="bi bi-geo-alt-fill"></i>
+                </div>
+                <div class="footer-contact-text">
+                  <strong>Dirección</strong>
+                  <p>4 Norte 0417<br>Talca, Chile</p>
+                </div>
+              </div>
+
+              <div class="footer-contact-item">
+                <div class="footer-contact-icon">
+                  <i class="bi bi-envelope-fill"></i>
+                </div>
+                <div class="footer-contact-text">
+                  <strong>Email</strong>
+                  <p><a href="mailto:contacto@liceo.edu.cl">contacto@liceo.edu.cl</a></p>
+                </div>
+              </div>
+
+              <div class="footer-contact-item">
+                <div class="footer-contact-icon">
+                  <i class="bi bi-telephone-fill"></i>
+                </div>
+                <div class="footer-contact-text">
+                  <strong>Teléfonos</strong>
+                  <p><a href="tel:+56712330863">71 233 0863</a><br>
+                    <a href="tel:+56979259924">97 925 9924</a>
+                  </p>
+                </div>
+              </div>
+
+              <div class="footer-contact-item">
+                <div class="footer-contact-icon">
+                  <i class="bi bi-clock-fill"></i>
+                </div>
+                <div class="footer-contact-text">
+                  <strong>Horario</strong>
+                  <p>Lun - Vie: 8:00 - 18:00 hrs</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Redes Sociales -->
+            <div class="footer-social">
+              <h5 class="footer-social-title">Síguenos</h5>
+              <div class="footer-social-links">
+                <a href="#" class="footer-social-link facebook" aria-label="Facebook">
+                  <i class="bi bi-facebook"></i>
+                </a>
+                <a href="#" class="footer-social-link instagram" aria-label="Instagram">
+                  <i class="bi bi-instagram"></i>
+                </a>
+                <a href="#" class="footer-social-link twitter" aria-label="Twitter">
+                  <i class="bi bi-twitter"></i>
+                </a>
+                <a href="#" class="footer-social-link youtube" aria-label="YouTube">
+                  <i class="bi bi-youtube"></i>
+                </a>
+                <a href="#" class="footer-social-link linkedin" aria-label="LinkedIn">
+                  <i class="bi bi-linkedin"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barra Inferior del Footer -->
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 text-center text-lg-start mb-3 mb-lg-0">
+            <p class="footer-copyright mb-0">
+              <i class="bi bi-c-circle me-1"></i>
+              <span id="year"></span> <strong>Liceo</strong>. Todos los derechos reservados.
+            </p>
+          </div>
+          <div class="col-lg-6 text-center text-lg-end">
+            <div class="footer-legal-links">
+              <a href="./sitemap.html">
+                <i class="bi bi-diagram-3"></i> Mapa del Sitio
+              </a>
+              <span class="footer-divider">|</span>
+              <a href="./privacidad.html">
+                <i class="bi bi-shield-check"></i> Privacidad
+              </a>
+              <span class="footer-divider">|</span>
+              <a href="./terminos.html">
+                <i class="bi bi-file-text"></i> Términos
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Decoración de Fondo -->
+    <div class="footer-decoration">
+      <div class="footer-wave"></div>
+    </div>
+  </footer>
+
+  <!-- Script para actualizar el año automáticamente -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
 
   <button class="back-to-top" id="backTop" aria-label="Ir arriba" title="Ir arriba"><i
       class="bi bi-chevron-up"></i></button>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./js/news-loader.js"></script>
-  <script>
-    // ------- Cargar datos desde JSON --------- v2.1
-    let NEWS = [];
-
-    // Cargar noticias desde JSON
-    async function loadNews() {
-      try {
-        await loadNewsFromJSON();
-        NEWS = NEWS_DATA;
-        renderLatestNews();
-      } catch (error) {
-        console.error('Error cargando noticias:', error);
-        NEWS = [];
-        renderLatestNews();
-      }
-    }
-
-    // Cargar datos del mural desde JSON
-    async function loadMuralData() {
-      try {
-        const response = await fetch('./data/mural.json');
-        MURAL_NOTES = await response.json();
-      } catch (error) {
-        console.error('Error cargando datos del mural:', error);
-        // Fallback a datos por defecto
-        MURAL_NOTES = [
-          { id: 'a1', title: 'Reunión de Apoderados', body: 'Jueves 19:00 en sala de clases.', cat: 'Comunicados', pinned: true, createdAt: '2025-07-01T10:00:00Z' },
-        ];
-      }
-      renderNotes();
-    }
-
-    // Render últimas 3 noticias + stagger reveal
-    function renderLatestNews() {
-      const latest = [...NEWS].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
-      const latestContainer = document.getElementById('latestNews');
-      latestContainer.innerHTML = '';
-
-      if (latest.length === 0) {
-        latestContainer.innerHTML = '<div class="col-12 text-center text-muted">No hay noticias disponibles</div>';
-        return;
-      }
-
-      latest.forEach((n, idx) => {
-        const col = document.createElement('div');
-        col.className = 'col-12 col-sm-6 col-lg-4 reveal';
-        col.style.transitionDelay = `${idx * 60}ms`;
-        col.innerHTML = `
-        <article class="card h-100 card-hover" role="article">
-          <img class="thumb" src="${n.images[0]}" alt="${n.title}">
-          <div class="card-body">
-            <p class="text-muted small mb-1">${formatDate(n.date)}</p>
-            <h3 class="h6">${n.title}</h3>
-            <p class="small text-secondary">${n.excerpt}</p>
-            <a href="./noticias.html#${n.id}" class="btn btn-sm btn-primary-liceo">Ver detalle</a>
-          </div>
-        </article>`;
-        latestContainer.appendChild(col);
-      });
-
-      // Re-aplicar observer a nuevos elementos
-      observeRevealElements();
-    }
-
-    // Variable global para el IntersectionObserver
-    let io;
-
-    // Variables globales para scroll
-    let backTop, navbar;
-
-    function updateParallax() {
-      document.querySelectorAll('.parallax-img').forEach(img => {
-        const rect = img.getBoundingClientRect();
-        const vh = window.innerHeight || 800;
-        const progress = Math.min(1, Math.max(0, 1 - rect.top / vh));
-        const y = progress * 12;
-        img.style.transform = `translateY(${y}px) scale(1.02)`;
-      });
-    }
-
-    // --------- Diario Mural (Solo lectura desde JSON) con Paginación ----------
-    const muralGrid = document.getElementById('muralGrid');
-    const muralFilter = document.getElementById('muralFilter');
-    const muralPrevBtn = document.getElementById('muralPrevBtn');
-    const muralNextBtn = document.getElementById('muralNextBtn');
-    const muralPageInfo = document.getElementById('muralPageInfo');
-
-    let currentMuralPage = 1;
-    const notesPerPage = 9;
-
-    function loadNotes() {
-      return MURAL_NOTES;
-    }
-
-    function getFilteredNotes() {
-      const cat = muralFilter.value;
-      const sorted = [...MURAL_NOTES].sort((a, b) => (a.pinned === b.pinned ? (a.createdAt < b.createdAt ? 1 : -1) : (a.pinned ? -1 : 1)));
-      return cat === 'all' ? sorted : sorted.filter(n => n.cat === cat);
-    }
-
-    function renderNotes() {
-      if (!muralGrid || !muralFilter) {
-        console.error('Elementos del mural no inicializados');
-        return;
-      }
-
-      const filtered = getFilteredNotes();
-      const totalPages = Math.ceil(filtered.length / notesPerPage);
-      const startIdx = (currentMuralPage - 1) * notesPerPage;
-      const endIdx = startIdx + notesPerPage;
-      const paginated = filtered.slice(startIdx, endIdx);
-
-      muralGrid.innerHTML = '';
-
-      if (filtered.length === 0) {
-        muralGrid.innerHTML = '<div class="text-center text-muted py-4">No hay comunicados disponibles</div>';
-        updateMuralPagination(0, 0);
-        return;
-      }
-
-      paginated.forEach((n, idx) => {
-        const div = document.createElement('div');
-        const rot = ((idx % 5) - 2) * 0.6; // pequeña variación
-        div.innerHTML = `
-        <article class="note ${n.pinned ? 'note-pinned' : ''} reveal" style="--r:${rot}deg" aria-label="${n.title}">
-          <div class="d-flex align-items-center justify-content-between mb-2">
-            <div>
-              <span class="badge bg-warning-subtle text-dark border">${n.cat}</span>
-              ${n.pinned ? '<span class="badge bg-info-subtle text-dark border"><i class="bi bi-pin-angle-fill"></i> Destacado</span>' : ''}
-            </div>
-            <small class="text-muted">${new Date(n.createdAt).toLocaleDateString()}</small>
-          </div>
-          <h3 class="h6 mt-1 mb-1">${n.title}</h3>
-          <p class="small mb-2">${n.body}</p>
-        </article>`;
-        muralGrid.appendChild(div.firstElementChild);
-      });
-
-      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-      updateMuralPagination(filtered.length, totalPages);
-    }
-
-    function updateMuralPagination(totalNotes, totalPages) {
-      if (!muralPageInfo || !muralPrevBtn || !muralNextBtn) return;
-
-      if (totalNotes === 0 || totalPages <= 1) {
-        // Ocultar paginación si no hay notas o solo hay una página
-        document.getElementById('muralPagination').style.display = 'none';
-        return;
-      }
-
-      document.getElementById('muralPagination').style.display = 'flex';
-      muralPageInfo.textContent = `Página ${currentMuralPage} de ${totalPages}`;
-
-      // Deshabilitar/habilitar botones según la página actual
-      muralPrevBtn.disabled = currentMuralPage === 1;
-      muralNextBtn.disabled = currentMuralPage === totalPages;
-    }
-
-    function changeMuralPage(direction) {
-      const filtered = getFilteredNotes();
-      const totalPages = Math.ceil(filtered.length / notesPerPage);
-
-      if (direction === 'next' && currentMuralPage < totalPages) {
-        currentMuralPage++;
-        renderNotes();
-        // Scroll suave al inicio del mural
-        document.getElementById('mural').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } else if (direction === 'prev' && currentMuralPage > 1) {
-        currentMuralPage--;
-        renderNotes();
-        // Scroll suave al inicio del mural
-        document.getElementById('mural').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-
-    // Event listeners
-    if (muralFilter) {
-      muralFilter.addEventListener('change', () => {
-        currentMuralPage = 1; // Reset a la primera página al cambiar filtro
-        renderNotes();
-      });
-    }
-
-    if (muralPrevBtn) {
-      muralPrevBtn.addEventListener('click', () => changeMuralPage('prev'));
-    }
-
-    if (muralNextBtn) {
-      muralNextBtn.addEventListener('click', () => changeMuralPage('next'));
-    }
-
-    // Inicializar IntersectionObserver para animaciones reveal
-    io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
-
-    // Función para observar elementos reveal
-    function observeRevealElements() {
-      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    }
-
-    // Inicializar datos
-    loadNews();
-    loadMuralData();
-
-    // Inicializar animaciones reveal
-    observeRevealElements();
-
-    // ===== Manejo de Scroll para Navbar y Botón Back-to-Top =====
-    // Esperar a que el DOM esté listo y los componentes cargados
-    document.addEventListener('DOMContentLoaded', function () {
-      // Pequeño delay para asegurar que los componentes estén cargados
-      setTimeout(function () {
-        const navbar = document.querySelector('.navbar-liceo');
-        const backTop = document.getElementById('backTop');
-
-        console.log('Navbar encontrado:', navbar ? 'Sí' : 'No');
-        console.log('BackTop encontrado:', backTop ? 'Sí' : 'No');
-
-        // Función que se ejecuta en cada scroll
-        function handleScroll() {
-          const scrollY = window.scrollY || window.pageYOffset;
-
-          // Navbar elevado después de 12px de scroll
-          if (navbar) {
-            if (scrollY > 12) {
-              navbar.classList.add('navbar-elevated');
-            } else {
-              navbar.classList.remove('navbar-elevated');
-            }
-          }
-
-          // Botón back-to-top visible después de 240px
-          if (backTop) {
-            if (scrollY > 240) {
-              backTop.classList.add('show');
-            } else {
-              backTop.classList.remove('show');
-            }
-          }
-        }
-
-        // Event listener para scroll
-        window.addEventListener('scroll', handleScroll, { passive: true });
-
-        // Click en botón back-to-top
-        if (backTop) {
-          backTop.addEventListener('click', function (e) {
-            e.preventDefault();
-            window.scrollTo({
-              top: 0,
-              behavior: 'smooth'
-            });
-          });
-        }
-
-        // Ejecutar una vez al cargar para estado inicial
-        handleScroll();
-      }, 100);
-    });
-
-  </script>
-  <script src="./js/load-components.js"></script>
+  <script src="./js/home.js"></script>
+  <!-- <script src="./js/load-components.js"></script> (Inlined by build script) -->
 </body>
 
 </html>
