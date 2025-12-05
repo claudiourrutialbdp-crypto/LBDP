@@ -16,7 +16,7 @@ const HomeApp = {
   // Configuración
   config: {
     muralJsonPath: './data/mural.json',
-    parallaxFactor: 9
+    parallaxFactor: 6
   },
 
   /**

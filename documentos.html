@@ -57,16 +57,16 @@
 
       <!-- Mobile menu button mejorado -->
       <button class="navbar-toggler border-0 p-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
-        aria-controls="navbarMain" aria-expanded="false" aria-label="Abrir menú">
+        aria-controls="navbarMain" aria-expanded="false" aria-label="Abrir men�">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarMain">
         <!-- Mobile close button -->
         <div class="d-lg-none d-flex justify-content-between align-items-center p-3 border-bottom mb-2">
-          <span class="fw-semibold text-primary">Menú de Navegación</span>
+          <span class="fw-semibold text-primary">Men� de Navegaci�n</span>
           <button type="button" class="btn-close" data-bs-toggle="collapse" data-bs-target="#navbarMain"
-            aria-label="Cerrar menú"></button>
+            aria-label="Cerrar men�"></button>
         </div>
 
         <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navList">
@@ -74,14 +74,14 @@
             <a class="nav-link" href="./index.html">Inicio</a>
           </li>
 
-          <!-- Institución (mega) -->
+          <!-- Instituci�n (mega) -->
           <li class="nav-item dropdown position-static">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Institución</a>
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Instituci�n</a>
             <div class="dropdown-menu dropdown-mega shadow-lg border-0 p-4">
               <div class="row">
                 <div class="col-lg-6 col-md-6 mb-3">
                   <a href="./nosotros-historia.html"><i class="bi bi-clock-history me-2"></i>Historia del Liceo</a>
-                  <a href="./nosotros-mision.html"><i class="bi bi-bullseye me-2"></i>Misión, Visión y Sellos</a>
+                  <a href="./nosotros-mision.html"><i class="bi bi-bullseye me-2"></i>Misi�n, Visi�n y Sellos</a>
                   <a href="./nosotros-comunidad.html"><i class="bi bi-people me-2"></i>Comunidad Educativa</a>
                 </div>
                 <div class="col-lg-6 col-md-6 mb-3">
@@ -92,9 +92,9 @@
             </div>
           </li>
 
-          <!-- Académico -->
+          <!-- Acad�mico -->
           <li class="nav-item dropdown position-static">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Académico</a>
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Acad�mico</a>
             <div class="dropdown-menu dropdown-mega shadow-lg border-0 p-4">
               <div class="row">
                 <div class="col-lg-6 col-md-6 mb-3">
@@ -127,14 +127,14 @@
         <div class="navbar-nav">
           <div class="nav-item d-none d-lg-block">
             <a href="./admision.html" class="btn btn-primary-liceo btn-sm">
-              <i class="bi bi-person-plus me-1"></i>Postula Aquí
+              <i class="bi bi-person-plus me-1"></i>Postula Aqu�
             </a>
           </div>
 
           <!-- Mobile CTA -->
           <div class="nav-item d-lg-none mt-3 mb-2">
             <a href="./admision.html" class="btn btn-primary-liceo w-100">
-              <i class="bi bi-person-plus me-2"></i>Postula Aquí
+              <i class="bi bi-person-plus me-2"></i>Postula Aqu�
             </a>
           </div>
         </div>
@@ -143,9 +143,9 @@
   </nav>
 
   <script>
-    // Fix para menús desplegables en modo responsive
+    // Fix para men�s desplegables en modo responsive
     document.addEventListener('DOMContentLoaded', function () {
-      // Solo en dispositivos móviles
+      // Solo en dispositivos m�viles
       if (window.innerWidth < 992) {
         const dropdownToggles = document.querySelectorAll('.navbar .dropdown-toggle');
 
@@ -197,7 +197,7 @@
           <div class="col-12 text-center hero-text-container">
             <div class="hero-text-backdrop">
               <h1 class="hero-title reveal">Documentos <span class="text-gradient-aqua">Oficiales</span></h1>
-              <p class="hero-subtitle reveal">Accede a toda la documentación institucional</p>
+              <p class="hero-subtitle reveal">Accede a toda la documentaci�n institucional</p>
             </div>
           </div>
         </div>
@@ -222,14 +222,14 @@
   <script>
     const DOCUMENTS = [
       { id: 'd1', name: 'Reglamento interno y convivencia', description: 'Normas que regulan la convivencia escolar, derechos y deberes de la comunidad educativa.', icon: 'bi-journal-check', color: 'primary', url: '#' },
-      { id: 'd2', name: 'Proyecto educativo institucional', description: 'Define la identidad, misión, visión y principios orientadores del liceo.', icon: 'bi-building', color: 'primary', url: '#' },
-      { id: 'd3', name: 'Plan de formación ciudadana', description: 'Estrategias para desarrollar ciudadanos comprometidos con la democracia y los derechos humanos.', icon: 'bi-flag', color: 'primary', url: '#' },
-      { id: 'd4', name: 'Plan de gestión de la convivencia escolar', description: 'Acciones y protocolos para promover un ambiente escolar respetuoso y seguro.', icon: 'bi-people', color: 'primary', url: '#' },
-      { id: 'd5', name: 'Reglamento interno de evaluación', description: 'Lineamientos sobre procedimientos, criterios y normas de evaluación académica.', icon: 'bi-clipboard-check', color: 'primary', url: '#' },
-      { id: 'd6', name: 'Plan integral de seguridad escolar', description: 'Protocolos de prevención y respuesta ante emergencias para resguardar a la comunidad.', icon: 'bi-shield-check', color: 'primary', url: '#' },
-      { id: 'd7', name: 'Plan de apoyo a la inclusión', description: 'Medidas para garantizar la participación y aprendizaje de todos los estudiantes.', icon: 'bi-heart', color: 'primary', url: '#' },
-      { id: 'd8', name: 'Plan local de formación para el desarrollo profesional docente', description: 'Programa de capacitación continua para fortalecer las competencias del equipo docente.', icon: 'bi-mortarboard', color: 'primary', url: '#' },
-      { id: 'd9', name: 'Plan de sexualidad, afectividad y género', description: 'Orientaciones para la educación integral en afectividad, sexualidad y equidad de género.', icon: 'bi-gender-ambiguous', color: 'primary', url: '#' },
+      { id: 'd2', name: 'Proyecto educativo institucional', description: 'Define la identidad, misi�n, visi�n y principios orientadores del liceo.', icon: 'bi-building', color: 'primary', url: '#' },
+      { id: 'd3', name: 'Plan de formaci�n ciudadana', description: 'Estrategias para desarrollar ciudadanos comprometidos con la democracia y los derechos humanos.', icon: 'bi-flag', color: 'primary', url: '#' },
+      { id: 'd4', name: 'Plan de gesti�n de la convivencia escolar', description: 'Acciones y protocolos para promover un ambiente escolar respetuoso y seguro.', icon: 'bi-people', color: 'primary', url: '#' },
+      { id: 'd5', name: 'Reglamento interno de evaluaci�n', description: 'Lineamientos sobre procedimientos, criterios y normas de evaluaci�n acad�mica.', icon: 'bi-clipboard-check', color: 'primary', url: '#' },
+      { id: 'd6', name: 'Plan integral de seguridad escolar', description: 'Protocolos de prevenci�n y respuesta ante emergencias para resguardar a la comunidad.', icon: 'bi-shield-check', color: 'primary', url: '#' },
+      { id: 'd7', name: 'Plan de apoyo a la inclusi�n', description: 'Medidas para garantizar la participaci�n y aprendizaje de todos los estudiantes.', icon: 'bi-heart', color: 'primary', url: '#' },
+      { id: 'd8', name: 'Plan local de formaci�n para el desarrollo profesional docente', description: 'Programa de capacitaci�n continua para fortalecer las competencias del equipo docente.', icon: 'bi-mortarboard', color: 'primary', url: '#' },
+      { id: 'd9', name: 'Plan de sexualidad, afectividad y g�nero', description: 'Orientaciones para la educaci�n integral en afectividad, sexualidad y equidad de g�nero.', icon: 'bi-gender-ambiguous', color: 'primary', url: '#' },
     ];
     const container = document.getElementById('docsContainer');
     DOCUMENTS.forEach((d, i) => {
@@ -269,9 +269,9 @@
   </script>
 
   <!-- Footer -->
-  <!-- Footer Moderno y Dinámico -->
+  <!-- Footer Moderno y Din�mico -->
   <footer class="footer-modern">
-    <!-- Sección Principal del Footer -->
+    <!-- Secci�n Principal del Footer -->
     <div class="footer-main">
       <div class="container">
         <div class="row g-4">
@@ -288,17 +288,17 @@
                 </div>
               </div>
               <p class="footer-description">
-                Formando líderes del mañana con valores, conocimiento y compromiso. Una comunidad educativa que impulsa
+                Formando l�deres del ma�ana con valores, conocimiento y compromiso. Una comunidad educativa que impulsa
                 el desarrollo integral de cada estudiante.
               </p>
 
-              <!-- Estadísticas Rápidas -->
+              <!-- Estad�sticas R�pidas -->
               <div class="footer-stats">
                 <div class="footer-stat-item">
                   <i class="bi bi-award-fill"></i>
                   <div>
                     <strong>59</strong>
-                    <span>Años de Historia</span>
+                    <span>A�os de Historia</span>
                   </div>
                 </div>
                 <div class="footer-stat-item">
@@ -319,17 +319,17 @@
             </div>
           </div>
 
-          <!-- Columna 2: Accesos Rápidos -->
+          <!-- Columna 2: Accesos R�pidos -->
           <div class="col-lg-2 col-md-6">
             <h4 class="footer-title">
-              <i class="bi bi-lightning me-2"></i>Accesos Rápidos
+              <i class="bi bi-lightning me-2"></i>Accesos R�pidos
             </h4>
             <ul class="footer-links">
               <li><a href="./index.html"><i class="bi bi-house-door"></i> Inicio</a></li>
               <li><a href="./nosotros-historia.html"><i class="bi bi-clock-history"></i> Historia</a></li>
-              <li><a href="./nosotros-mision.html"><i class="bi bi-bullseye"></i> Misión y Visión</a></li>
+              <li><a href="./nosotros-mision.html"><i class="bi bi-bullseye"></i> Misi�n y Visi�n</a></li>
               <li><a href="./oferta.html"><i class="bi bi-book"></i> Oferta Educativa</a></li>
-              <li><a href="./admision.html"><i class="bi bi-door-open"></i> Admisión</a></li>
+              <li><a href="./admision.html"><i class="bi bi-door-open"></i> Admisi�n</a></li>
               <li><a href="./contacto.html"><i class="bi bi-envelope"></i> Contacto</a></li>
             </ul>
           </div>
@@ -360,24 +360,24 @@
               <li><a href="./nosotros-comunidad.html"><i class="bi bi-people"></i> Comunidad</a></li>
               <li><a href="./documentos.html"><i class="bi bi-file-earmark-text"></i> Documentos</a></li>
               <li><a href="./calendario-evaluaciones.html"><i class="bi bi-calendar-check"></i> Evaluaciones</a></li>
-              <li><a href="./admision.html"><i class="bi bi-door-open"></i> Admisión</a></li>
+              <li><a href="./admision.html"><i class="bi bi-door-open"></i> Admisi�n</a></li>
             </ul>
           </div>
 
           <!-- Columna 5: Contacto y Redes -->
           <div class="col-lg-3 col-md-6">
             <h4 class="footer-title">
-              <i class="bi bi-chat-dots me-2"></i>Contáctanos
+              <i class="bi bi-chat-dots me-2"></i>Cont�ctanos
             </h4>
 
-            <!-- Información de Contacto -->
+            <!-- Informaci�n de Contacto -->
             <div class="footer-contact-info">
               <div class="footer-contact-item">
                 <div class="footer-contact-icon">
                   <i class="bi bi-geo-alt-fill"></i>
                 </div>
                 <div class="footer-contact-text">
-                  <strong>Dirección</strong>
+                  <strong>Direcci�n</strong>
                   <p>4 Norte 0417<br>Talca, Chile</p>
                 </div>
               </div>
@@ -397,7 +397,7 @@
                   <i class="bi bi-telephone-fill"></i>
                 </div>
                 <div class="footer-contact-text">
-                  <strong>Teléfonos</strong>
+                  <strong>Tel�fonos</strong>
                   <p><a href="tel:+56712328063">71 232 8063</a><br>
                     <a href="tel:+56979259924">979 259 924</a>
                   </p>
@@ -410,14 +410,14 @@
                 </div>
                 <div class="footer-contact-text">
                   <strong>Horario</strong>
-                  <p>Lun - Vie: 8:00 - 18:00 hrs</p>
+                  <p>Lun - Jue: 8:00 - 15:30 hrs<br>Viernes: 8:00 - 13:30 hrs</p>
                 </div>
               </div>
             </div>
 
             <!-- Redes Sociales -->
             <div class="footer-social">
-              <h5 class="footer-social-title">Síguenos</h5>
+              <h5 class="footer-social-title">S�guenos</h5>
               <div class="footer-social-links">
                 <a href="#" class="footer-social-link facebook" aria-label="Facebook">
                   <i class="bi bi-facebook"></i>
@@ -456,12 +456,12 @@
               </a>
               <span class="footer-divider">|</span>
               <a href="./terminos.html">
-                <i class="bi bi-file-text"></i> Términos
+                <i class="bi bi-file-text"></i> T�rminos
               </a>
             </div>
           </div>
           <div class="col-lg-3 text-center text-lg-end">
-            <p class="mb-0 small" style="opacity: 0.8;">
+            <p class="mb-0 small" style="opacity: 1;">
               <i class="bi bi-code-slash me-1"></i>Desarrollado por <strong>Claudio Urrutia V.</strong>
             </p>
           </div>
@@ -469,13 +469,13 @@
       </div>
     </div>
 
-    <!-- Decoración de Fondo -->
+    <!-- Decoraci�n de Fondo -->
     <div class="footer-decoration">
       <div class="footer-wave"></div>
     </div>
   </footer>
 
-  <!-- Script para actualizar el año automáticamente -->
+  <!-- Script para actualizar el a�o autom�ticamente -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>

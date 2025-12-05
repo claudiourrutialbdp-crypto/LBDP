@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="es">
 
 <head>
@@ -149,9 +149,11 @@
         }
 
         .course-tabs .nav-link.active {
-            background: var(--primary-liceo);
-            color: white;
-            box-shadow: 0 4px 12px rgba(20, 24, 196, 0.3);
+            background: linear-gradient(135deg, #0d1463 0%, #1a237e 100%);
+            color: white !important;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(13, 20, 99, 0.4);
+            border: none;
         }
 
         .table-responsive {
@@ -589,8 +591,8 @@
                         </thead>
                         <tbody>`;
 
-            // Usar los bloques de tiempo para Lunes a Jueves (lunMie) y Viernes
-            const blocks = SCHEDULE_DATA.timeBlocks.lunMie;
+            // Usar los bloques de tiempo para Lunes a Jueves (lunJue) y Viernes
+            const blocks = SCHEDULE_DATA.timeBlocks.lunJue;
 
             blocks.forEach((block, index) => {
                 if (block.type === 'break') {
@@ -643,7 +645,7 @@
         // Función para cargar horarios desde JSON
         async function loadSchedules() {
             try {
-                const response = await fetch('./assets/data/horarios.json');
+                const response = await fetch('./data/horarios.json');
                 const data = await response.json();
 
                 const tabsContainer = document.getElementById('courseTabs');
@@ -862,7 +864,7 @@
                                 </div>
                                 <div class="footer-contact-text">
                                     <strong>Horario</strong>
-                                    <p>Lun - Vie: 8:00 - 18:00 hrs</p>
+                                    <p>Lun - Jue: 8:00 - 15:30 hrs<br>Viernes: 8:00 - 13:30 hrs</p>
                                 </div>
                             </div>
                         </div>
@@ -914,7 +916,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3 text-center text-lg-end">
-                        <p class="mb-0 small" style="opacity: 0.8;">
+                        <p class="mb-0 small" style="opacity: 1;">
                             <i class="bi bi-code-slash me-1"></i>Desarrollado por <strong>Claudio Urrutia V.</strong>
                         </p>
                     </div>

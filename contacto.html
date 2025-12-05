@@ -4,13 +4,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Liceo - Contacto</title>
-  <meta name="description" content="Contacto del Liceo: formulario y ubicación.">
-  <meta property="og:title" content="Contacto - Liceo">
-  <meta property="og:description" content="Escríbenos y revisa nuestra ubicación.">
+  <title>Liceo - Mapa del Sitio</title>
+  <meta name="description"
+    content="Mapa del sitio web del Liceo. Encuentra f�cilmente todas las secciones y p�ginas de nuestro sitio.">
+  <meta property="og:title" content="Mapa del Sitio - Liceo">
+  <meta property="og:description" content="Navegaci�n completa de nuestro sitio web">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="./assets/img/campus-moderno.jpg">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:card" content="summary">
   <link rel="icon" href="./assets/img/favicon.svg" type="image/svg+xml">
   <link rel="mask-icon" href="./assets/img/safari-pinned-tab.svg" color="#1418c4">
   <meta name="theme-color" content="#1418c4">
@@ -57,16 +57,16 @@
 
       <!-- Mobile menu button mejorado -->
       <button class="navbar-toggler border-0 p-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
-        aria-controls="navbarMain" aria-expanded="false" aria-label="Abrir menú">
+        aria-controls="navbarMain" aria-expanded="false" aria-label="Abrir men�">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarMain">
         <!-- Mobile close button -->
         <div class="d-lg-none d-flex justify-content-between align-items-center p-3 border-bottom mb-2">
-          <span class="fw-semibold text-primary">Menú de Navegación</span>
+          <span class="fw-semibold text-primary">Men� de Navegaci�n</span>
           <button type="button" class="btn-close" data-bs-toggle="collapse" data-bs-target="#navbarMain"
-            aria-label="Cerrar menú"></button>
+            aria-label="Cerrar men�"></button>
         </div>
 
         <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navList">
@@ -74,14 +74,14 @@
             <a class="nav-link" href="./index.html">Inicio</a>
           </li>
 
-          <!-- Institución (mega) -->
+          <!-- Instituci�n (mega) -->
           <li class="nav-item dropdown position-static">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Institución</a>
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Instituci�n</a>
             <div class="dropdown-menu dropdown-mega shadow-lg border-0 p-4">
               <div class="row">
                 <div class="col-lg-6 col-md-6 mb-3">
                   <a href="./nosotros-historia.html"><i class="bi bi-clock-history me-2"></i>Historia del Liceo</a>
-                  <a href="./nosotros-mision.html"><i class="bi bi-bullseye me-2"></i>Misión, Visión y Sellos</a>
+                  <a href="./nosotros-mision.html"><i class="bi bi-bullseye me-2"></i>Misi�n, Visi�n y Sellos</a>
                   <a href="./nosotros-comunidad.html"><i class="bi bi-people me-2"></i>Comunidad Educativa</a>
                 </div>
                 <div class="col-lg-6 col-md-6 mb-3">
@@ -92,9 +92,9 @@
             </div>
           </li>
 
-          <!-- Académico -->
+          <!-- Acad�mico -->
           <li class="nav-item dropdown position-static">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Académico</a>
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Acad�mico</a>
             <div class="dropdown-menu dropdown-mega shadow-lg border-0 p-4">
               <div class="row">
                 <div class="col-lg-6 col-md-6 mb-3">
@@ -127,14 +127,14 @@
         <div class="navbar-nav">
           <div class="nav-item d-none d-lg-block">
             <a href="./admision.html" class="btn btn-primary-liceo btn-sm">
-              <i class="bi bi-person-plus me-1"></i>Postula Aquí
+              <i class="bi bi-person-plus me-1"></i>Postula Aqu�
             </a>
           </div>
 
           <!-- Mobile CTA -->
           <div class="nav-item d-lg-none mt-3 mb-2">
             <a href="./admision.html" class="btn btn-primary-liceo w-100">
-              <i class="bi bi-person-plus me-2"></i>Postula Aquí
+              <i class="bi bi-person-plus me-2"></i>Postula Aqu�
             </a>
           </div>
         </div>
@@ -143,9 +143,9 @@
   </nav>
 
   <script>
-    // Fix para menús desplegables en modo responsive
+    // Fix para men�s desplegables en modo responsive
     document.addEventListener('DOMContentLoaded', function () {
-      // Solo en dispositivos móviles
+      // Solo en dispositivos m�viles
       if (window.innerWidth < 992) {
         const dropdownToggles = document.querySelectorAll('.navbar .dropdown-toggle');
 
@@ -186,206 +186,226 @@
   </script>
 
 
-  <!-- Hero Section -->
-  <section class="hero-section" style="height: 60vh; min-height: 400px;">
-    <img src="./assets/img/contacto.jpg" alt="Contacto" class="parallax-img"
-      style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
-    <div class="hero-gradient"></div>
-    <div class="position-absolute top-50 start-50 translate-middle hero-content">
-      <div class="container-fluid px-3">
-        <div class="row justify-content-center">
-          <div class="col-12 text-center hero-text-container">
-            <div class="hero-text-backdrop">
-              <h1 class="hero-title reveal">Contáctanos</h1>
-              <p class="hero-subtitle reveal">Estamos aquí para responder tus consultas</p>
-            </div>
+  <main class="container py-5">
+    <nav aria-label="breadcrumb" class="mb-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="./index.html">Inicio</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Mapa del Sitio</li>
+      </ol>
+    </nav>
+
+    <div class="text-center mb-5">
+      <div class="d-inline-flex align-items-center justify-content-center mb-3"
+        style="width: 80px; height: 80px; border-radius: 20px; background: linear-gradient(135deg, var(--primary) 0%, var(--aqua) 100%);">
+        <i class="bi bi-diagram-3-fill text-white" style="font-size: 2.5rem;"></i>
+      </div>
+      <h1 class="h2 text-gradient mb-3">Mapa del Sitio</h1>
+      <p class="lead text-muted">Navegaci�n completa de nuestro sitio web</p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Columna 1: Inicio e Instituci�n -->
+      <div class="col-lg-4 col-md-6">
+        <!-- Inicio -->
+        <div class="card card-feature mb-4">
+          <div class="card-body">
+            <h2 class="h5 text-primary-liceo mb-3">
+              <i class="bi bi-house-door-fill me-2"></i>Inicio
+            </h2>
+            <ul class="list-unstyled mb-0">
+              <li class="mb-2">
+                <a href="./index.html" class="text-decoration-none">
+                  <i class="bi bi-arrow-right-circle me-2 text-aqua"></i>P�gina Principal
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Instituci�n -->
+        <div class="card card-feature">
+          <div class="card-body">
+            <h2 class="h5 text-primary-liceo mb-3">
+              <i class="bi bi-building me-2"></i>Instituci�n
+            </h2>
+            <ul class="list-unstyled mb-0">
+              <li class="mb-2">
+                <a href="./nosotros-historia.html" class="text-decoration-none">
+                  <i class="bi bi-arrow-right-circle me-2 text-aqua"></i>Nuestra Historia
+                </a>
+              </li>
+              <li class="mb-2">
+                <a href="./nosotros-mision.html" class="text-decoration-none">
+                  <i class="bi bi-arrow-right-circle me-2 text-aqua"></i>Misi�n, Visi�n y Sellos
+                </a>
+              </li>
+              <li class="mb-2">
+                <a href="./nosotros-pme.html" class="text-decoration-none">
+                  <i class="bi bi-arrow-right-circle me-2 text-aqua"></i>Plan de Mejoramiento Educativo (PME)
+                </a>
+              </li>
+              <li class="mb-2">
+                <a href="./nosotros-comunidad.html" class="text-decoration-none">
+                  <i class="bi bi-arrow-right-circle me-2 text-aqua"></i>Comunidad Educativa
+                </a>
+              </li>
+              <li class="mb-2">
+                <a href="./documentos.html" class="text-decoration-none">
+                  <i class="bi bi-arrow-right-circle me-2 text-aqua"></i>Documentos Institucionales
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna 2: Educaci�n y Vida Escolar -->
+      <div class="col-lg-4 col-md-6">
+        <!-- Oferta Educativa -->
+        <div class="card card-feature mb-4">
+          <div class="card-body">
+            <h2 class="h5 text-primary-liceo mb-3">
+              <i class="bi bi-mortarboard-fill me-2"></i>Oferta Educativa
+            </h2>
+            <ul class="list-unstyled mb-0">
+              <li class="mb-2">
+                <a href="./oferta.html" class="text-decoration-none">
+                  <i class="bi bi-arrow-right-circle me-2 text-aqua"></i>Niveles Educativos
+                </a>
+              </li>
+              <li class="mb-2">
+                <a href="./talleres.html" class="text-decoration-none">
+                  <i class="bi bi-arrow-right-circle me-2 text-aqua"></i>Talleres Extraescolares
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Vida Escolar -->
+        <div class="card card-feature">
+          <div class="card-body">
+            <h2 class="h5 text-primary-liceo mb-3">
+              <i class="bi bi-calendar-event me-2"></i>Vida Escolar
+            </h2>
+            <ul class="list-unstyled mb-0">
+              <li class="mb-2">
+                <a href="./horarios.html" class="text-decoration-none">
+                  <i class="bi bi-arrow-right-circle me-2 text-aqua"></i>Horario de Clases
+                </a>
+              </li>
+              <li class="mb-2">
+                <a href="./docentes.html" class="text-decoration-none">
+                  <i class="bi bi-arrow-right-circle me-2 text-aqua"></i>Nuestros Docentes
+                </a>
+              </li>
+              <li class="mb-2">
+                <a href="./calendario-actividades.html" class="text-decoration-none">
+                  <i class="bi bi-arrow-right-circle me-2 text-aqua"></i>Calendario de Actividades
+                </a>
+              </li>
+              <li class="mb-2">
+                <a href="./calendario-evaluaciones.html" class="text-decoration-none">
+                  <i class="bi bi-arrow-right-circle me-2 text-aqua"></i>Calendario de Evaluaciones
+                </a>
+              </li>
+              <li class="mb-2">
+                <a href="./uniforme.html" class="text-decoration-none">
+                  <i class="bi bi-arrow-right-circle me-2 text-aqua"></i>Uniforme Escolar
+                </a>
+              </li>
+              <li class="mb-2">
+                <a href="./noticias.html" class="text-decoration-none">
+                  <i class="bi bi-arrow-right-circle me-2 text-aqua"></i>Noticias y Novedades
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna 3: Admisi�n y Contacto -->
+      <div class="col-lg-4 col-md-6">
+        <!-- Admisi�n -->
+        <div class="card card-feature mb-4">
+          <div class="card-body">
+            <h2 class="h5 text-primary-liceo mb-3">
+              <i class="bi bi-door-open-fill me-2"></i>Admisi�n
+            </h2>
+            <ul class="list-unstyled mb-0">
+              <li class="mb-2">
+                <a href="./admision.html" class="text-decoration-none">
+                  <i class="bi bi-arrow-right-circle me-2 text-aqua"></i>Proceso de Admisi�n
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Contacto -->
+        <div class="card card-feature mb-4">
+          <div class="card-body">
+            <h2 class="h5 text-primary-liceo mb-3">
+              <i class="bi bi-envelope-fill me-2"></i>Contacto
+            </h2>
+            <ul class="list-unstyled mb-0">
+              <li class="mb-2">
+                <a href="./contacto.html" class="text-decoration-none">
+                  <i class="bi bi-arrow-right-circle me-2 text-aqua"></i>Formulario de Contacto
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Informaci�n Legal -->
+        <div class="card card-feature">
+          <div class="card-body">
+            <h2 class="h5 text-primary-liceo mb-3">
+              <i class="bi bi-shield-check me-2"></i>Informaci�n Legal
+            </h2>
+            <ul class="list-unstyled mb-0">
+              <li class="mb-2">
+                <a href="./privacidad.html" class="text-decoration-none">
+                  <i class="bi bi-arrow-right-circle me-2 text-aqua"></i>Pol�tica de Privacidad
+                </a>
+              </li>
+              <li class="mb-2">
+                <a href="./terminos.html" class="text-decoration-none">
+                  <i class="bi bi-arrow-right-circle me-2 text-aqua"></i>T�rminos y Condiciones
+                </a>
+              </li>
+              <li class="mb-2">
+                <a href="./sitemap.html" class="text-decoration-none">
+                  <i class="bi bi-arrow-right-circle me-2 text-aqua"></i>Mapa del Sitio
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <main class="container py-4">
-    <nav aria-label="breadcrumb" class="mb-3">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="./index.html">Inicio</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Contacto</li>
-      </ol>
-    </nav>
-
-
-    <div class="row g-4">
-      <!-- Formulario de Contacto -->
-      <div class="col-lg-6">
-        <div class="card card-feature">
-          <div class="card-body p-4">
-            <h2 class="h4 text-primary-liceo mb-4">
-              <i class="bi bi-chat-left-text me-2"></i>Envíanos un Mensaje
-            </h2>
-
-            <form id="contactForm" aria-label="Formulario de contacto" class="needs-validation" novalidate>
-              <div class="mb-3">
-                <label for="nombre" class="form-label">
-                  <i class="bi bi-person me-2"></i>Nombre Completo
-                </label>
-                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu nombre" required>
-                <div class="invalid-feedback">Por favor ingresa tu nombre.</div>
-              </div>
-
-              <div class="mb-3">
-                <label for="email" class="form-label">
-                  <i class="bi bi-envelope me-2"></i>Correo Electrónico
-                </label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="tu@email.com" required>
-                <div class="invalid-feedback">Por favor ingresa un correo válido.</div>
-              </div>
-
-              <div class="mb-3">
-                <label for="telefono" class="form-label">
-                  <i class="bi bi-telephone me-2"></i>Teléfono (Opcional)
-                </label>
-                <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="+56 9 1234 5678">
-              </div>
-
-              <div class="mb-3">
-                <label for="asunto" class="form-label">
-                  <i class="bi bi-tag me-2"></i>Asunto
-                </label>
-                <select class="form-select" id="asunto" name="asunto" required>
-                  <option value="" selected disabled>Selecciona un asunto</option>
-                  <option value="Información General">Información General</option>
-                  <option value="Proceso de Admisión">Proceso de Admisión</option>
-                  <option value="Consulta Académica">Consulta Académica</option>
-                  <option value="Talleres Extraescolares">Talleres Extraescolares</option>
-                  <option value="Documentos">Documentos</option>
-                  <option value="Otro">Otro</option>
-                </select>
-                <div class="invalid-feedback">Por favor selecciona un asunto.</div>
-              </div>
-
-              <div class="mb-3">
-                <label for="mensaje" class="form-label">
-                  <i class="bi bi-chat-dots me-2"></i>Mensaje
-                </label>
-                <textarea id="mensaje" name="mensaje" class="form-control" rows="6"
-                  placeholder="Escribe tu mensaje aquí..." required></textarea>
-                <div class="invalid-feedback">Por favor escribe tu mensaje.</div>
-              </div>
-
-              <button class="btn btn-primary-liceo w-100" type="submit" id="submitBtn">
-                <i class="bi bi-send me-2"></i>Enviar Mensaje
-              </button>
-            </form>
-
-            <!-- Alertas -->
-            <div class="alert alert-success mt-3 d-none" role="alert" id="successAlert">
-              <i class="bi bi-check-circle-fill me-2"></i>
-              <strong>¡Mensaje enviado!</strong> Nos pondremos en contacto contigo pronto.
-            </div>
-
-            <div class="alert alert-danger mt-3 d-none" role="alert" id="errorAlert">
-              <i class="bi bi-exclamation-triangle-fill me-2"></i>
-              <strong>Error al enviar.</strong> Por favor intenta nuevamente o contáctanos directamente por email.
-            </div>
-
-            <div class="alert alert-info mt-3" role="alert">
-              <i class="bi bi-info-circle me-2"></i>
-              <small>También puedes contactarnos directamente a <a
-                  href="mailto:contacto.lbdp@daemtalca.cl">contacto.lbdp@daemtalca.cl</a> o llamarnos al <a
-                  href="tel:+56712328063">71 232 8063</a></small>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Información de Contacto y Mapa -->
-      <div class="col-lg-6">
-        <!-- Información de Contacto -->
-        <div class="card card-feature mb-4">
-          <div class="card-body p-4">
-            <h2 class="h4 text-primary-liceo mb-4">
-              <i class="bi bi-info-circle me-2"></i>Información de Contacto
-            </h2>
-
-            <div class="mb-3">
-              <div class="d-flex align-items-start gap-3">
-                <div class="bg-primary bg-opacity-10 rounded-3 p-3">
-                  <i class="bi bi-geo-alt-fill text-primary" style="font-size: 1.5rem;"></i>
-                </div>
-                <div>
-                  <h3 class="h6 text-primary-liceo mb-1">Dirección</h3>
-                  <p class="mb-0 text-muted">4 Norte 0417<br>Talca, Chile</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="mb-3">
-              <div class="d-flex align-items-start gap-3">
-                <div class="bg-primary bg-opacity-10 rounded-3 p-3">
-                  <i class="bi bi-envelope-fill text-primary" style="font-size: 1.5rem;"></i>
-                </div>
-                <div>
-                  <h3 class="h6 text-primary-liceo mb-1">Email</h3>
-                  <p class="mb-0">
-                    <a href="mailto:contacto.lbdp@daemtalca.cl"
-                      class="text-decoration-none">contacto.lbdp@daemtalca.cl</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="mb-3">
-              <div class="d-flex align-items-start gap-3">
-                <div class="bg-primary bg-opacity-10 rounded-3 p-3">
-                  <i class="bi bi-telephone-fill text-primary" style="font-size: 1.5rem;"></i>
-                </div>
-                <div>
-                  <h3 class="h6 text-primary-liceo mb-1">Teléfonos</h3>
-                  <p class="mb-0">
-                    <a href="tel:+56712328063" class="text-decoration-none">71 232 8063</a><br>
-                    <a href="tel:+56979259924" class="text-decoration-none">979 259 924</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div class="d-flex align-items-start gap-3">
-                <div class="bg-primary bg-opacity-10 rounded-3 p-3">
-                  <i class="bi bi-clock-fill text-primary" style="font-size: 1.5rem;"></i>
-                </div>
-                <div>
-                  <h3 class="h6 text-primary-liceo mb-1">Horario de Atención</h3>
-                  <p class="mb-0 text-muted">
-                    Lunes - Jueves: 8:00 - 17:30 hrs<br>
-                    Viernes: 8:00 - 13:30 hrs
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mapa -->
-        <div class="card card-feature">
-          <div class="card-body p-0">
-            <iframe title="Ubicación del Liceo" class="w-100 rounded" height="360" style="border:0;" loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade" allowfullscreen
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d683.5155123126488!2d-71.66989090216065!3d-35.42096144035741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9665c4212581e55f%3A0xb0a877d770151548!2sLiceo%20Diego%20Portales!5e0!3m2!1ses-419!2scl!4v1764942334390!5m2!1ses-419!2scl">
-            </iframe>
-          </div>
+    <!-- Secci�n de ayuda -->
+    <div class="mt-5">
+      <div class="card card-feature border-primary" style="border-width: 2px;">
+        <div class="card-body text-center p-4">
+          <i class="bi bi-question-circle-fill text-primary-liceo" style="font-size: 3rem;"></i>
+          <h3 class="h4 mt-3 mb-2">�No encuentras lo que buscas?</h3>
+          <p class="text-muted mb-3">Si necesitas ayuda para navegar nuestro sitio o tienes alguna pregunta, no dudes en
+            contactarnos.</p>
+          <a href="./contacto.html" class="btn btn-primary-liceo">
+            <i class="bi bi-envelope-fill me-2"></i>Cont�ctanos
+          </a>
         </div>
       </div>
     </div>
   </main>
 
-  <button class="back-to-top" id="backTop" aria-label="Ir arriba" title="Ir arriba"><i
-      class="bi bi-chevron-up"></i></button>
-
   <!-- Footer -->
-  <!-- Footer Moderno y Dinámico -->
+  <!-- Footer Moderno y Din�mico -->
   <footer class="footer-modern">
-    <!-- Sección Principal del Footer -->
+    <!-- Secci�n Principal del Footer -->
     <div class="footer-main">
       <div class="container">
         <div class="row g-4">
@@ -402,17 +422,17 @@
                 </div>
               </div>
               <p class="footer-description">
-                Formando líderes del mañana con valores, conocimiento y compromiso. Una comunidad educativa que impulsa
+                Formando l�deres del ma�ana con valores, conocimiento y compromiso. Una comunidad educativa que impulsa
                 el desarrollo integral de cada estudiante.
               </p>
 
-              <!-- Estadísticas Rápidas -->
+              <!-- Estad�sticas R�pidas -->
               <div class="footer-stats">
                 <div class="footer-stat-item">
                   <i class="bi bi-award-fill"></i>
                   <div>
                     <strong>59</strong>
-                    <span>Años de Historia</span>
+                    <span>A�os de Historia</span>
                   </div>
                 </div>
                 <div class="footer-stat-item">
@@ -433,17 +453,17 @@
             </div>
           </div>
 
-          <!-- Columna 2: Accesos Rápidos -->
+          <!-- Columna 2: Accesos R�pidos -->
           <div class="col-lg-2 col-md-6">
             <h4 class="footer-title">
-              <i class="bi bi-lightning me-2"></i>Accesos Rápidos
+              <i class="bi bi-lightning me-2"></i>Accesos R�pidos
             </h4>
             <ul class="footer-links">
               <li><a href="./index.html"><i class="bi bi-house-door"></i> Inicio</a></li>
               <li><a href="./nosotros-historia.html"><i class="bi bi-clock-history"></i> Historia</a></li>
-              <li><a href="./nosotros-mision.html"><i class="bi bi-bullseye"></i> Misión y Visión</a></li>
+              <li><a href="./nosotros-mision.html"><i class="bi bi-bullseye"></i> Misi�n y Visi�n</a></li>
               <li><a href="./oferta.html"><i class="bi bi-book"></i> Oferta Educativa</a></li>
-              <li><a href="./admision.html"><i class="bi bi-door-open"></i> Admisión</a></li>
+              <li><a href="./admision.html"><i class="bi bi-door-open"></i> Admisi�n</a></li>
               <li><a href="./contacto.html"><i class="bi bi-envelope"></i> Contacto</a></li>
             </ul>
           </div>
@@ -474,24 +494,24 @@
               <li><a href="./nosotros-comunidad.html"><i class="bi bi-people"></i> Comunidad</a></li>
               <li><a href="./documentos.html"><i class="bi bi-file-earmark-text"></i> Documentos</a></li>
               <li><a href="./calendario-evaluaciones.html"><i class="bi bi-calendar-check"></i> Evaluaciones</a></li>
-              <li><a href="./admision.html"><i class="bi bi-door-open"></i> Admisión</a></li>
+              <li><a href="./admision.html"><i class="bi bi-door-open"></i> Admisi�n</a></li>
             </ul>
           </div>
 
           <!-- Columna 5: Contacto y Redes -->
           <div class="col-lg-3 col-md-6">
             <h4 class="footer-title">
-              <i class="bi bi-chat-dots me-2"></i>Contáctanos
+              <i class="bi bi-chat-dots me-2"></i>Cont�ctanos
             </h4>
 
-            <!-- Información de Contacto -->
+            <!-- Informaci�n de Contacto -->
             <div class="footer-contact-info">
               <div class="footer-contact-item">
                 <div class="footer-contact-icon">
                   <i class="bi bi-geo-alt-fill"></i>
                 </div>
                 <div class="footer-contact-text">
-                  <strong>Dirección</strong>
+                  <strong>Direcci�n</strong>
                   <p>4 Norte 0417<br>Talca, Chile</p>
                 </div>
               </div>
@@ -511,7 +531,7 @@
                   <i class="bi bi-telephone-fill"></i>
                 </div>
                 <div class="footer-contact-text">
-                  <strong>Teléfonos</strong>
+                  <strong>Tel�fonos</strong>
                   <p><a href="tel:+56712328063">71 232 8063</a><br>
                     <a href="tel:+56979259924">979 259 924</a>
                   </p>
@@ -524,14 +544,14 @@
                 </div>
                 <div class="footer-contact-text">
                   <strong>Horario</strong>
-                  <p>Lun - Vie: 8:00 - 18:00 hrs</p>
+                  <p>Lun - Jue: 8:00 - 15:30 hrs<br>Viernes: 8:00 - 13:30 hrs</p>
                 </div>
               </div>
             </div>
 
             <!-- Redes Sociales -->
             <div class="footer-social">
-              <h5 class="footer-social-title">Síguenos</h5>
+              <h5 class="footer-social-title">S�guenos</h5>
               <div class="footer-social-links">
                 <a href="#" class="footer-social-link facebook" aria-label="Facebook">
                   <i class="bi bi-facebook"></i>
@@ -570,12 +590,12 @@
               </a>
               <span class="footer-divider">|</span>
               <a href="./terminos.html">
-                <i class="bi bi-file-text"></i> Términos
+                <i class="bi bi-file-text"></i> T�rminos
               </a>
             </div>
           </div>
           <div class="col-lg-3 text-center text-lg-end">
-            <p class="mb-0 small" style="opacity: 0.8;">
+            <p class="mb-0 small" style="opacity: 1;">
               <i class="bi bi-code-slash me-1"></i>Desarrollado por <strong>Claudio Urrutia V.</strong>
             </p>
           </div>
@@ -583,128 +603,52 @@
       </div>
     </div>
 
-    <!-- Decoración de Fondo -->
+    <!-- Decoraci�n de Fondo -->
     <div class="footer-decoration">
       <div class="footer-wave"></div>
     </div>
   </footer>
 
-  <!-- Script para actualizar el año automáticamente -->
+  <!-- Script para actualizar el a�o autom�ticamente -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Reveal animations
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('visible');
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-    // Scroll effects (Navbar & Back to top)
-    const backTop = document.getElementById('backTop');
-    if (backTop) {
-      window.addEventListener('scroll', () => {
-        const nav = document.querySelector('.navbar-liceo');
-        if (nav) nav.classList.toggle('navbar-elevated', window.scrollY > 12);
-        backTop.classList.toggle('show', window.scrollY > 240);
-      });
-      backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    }
   </script>
 
+
+  <button class="back-to-top" id="backTop" aria-label="Ir arriba" title="Ir arriba">
+    <i class="bi bi-chevron-up"></i>
+  </button>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- EmailJS SDK -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
+  <!-- <script src="./js/load-components.js"></script> (Inlined by build script) -->
   <script>
-    // Inicializar EmailJS con tu Public Key
-    // IMPORTANTE: Reemplaza 'YOUR_PUBLIC_KEY' con tu clave pública de EmailJS
-    // Puedes obtenerla en: https://dashboard.emailjs.com/admin/account
-    emailjs.init('YOUR_PUBLIC_KEY');
+    document.addEventListener('DOMContentLoaded', () => {
+      // Back to top
+      const backTop = document.getElementById('backTop');
+      if (backTop) {
+        window.addEventListener('scroll', () => {
+          const navbar = document.querySelector('.navbar-liceo');
+          if (navbar) {
+            navbar.classList.toggle('navbar-elevated', window.scrollY > 12);
+          }
+          backTop.classList.toggle('show', window.scrollY > 240);
+        });
 
-    // Manejo del formulario de contacto
-    document.addEventListener('DOMContentLoaded', function () {
-      const form = document.getElementById('contactForm');
-      const submitBtn = document.getElementById('submitBtn');
-      const successAlert = document.getElementById('successAlert');
-      const errorAlert = document.getElementById('errorAlert');
+        backTop.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
 
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
+      // Reveal animation
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) e.target.classList.add('visible');
+        });
+      }, { threshold: 0.2 });
 
-        // Validar formulario
-        if (!form.checkValidity()) {
-          e.stopPropagation();
-          form.classList.add('was-validated');
-          return;
-        }
-
-        // Deshabilitar botón y mostrar loading
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Enviando...';
-
-        // Ocultar alertas previas
-        successAlert.classList.add('d-none');
-        errorAlert.classList.add('d-none');
-
-        // Preparar datos del formulario
-        const formData = {
-          nombre: document.getElementById('nombre').value.trim(),
-          email: document.getElementById('email').value.trim(),
-          telefono: document.getElementById('telefono').value.trim() || 'No proporcionado',
-          asunto: document.getElementById('asunto').value,
-          mensaje: document.getElementById('mensaje').value.trim(),
-          fecha: new Date().toLocaleDateString('es-CL', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-          })
-        };
-
-        // IMPORTANTE: Reemplaza 'YOUR_SERVICE_ID' y 'YOUR_TEMPLATE_ID' con tus IDs de EmailJS
-        // Los puedes obtener en: https://dashboard.emailjs.com/admin
-        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData)
-          .then(function (response) {
-            console.log('Email enviado exitosamente!', response.status, response.text);
-
-            // Mostrar mensaje de éxito
-            successAlert.classList.remove('d-none');
-
-            // Limpiar formulario
-            form.reset();
-            form.classList.remove('was-validated');
-
-            // Scroll suave hacia la alerta de éxito
-            successAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-            // Restaurar botón
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = '<i class="bi bi-send me-2"></i>Enviar Mensaje';
-          })
-          .catch(function (error) {
-            console.error('Error al enviar email:', error);
-
-            // Mostrar mensaje de error
-            errorAlert.classList.remove('d-none');
-
-            // Scroll suave hacia la alerta de error
-            errorAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-            // Restaurar botón
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = '<i class="bi bi-send me-2"></i>Enviar Mensaje';
-          });
-      });
-
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     });
   </script>
-
-  <!-- <script src="./js/load-components.js"></script> (Inlined by build script) -->
 </body>
 
 </html>
