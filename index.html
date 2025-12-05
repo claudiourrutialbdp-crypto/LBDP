@@ -395,7 +395,7 @@
                       <i class="bi bi-check2 text-white"></i>
                     </div>
                     <div>
-                      <div class="fw-semibold">377</div>
+                      <div class="fw-semibold">+370</div>
                       <div class="small text-muted">Estudiantes activos</div>
                     </div>
                   </div>
@@ -489,14 +489,14 @@
                 <div class="footer-stat-item">
                   <i class="bi bi-people-fill"></i>
                   <div>
-                    <strong>377</strong>
+                    <strong>+370</strong>
                     <span>Estudiantes</span>
                   </div>
                 </div>
                 <div class="footer-stat-item">
                   <i class="bi bi-book-fill"></i>
                   <div>
-                    <strong>47</strong>
+                    <strong>+40</strong>
                     <span>Docentes</span>
                   </div>
                 </div>
@@ -573,7 +573,7 @@
                 </div>
                 <div class="footer-contact-text">
                   <strong>Email</strong>
-                  <p><a href="mailto:director.2939@daemtalca.cl">director.2939@daemtalca.cl</a></p>
+                  <p><a href="mailto:contacto.lbdp@daemtalca.cl">contacto.lbdp@daemtalca.cl</a></p>
                 </div>
               </div>
 
@@ -610,14 +610,8 @@
                 <a href="#" class="footer-social-link instagram" aria-label="Instagram">
                   <i class="bi bi-instagram"></i>
                 </a>
-                <a href="#" class="footer-social-link twitter" aria-label="Twitter">
-                  <i class="bi bi-twitter"></i>
-                </a>
                 <a href="#" class="footer-social-link youtube" aria-label="YouTube">
                   <i class="bi bi-youtube"></i>
-                </a>
-                <a href="#" class="footer-social-link linkedin" aria-label="LinkedIn">
-                  <i class="bi bi-linkedin"></i>
                 </a>
               </div>
             </div>
@@ -630,13 +624,13 @@
     <div class="footer-bottom">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-lg-6 text-center text-lg-start mb-3 mb-lg-0">
+          <div class="col-lg-5 text-center text-lg-start mb-3 mb-lg-0">
             <p class="footer-copyright mb-0">
               <i class="bi bi-c-circle me-1"></i>
-              <span id="year"></span> <strong>Liceo</strong>. Todos los derechos reservados.
+              <span id="year"></span> <strong>Liceo Bicentenario Diego Portales</strong>. Todos los derechos reservados.
             </p>
           </div>
-          <div class="col-lg-6 text-center text-lg-end">
+          <div class="col-lg-4 text-center mb-3 mb-lg-0">
             <div class="footer-legal-links">
               <a href="./sitemap.html">
                 <i class="bi bi-diagram-3"></i> Mapa del Sitio
@@ -650,6 +644,11 @@
                 <i class="bi bi-file-text"></i> Términos
               </a>
             </div>
+          </div>
+          <div class="col-lg-3 text-center text-lg-end">
+            <p class="mb-0 small" style="opacity: 0.8;">
+              <i class="bi bi-code-slash me-1"></i>Desarrollado por <strong>Claudio Urrutia V.</strong>
+            </p>
           </div>
         </div>
       </div>
@@ -674,6 +673,29 @@
   <script src="./js/news-loader.js"></script>
   <script src="./js/home.js"></script>
   <!-- <script src="./js/load-components.js"></script> (Inlined by build script) -->
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Reveal animations
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Scroll effects (Navbar & Back to top)
+    const backTop = document.getElementById('backTop');
+    if (backTop) {
+      window.addEventListener('scroll', () => {
+        const nav = document.querySelector('.navbar-liceo');
+        if (nav) nav.classList.toggle('navbar-elevated', window.scrollY > 12);
+        backTop.classList.toggle('show', window.scrollY > 240);
+      });
+      backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
+  </script>
 </body>
 
 </html>

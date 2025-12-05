@@ -221,12 +221,15 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     const DOCUMENTS = [
-      { id: 'd1', name: 'Reglamento Interno 2025', description: 'Normativa interna del liceo para el año académico 2025.', icon: 'bi-file-ruled', color: 'primary', url: '#' },
-      { id: 'd2', name: 'Plan de Convivencia Escolar', description: 'Lineamientos para una sana convivencia en la comunidad.', icon: 'bi-people', color: 'success', url: '#' },
-      { id: 'd3', name: 'Calendario Académico', description: 'Fechas relevantes del año escolar.', icon: 'bi-calendar-event', color: 'info', url: '#' },
-      { id: 'd4', name: 'Proyecto Educativo Institucional (PEI)', description: 'Visión, misión y objetivos estratégicos del liceo.', icon: 'bi-book', color: 'warning', url: '#' },
-      { id: 'd5', name: 'Manual de Procedimientos', description: 'Guía de procedimientos administrativos y académicos.', icon: 'bi-clipboard-check', color: 'danger', url: '#' },
-      { id: 'd6', name: 'Formulario de Matrícula', description: 'Documento para formalizar el proceso de matrícula.', icon: 'bi-file-earmark-person', color: 'primary', url: '#' }
+      { id: 'd1', name: 'Reglamento interno y convivencia', description: 'Normas que regulan la convivencia escolar, derechos y deberes de la comunidad educativa.', icon: 'bi-journal-check', color: 'primary', url: '#' },
+      { id: 'd2', name: 'Proyecto educativo institucional', description: 'Define la identidad, misión, visión y principios orientadores del liceo.', icon: 'bi-building', color: 'primary', url: '#' },
+      { id: 'd3', name: 'Plan de formación ciudadana', description: 'Estrategias para desarrollar ciudadanos comprometidos con la democracia y los derechos humanos.', icon: 'bi-flag', color: 'primary', url: '#' },
+      { id: 'd4', name: 'Plan de gestión de la convivencia escolar', description: 'Acciones y protocolos para promover un ambiente escolar respetuoso y seguro.', icon: 'bi-people', color: 'primary', url: '#' },
+      { id: 'd5', name: 'Reglamento interno de evaluación', description: 'Lineamientos sobre procedimientos, criterios y normas de evaluación académica.', icon: 'bi-clipboard-check', color: 'primary', url: '#' },
+      { id: 'd6', name: 'Plan integral de seguridad escolar', description: 'Protocolos de prevención y respuesta ante emergencias para resguardar a la comunidad.', icon: 'bi-shield-check', color: 'primary', url: '#' },
+      { id: 'd7', name: 'Plan de apoyo a la inclusión', description: 'Medidas para garantizar la participación y aprendizaje de todos los estudiantes.', icon: 'bi-heart', color: 'primary', url: '#' },
+      { id: 'd8', name: 'Plan local de formación para el desarrollo profesional docente', description: 'Programa de capacitación continua para fortalecer las competencias del equipo docente.', icon: 'bi-mortarboard', color: 'primary', url: '#' },
+      { id: 'd9', name: 'Plan de sexualidad, afectividad y género', description: 'Orientaciones para la educación integral en afectividad, sexualidad y equidad de género.', icon: 'bi-gender-ambiguous', color: 'primary', url: '#' },
     ];
     const container = document.getElementById('docsContainer');
     DOCUMENTS.forEach((d, i) => {
@@ -273,7 +276,7 @@
       <div class="container">
         <div class="row g-4">
           <!-- Columna 1: Identidad del Liceo -->
-          <div class="col-lg-4 col-md-6">
+          <div class="col-lg-3 col-md-6">
             <div class="footer-brand">
               <div class="d-flex align-items-center gap-3 mb-4">
                 <div class="footer-logo-circle">
@@ -301,14 +304,14 @@
                 <div class="footer-stat-item">
                   <i class="bi bi-people-fill"></i>
                   <div>
-                    <strong>377</strong>
+                    <strong>+370</strong>
                     <span>Estudiantes</span>
                   </div>
                 </div>
                 <div class="footer-stat-item">
                   <i class="bi bi-book-fill"></i>
                   <div>
-                    <strong>47</strong>
+                    <strong>+40</strong>
                     <span>Docentes</span>
                   </div>
                 </div>
@@ -316,38 +319,53 @@
             </div>
           </div>
 
-          <!-- Columna 2: Enlaces Rápidos - Institución -->
+          <!-- Columna 2: Accesos Rápidos -->
           <div class="col-lg-2 col-md-6">
             <h4 class="footer-title">
-              <i class="bi bi-building me-2"></i>Institución
+              <i class="bi bi-lightning me-2"></i>Accesos Rápidos
             </h4>
             <ul class="footer-links">
               <li><a href="./index.html"><i class="bi bi-house-door"></i> Inicio</a></li>
-              <li><a href="./nosotros-historia.html"><i class="bi bi-clock-history"></i> Nuestra Historia</a></li>
-              <li><a href="./nosotros-mision.html"><i class="bi bi-bullseye"></i> Misión, Visión y Sellos</a></li>
-              <li><a href="./nosotros-pme.html"><i class="bi bi-journal-text"></i> PME</a></li>
-              <li><a href="./nosotros-comunidad.html"><i class="bi bi-people"></i> Comunidad</a></li>
-              <li><a href="./documentos.html"><i class="bi bi-file-earmark-text"></i> Documentos</a></li>
+              <li><a href="./nosotros-historia.html"><i class="bi bi-clock-history"></i> Historia</a></li>
+              <li><a href="./nosotros-mision.html"><i class="bi bi-bullseye"></i> Misión y Visión</a></li>
+              <li><a href="./oferta.html"><i class="bi bi-book"></i> Oferta Educativa</a></li>
+              <li><a href="./admision.html"><i class="bi bi-door-open"></i> Admisión</a></li>
+              <li><a href="./contacto.html"><i class="bi bi-envelope"></i> Contacto</a></li>
             </ul>
           </div>
 
-          <!-- Columna 3: Enlaces Rápidos - Educación -->
+          <!-- Columna 3: Para Estudiantes -->
           <div class="col-lg-2 col-md-6">
             <h4 class="footer-title">
-              <i class="bi bi-mortarboard me-2"></i>Educación
+              <i class="bi bi-mortarboard me-2"></i>Para Estudiantes
             </h4>
             <ul class="footer-links">
-              <li><a href="./oferta.html"><i class="bi bi-book"></i> Oferta Educativa</a></li>
-              <li><a href="./talleres.html"><i class="bi bi-palette"></i> Talleres</a></li>
+              <li><a href="./horarios.html"><i class="bi bi-calendar3"></i> Horarios</a></li>
               <li><a href="./calendario-evaluaciones.html"><i class="bi bi-calendar-check"></i> Evaluaciones</a></li>
+              <li><a href="./talleres.html"><i class="bi bi-palette"></i> Talleres</a></li>
               <li><a href="./uniforme.html"><i class="bi bi-person-badge"></i> Uniforme</a></li>
-              <li><a href="./admision.html"><i class="bi bi-door-open"></i> Admisión</a></li>
+              <li><a href="./calendario-actividades.html"><i class="bi bi-calendar-event"></i> Actividades</a></li>
               <li><a href="./noticias.html"><i class="bi bi-newspaper"></i> Noticias</a></li>
             </ul>
           </div>
 
-          <!-- Columna 4: Contacto y Redes -->
-          <div class="col-lg-4 col-md-6">
+          <!-- Columna 4: Para Apoderados -->
+          <div class="col-lg-2 col-md-6">
+            <h4 class="footer-title">
+              <i class="bi bi-people me-2"></i>Para Apoderados
+            </h4>
+            <ul class="footer-links">
+              <li><a href="./docentes.html"><i class="bi bi-person-badge"></i> Docentes</a></li>
+              <li><a href="./nosotros-pme.html"><i class="bi bi-graph-up"></i> Plan de Mejoramiento</a></li>
+              <li><a href="./nosotros-comunidad.html"><i class="bi bi-people"></i> Comunidad</a></li>
+              <li><a href="./documentos.html"><i class="bi bi-file-earmark-text"></i> Documentos</a></li>
+              <li><a href="./calendario-evaluaciones.html"><i class="bi bi-calendar-check"></i> Evaluaciones</a></li>
+              <li><a href="./admision.html"><i class="bi bi-door-open"></i> Admisión</a></li>
+            </ul>
+          </div>
+
+          <!-- Columna 5: Contacto y Redes -->
+          <div class="col-lg-3 col-md-6">
             <h4 class="footer-title">
               <i class="bi bi-chat-dots me-2"></i>Contáctanos
             </h4>
@@ -370,7 +388,7 @@
                 </div>
                 <div class="footer-contact-text">
                   <strong>Email</strong>
-                  <p><a href="mailto:director.2939@daemtalca.cl">director.2939@daemtalca.cl</a></p>
+                  <p><a href="mailto:contacto.lbdp@daemtalca.cl">contacto.lbdp@daemtalca.cl</a></p>
                 </div>
               </div>
 
@@ -407,14 +425,8 @@
                 <a href="#" class="footer-social-link instagram" aria-label="Instagram">
                   <i class="bi bi-instagram"></i>
                 </a>
-                <a href="#" class="footer-social-link twitter" aria-label="Twitter">
-                  <i class="bi bi-twitter"></i>
-                </a>
                 <a href="#" class="footer-social-link youtube" aria-label="YouTube">
                   <i class="bi bi-youtube"></i>
-                </a>
-                <a href="#" class="footer-social-link linkedin" aria-label="LinkedIn">
-                  <i class="bi bi-linkedin"></i>
                 </a>
               </div>
             </div>
@@ -427,13 +439,13 @@
     <div class="footer-bottom">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-lg-6 text-center text-lg-start mb-3 mb-lg-0">
+          <div class="col-lg-5 text-center text-lg-start mb-3 mb-lg-0">
             <p class="footer-copyright mb-0">
               <i class="bi bi-c-circle me-1"></i>
-              <span id="year"></span> <strong>Liceo</strong>. Todos los derechos reservados.
+              <span id="year"></span> <strong>Liceo Bicentenario Diego Portales</strong>. Todos los derechos reservados.
             </p>
           </div>
-          <div class="col-lg-6 text-center text-lg-end">
+          <div class="col-lg-4 text-center mb-3 mb-lg-0">
             <div class="footer-legal-links">
               <a href="./sitemap.html">
                 <i class="bi bi-diagram-3"></i> Mapa del Sitio
@@ -447,6 +459,11 @@
                 <i class="bi bi-file-text"></i> Términos
               </a>
             </div>
+          </div>
+          <div class="col-lg-3 text-center text-lg-end">
+            <p class="mb-0 small" style="opacity: 0.8;">
+              <i class="bi bi-code-slash me-1"></i>Desarrollado por <strong>Claudio Urrutia V.</strong>
+            </p>
           </div>
         </div>
       </div>

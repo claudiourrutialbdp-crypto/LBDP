@@ -9,14 +9,14 @@ const HomeApp = {
     news: [],
     muralNotes: [],
     currentMuralPage: 1,
-    notesPerPage: 9,
+    notesPerPage: 6,
     io: null // IntersectionObserver
   },
 
   // Configuración
   config: {
     muralJsonPath: './data/mural.json',
-    parallaxFactor: 12
+    parallaxFactor: 9
   },
 
   /**
