@@ -8,15 +8,15 @@ const HomeApp = {
   state: {
     news: [],
     muralNotes: [],
-    currentMuralPage: 1,
-    notesPerPage: 9,
+    currentMuralPage: 1, // Página actual del mural
+    notesPerPage: 6, // Notas por página
     io: null // IntersectionObserver
   },
 
   // Configuración
   config: {
     muralJsonPath: './data/mural.json',
-    parallaxFactor: 12
+    parallaxFactor: 6 // Factor de paralaje
   },
 
   /**
