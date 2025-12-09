@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
 
 <head>
@@ -15,30 +15,12 @@
             font-size: 0.85rem;
         }
 
-        .schedule-table thead {
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-
         .schedule-table th {
-            background: linear-gradient(135deg, #0d1463 0%, #1a237e 100%);
+            background: var(--primary-liceo);
             color: white;
             text-align: center;
             vertical-align: middle;
-            padding: 1rem 0.5rem;
-            font-size: 1.1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: none;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .schedule-table th:first-child {
-            background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
-            font-size: 0.9rem;
-            text-transform: none;
+            padding: 0.75rem 0.5rem;
         }
 
         .schedule-table td {
@@ -49,20 +31,16 @@
         }
 
         .schedule-table .time-col {
-            background: #e3f2fd;
+            background: #f8f9fa;
             font-weight: 600;
             white-space: nowrap;
-            width: 120px;
-            color: #0d47a1;
+            width: 100px;
         }
 
         .subject-cell {
-            border-radius: 6px;
-            padding: 0.35rem 0.5rem;
+            border-radius: 4px;
+            padding: 0.25rem 0.5rem;
             font-weight: 500;
-            font-size: 0.8rem;
-            display: inline-block;
-            min-width: 80px;
         }
 
         .subject-matematica {
@@ -111,9 +89,8 @@
         }
 
         .subject-especialidad {
-            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            background: #ffebee;
             color: #c62828;
-            font-weight: 600;
         }
 
         .subject-religion {
@@ -122,18 +99,16 @@
         }
 
         .break-row td {
-            background: linear-gradient(90deg, #f5f5f5 0%, #eeeeee 100%);
+            background: #f1f3f4;
             font-style: italic;
             color: #666;
-            padding: 0.5rem;
-            font-weight: 500;
+            padding: 0.35rem;
         }
 
         .lunch-row td {
-            background: linear-gradient(90deg, #fff9c4 0%, #fff59d 100%);
-            font-weight: 600;
+            background: #fff9c4;
+            font-weight: 500;
             color: #f57f17;
-            padding: 0.6rem;
         }
 
         .course-tabs .nav-link {
@@ -141,86 +116,40 @@
             padding: 0.5rem 1rem;
             margin: 0.25rem;
             font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .course-tabs .nav-link:hover {
-            background: rgba(20, 24, 196, 0.1);
         }
 
         .course-tabs .nav-link.active {
-            background: linear-gradient(135deg, #0d1463 0%, #1a237e 100%);
-            color: white !important;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(13, 20, 99, 0.4);
-            border: none;
+            background: var(--primary-liceo);
+            color: white;
         }
 
         .table-responsive {
-            border-radius: 0.75rem;
+            border-radius: 0.5rem;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .schedule-info-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: #f8f9fa;
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            font-size: 0.85rem;
-            margin: 0.25rem;
-        }
-
-        .schedule-info-badge i {
-            color: var(--primary-liceo);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         @media (max-width: 768px) {
             .schedule-table {
-                font-size: 0.7rem;
+                font-size: 0.75rem;
             }
 
-            .schedule-table th {
-                padding: 0.6rem 0.25rem;
-                font-size: 0.85rem;
-            }
-
+            .schedule-table th,
             .schedule-table td {
-                padding: 0.3rem 0.2rem;
+                padding: 0.35rem 0.25rem;
             }
-
-            .subject-cell {
-                padding: 0.2rem 0.3rem;
-                font-size: 0.65rem;
-                min-width: 60px;
-            }
-
-            .schedule-table .time-col {
-                width: 70px;
-                font-size: 0.65rem;
-            }
-        }
-
-        .loading-spinner {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 300px;
         }
     </style>
 </head>
 
 <body>
     <!-- Topbar -->
-    <!-- Topbar Component -->
     <div class="topbar bg-primary-liceo text-white py-1 small" style="z-index:1060">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="d-flex gap-3 align-items-center">
-                <a href="mailto:contacto.lbdp@daemtalca.cl" class="d-inline-flex align-items-center gap-1">
+                <a href="mailto:director.2939@daemtalca.cl" class="d-inline-flex align-items-center gap-1">
                     <i class="bi bi-envelope icon"></i>
-                    <span>contacto.lbdp@daemtalca.cl</span>
+                    <span>director.2939@daemtalca.cl</span>
                 </a>
                 <a href="tel:+56712328063" class="d-none d-sm-inline-flex align-items-center gap-1">
                     <i class="bi bi-telephone icon"></i>
@@ -238,24 +167,20 @@
         </div>
     </div>
 
-
     <!-- Navbar -->
-    <!-- Navbar Component -->
     <nav class="navbar navbar-expand-lg bg-white sticky-top navbar-liceo" aria-label="Principal">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="./index.html" aria-label="Inicio">
                 <span class="rounded" style="width:32px;height:32px;background:var(--aqua);display:inline-block"></span>
-                <strong id="brandName">LBDP</strong>
+                <strong id="brandName">Liceo</strong>
             </a>
 
-            <!-- Mobile menu button mejorado -->
             <button class="navbar-toggler border-0 p-2" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Abrir menú">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarMain">
-                <!-- Mobile close button -->
                 <div class="d-lg-none d-flex justify-content-between align-items-center p-3 border-bottom mb-2">
                     <span class="fw-semibold text-primary">Menú de Navegación</span>
                     <button type="button" class="btn-close" data-bs-toggle="collapse" data-bs-target="#navbarMain"
@@ -267,118 +192,86 @@
                         <a class="nav-link" href="./index.html">Inicio</a>
                     </li>
 
-                    <!-- Institución (mega) -->
+                    <!-- Institución -->
                     <li class="nav-item dropdown position-static">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
                             aria-expanded="false">Institución</a>
                         <div class="dropdown-menu dropdown-mega shadow-lg border-0 p-4">
                             <div class="row">
-                                <div class="col-lg-6 col-md-6 mb-3">
-                                    <a href="./nosotros-historia.html"><i class="bi bi-clock-history me-2"></i>Historia
-                                        del Liceo</a>
-                                    <a href="./nosotros-mision.html"><i class="bi bi-bullseye me-2"></i>Misión, Visión y
-                                        Sellos</a>
-                                    <a href="./nosotros-comunidad.html"><i class="bi bi-people me-2"></i>Comunidad
-                                        Educativa</a>
+                                <div class="col-lg-3 mb-3">
+                                    <div class="col-title">Nuestra Historia</div>
+                                    <a href="./nosotros-historia.html">Historia del Liceo</a>
+                                    <a href="./nosotros-mision.html">Misión, Visión y Sellos</a>
                                 </div>
-                                <div class="col-lg-6 col-md-6 mb-3">
-                                    <a href="./nosotros-pme.html"><i class="bi bi-graph-up me-2"></i>Plan de
-                                        Mejoramiento</a>
-                                    <a href="./documentos.html"><i
-                                            class="bi bi-file-earmark-text me-2"></i>Documentos</a>
+                                <div class="col-lg-3 mb-3">
+                                    <div class="col-title">Comunidad</div>
+                                    <a href="./nosotros-comunidad.html">Comunidad Educativa</a>
+                                    <a href="./nosotros-pme.html">Plan de Mejoramiento</a>
                                 </div>
                             </div>
                         </div>
                     </li>
 
-                    <!-- Académico -->
+                    <!-- Vida Escolar -->
                     <li class="nav-item dropdown position-static">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                            aria-expanded="false">Académico</a>
+                            aria-expanded="false">Vida Escolar</a>
                         <div class="dropdown-menu dropdown-mega shadow-lg border-0 p-4">
                             <div class="row">
-                                <div class="col-lg-6 col-md-6 mb-3">
-                                    <a href="./horarios.html"><i class="bi bi-calendar3 me-2"></i>Horario de Clases</a>
-                                    <a href="./docentes.html"><i class="bi bi-person-badge me-2"></i>Nuestros
-                                        Docentes</a>
-                                    <a href="./calendario-evaluaciones.html"><i
-                                            class="bi bi-calendar-check me-2"></i>Calendario
-                                        Evaluaciones</a>
+                                <div class="col-lg-3 mb-3">
+                                    <div class="col-title">Académico</div>
+                                    <a href="./oferta.html">Oferta Educativa</a>
+                                    <a href="./horarios.html">Horario de Clases</a>
+                                    <a href="./calendario-evaluaciones.html">Calendario Evaluaciones</a>
                                 </div>
-                                <div class="col-lg-6 col-md-6 mb-3">
-                                    <a href="./talleres.html"><i class="bi bi-palette me-2"></i>Talleres
-                                        Extraescolares</a>
-                                    <a href="./uniforme.html"><i class="bi bi-person-standing me-2"></i>Uniforme
-                                        Escolar</a>
-                                    <a href="./calendario-actividades.html"><i
-                                            class="bi bi-calendar-event me-2"></i>Actividades</a>
+                                <div class="col-lg-3 mb-3">
+                                    <div class="col-title">Actividades</div>
+                                    <a href="./talleres.html">Talleres Extraescolares</a>
+                                    <a href="./calendario-actividades.html">Calendario de Actividades</a>
+                                </div>
+                                <div class="col-lg-3 mb-3">
+                                    <div class="col-title">Comunidad</div>
+                                    <a href="./docentes.html">Nuestros Docentes</a>
+                                    <a href="./uniforme.html">Uniforme Escolar</a>
                                 </div>
                             </div>
                         </div>
                     </li>
 
+                    <!-- Admisión -->
                     <li class="nav-item">
-                        <a class="nav-link" href="./oferta.html">Oferta</a>
+                        <a class="nav-link" href="./admision.html">Admisión</a>
                     </li>
+
+                    <!-- Noticias -->
                     <li class="nav-item">
                         <a class="nav-link" href="./noticias.html">Noticias</a>
                     </li>
+
+                    <!-- Contacto -->
                     <li class="nav-item">
                         <a class="nav-link" href="./contacto.html">Contacto</a>
                     </li>
                 </ul>
 
-                <!-- CTA button -->
-                <div class="navbar-nav">
-                    <div class="nav-item d-none d-lg-block">
-                        <a href="./admision.html" class="btn btn-primary-liceo btn-sm">
-                            <i class="bi bi-person-plus me-1"></i>Postula Aquí
-                        </a>
-                    </div>
-
-                    <!-- Mobile CTA -->
-                    <div class="nav-item d-lg-none mt-3 mb-2">
-                        <a href="./admision.html" class="btn btn-primary-liceo w-100">
-                            <i class="bi bi-person-plus me-2"></i>Postula Aquí
-                        </a>
-                    </div>
-                </div>
+                <a href="./admision.html" class="btn btn-primary-liceo d-none d-lg-block">
+                    <i class="bi bi-pencil-square me-1"></i>Postular
+                </a>
             </div>
         </div>
     </nav>
 
     <script>
-        // Fix para menús desplegables en modo responsive
         document.addEventListener('DOMContentLoaded', function () {
-            // Solo en dispositivos móviles
-            if (window.innerWidth < 992) {
-                const dropdownToggles = document.querySelectorAll('.navbar .dropdown-toggle');
-
-                dropdownToggles.forEach(toggle => {
-                    toggle.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-
-                        const dropdownMenu = this.nextElementSibling;
-                        const isShown = dropdownMenu.classList.contains('show');
-
-                        // Cerrar todos los otros dropdowns
-                        document.querySelectorAll('.navbar .dropdown-menu').forEach(menu => {
-                            menu.classList.remove('show');
-                        });
-
-                        // Toggle el dropdown actual
-                        if (!isShown) {
-                            dropdownMenu.classList.add('show');
-                            this.setAttribute('aria-expanded', 'true');
-                        } else {
-                            dropdownMenu.classList.remove('show');
-                            this.setAttribute('aria-expanded', 'false');
-                        }
+            if (window.innerWidth >= 992) {
+                document.querySelectorAll('.navbar .dropdown').forEach(dropdown => {
+                    dropdown.addEventListener('mouseenter', function () {
+                        this.querySelector('.dropdown-menu').classList.add('show');
+                    });
+                    dropdown.addEventListener('mouseleave', function () {
+                        this.querySelector('.dropdown-menu').classList.remove('show');
                     });
                 });
-
-                // Cerrar dropdown al hacer clic en un link
                 document.querySelectorAll('.navbar .dropdown-menu a').forEach(link => {
                     link.addEventListener('click', function () {
                         document.querySelectorAll('.navbar .dropdown-menu').forEach(menu => {
@@ -418,33 +311,58 @@
             </ol>
         </nav>
 
-        <!-- Información de horarios -->
-        <div class="text-center mb-4 reveal">
-            <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
-                <span class="schedule-info-badge">
-                    <i class="bi bi-calendar-week"></i>
-                    <strong>Lun - Mié:</strong> 08:00 - 17:15
-                </span>
-                <span class="schedule-info-badge">
-                    <i class="bi bi-calendar-week"></i>
-                    <strong>Mar - Jue:</strong> 08:00 - 15:15
-                </span>
-                <span class="schedule-info-badge">
-                    <i class="bi bi-calendar-check"></i>
-                    <strong>Viernes:</strong> 08:00 - 13:00
-                </span>
-                <span class="schedule-info-badge">
-                    <i class="bi bi-egg-fried"></i>
-                    <strong>Almuerzo:</strong> 45 min
-                </span>
-            </div>
-        </div>
-
         <!-- Selector de Curso -->
         <div class="text-center mb-4 reveal">
             <h2 class="h4 text-primary-liceo mb-3"><i class="bi bi-calendar3 me-2"></i>Selecciona tu Curso</h2>
             <ul class="nav nav-pills justify-content-center course-tabs flex-wrap" id="courseTabs" role="tablist">
-                <!-- Se generan dinámicamente -->
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="tab-1a" data-bs-toggle="pill" data-bs-target="#horario-1a"
+                        type="button" role="tab">1° Medio A</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-1b" data-bs-toggle="pill" data-bs-target="#horario-1b"
+                        type="button" role="tab">1° Medio B</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-2a" data-bs-toggle="pill" data-bs-target="#horario-2a"
+                        type="button" role="tab">2° Medio A</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-2b" data-bs-toggle="pill" data-bs-target="#horario-2b"
+                        type="button" role="tab">2° Medio B</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-3hc" data-bs-toggle="pill" data-bs-target="#horario-3hc"
+                        type="button" role="tab">3° HC</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-3graf" data-bs-toggle="pill" data-bs-target="#horario-3graf"
+                        type="button" role="tab">3° Gráfica</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-3hot" data-bs-toggle="pill" data-bs-target="#horario-3hot"
+                        type="button" role="tab">3° Hotelería</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-3tel" data-bs-toggle="pill" data-bs-target="#horario-3tel"
+                        type="button" role="tab">3° Telecom</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-4hc" data-bs-toggle="pill" data-bs-target="#horario-4hc"
+                        type="button" role="tab">4° HC</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-4graf" data-bs-toggle="pill" data-bs-target="#horario-4graf"
+                        type="button" role="tab">4° Gráfica</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-4hot" data-bs-toggle="pill" data-bs-target="#horario-4hot"
+                        type="button" role="tab">4° Hotelería</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-4tel" data-bs-toggle="pill" data-bs-target="#horario-4tel"
+                        type="button" role="tab">4° Telecom</button>
+                </li>
             </ul>
         </div>
 
@@ -471,9 +389,175 @@
 
         <!-- Contenido de Horarios -->
         <div class="tab-content reveal" id="courseTabsContent">
-            <div class="loading-spinner">
-                <div class="spinner-border text-primary" role="status">
-                    <span class="visually-hidden">Cargando...</span>
+            <!-- 1° Medio A -->
+            <div class="tab-pane fade show active" id="horario-1a" role="tabpanel">
+                <div class="table-responsive">
+                    <table class="table schedule-table mb-0">
+                        <thead>
+                            <tr>
+                                <th>Hora</th>
+                                <th>Lunes</th>
+                                <th>Martes</th>
+                                <th>Miércoles</th>
+                                <th>Jueves</th>
+                                <th>Viernes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="time-col">08:00 - 08:45</td>
+                                <td><span class="subject-cell subject-matematica">Matemática</span></td>
+                                <td><span class="subject-cell subject-lenguaje">Lenguaje</span></td>
+                                <td><span class="subject-cell subject-historia">Historia</span></td>
+                                <td><span class="subject-cell subject-ciencias">Ciencias</span></td>
+                                <td><span class="subject-cell subject-ingles">Inglés</span></td>
+                            </tr>
+                            <tr>
+                                <td class="time-col">08:45 - 09:30</td>
+                                <td><span class="subject-cell subject-matematica">Matemática</span></td>
+                                <td><span class="subject-cell subject-lenguaje">Lenguaje</span></td>
+                                <td><span class="subject-cell subject-historia">Historia</span></td>
+                                <td><span class="subject-cell subject-ciencias">Ciencias</span></td>
+                                <td><span class="subject-cell subject-ingles">Inglés</span></td>
+                            </tr>
+                            <tr class="break-row">
+                                <td colspan="6"><i class="bi bi-cup-hot me-1"></i>Recreo (15 min)</td>
+                            </tr>
+                            <tr>
+                                <td class="time-col">09:45 - 10:30</td>
+                                <td><span class="subject-cell subject-ciencias">Ciencias</span></td>
+                                <td><span class="subject-cell subject-matematica">Matemática</span></td>
+                                <td><span class="subject-cell subject-lenguaje">Lenguaje</span></td>
+                                <td><span class="subject-cell subject-edufisica">Ed. Física</span></td>
+                                <td><span class="subject-cell subject-artes">Artes</span></td>
+                            </tr>
+                            <tr>
+                                <td class="time-col">10:30 - 11:15</td>
+                                <td><span class="subject-cell subject-ciencias">Ciencias</span></td>
+                                <td><span class="subject-cell subject-matematica">Matemática</span></td>
+                                <td><span class="subject-cell subject-lenguaje">Lenguaje</span></td>
+                                <td><span class="subject-cell subject-edufisica">Ed. Física</span></td>
+                                <td><span class="subject-cell subject-artes">Artes</span></td>
+                            </tr>
+                            <tr class="break-row">
+                                <td colspan="6"><i class="bi bi-cup-hot me-1"></i>Recreo (15 min)</td>
+                            </tr>
+                            <tr>
+                                <td class="time-col">11:30 - 12:15</td>
+                                <td><span class="subject-cell subject-historia">Historia</span></td>
+                                <td><span class="subject-cell subject-ingles">Inglés</span></td>
+                                <td><span class="subject-cell subject-tecnologia">Tecnología</span></td>
+                                <td><span class="subject-cell subject-matematica">Matemática</span></td>
+                                <td><span class="subject-cell subject-lenguaje">Lenguaje</span></td>
+                            </tr>
+                            <tr>
+                                <td class="time-col">12:15 - 13:00</td>
+                                <td><span class="subject-cell subject-historia">Historia</span></td>
+                                <td><span class="subject-cell subject-ingles">Inglés</span></td>
+                                <td><span class="subject-cell subject-tecnologia">Tecnología</span></td>
+                                <td><span class="subject-cell subject-matematica">Matemática</span></td>
+                                <td><span class="subject-cell subject-lenguaje">Lenguaje</span></td>
+                            </tr>
+                            <tr class="lunch-row">
+                                <td colspan="6"><i class="bi bi-egg-fried me-1"></i>Almuerzo (13:00 - 14:00)</td>
+                            </tr>
+                            <tr>
+                                <td class="time-col">14:00 - 14:45</td>
+                                <td><span class="subject-cell subject-ingles">Inglés</span></td>
+                                <td><span class="subject-cell subject-artes">Música</span></td>
+                                <td><span class="subject-cell subject-edufisica">Ed. Física</span></td>
+                                <td><span class="subject-cell subject-orientacion">Orientación</span></td>
+                                <td><span class="subject-cell subject-religion">Religión</span></td>
+                            </tr>
+                            <tr>
+                                <td class="time-col">14:45 - 15:30</td>
+                                <td><span class="subject-cell subject-ingles">Inglés</span></td>
+                                <td><span class="subject-cell subject-artes">Música</span></td>
+                                <td><span class="subject-cell subject-edufisica">Ed. Física</span></td>
+                                <td><span class="subject-cell subject-orientacion">C. de Curso</span></td>
+                                <td><span class="subject-cell subject-religion">Religión</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Otros cursos (placeholder con mensaje) -->
+            <div class="tab-pane fade" id="horario-1b" role="tabpanel">
+                <div class="alert alert-info text-center py-5">
+                    <i class="bi bi-info-circle display-4 d-block mb-3"></i>
+                    <h4>Horario 1° Medio B</h4>
+                    <p class="mb-0">El horario de este curso será publicado próximamente.</p>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="horario-2a" role="tabpanel">
+                <div class="alert alert-info text-center py-5">
+                    <i class="bi bi-info-circle display-4 d-block mb-3"></i>
+                    <h4>Horario 2° Medio A</h4>
+                    <p class="mb-0">El horario de este curso será publicado próximamente.</p>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="horario-2b" role="tabpanel">
+                <div class="alert alert-info text-center py-5">
+                    <i class="bi bi-info-circle display-4 d-block mb-3"></i>
+                    <h4>Horario 2° Medio B</h4>
+                    <p class="mb-0">El horario de este curso será publicado próximamente.</p>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="horario-3hc" role="tabpanel">
+                <div class="alert alert-info text-center py-5">
+                    <i class="bi bi-info-circle display-4 d-block mb-3"></i>
+                    <h4>Horario 3° Medio Científico-Humanista</h4>
+                    <p class="mb-0">El horario de este curso será publicado próximamente.</p>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="horario-3graf" role="tabpanel">
+                <div class="alert alert-info text-center py-5">
+                    <i class="bi bi-info-circle display-4 d-block mb-3"></i>
+                    <h4>Horario 3° Medio Gráfica</h4>
+                    <p class="mb-0">El horario de este curso será publicado próximamente.</p>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="horario-3hot" role="tabpanel">
+                <div class="alert alert-info text-center py-5">
+                    <i class="bi bi-info-circle display-4 d-block mb-3"></i>
+                    <h4>Horario 3° Medio Hotelería</h4>
+                    <p class="mb-0">El horario de este curso será publicado próximamente.</p>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="horario-3tel" role="tabpanel">
+                <div class="alert alert-info text-center py-5">
+                    <i class="bi bi-info-circle display-4 d-block mb-3"></i>
+                    <h4>Horario 3° Medio Telecomunicaciones</h4>
+                    <p class="mb-0">El horario de este curso será publicado próximamente.</p>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="horario-4hc" role="tabpanel">
+                <div class="alert alert-info text-center py-5">
+                    <i class="bi bi-info-circle display-4 d-block mb-3"></i>
+                    <h4>Horario 4° Medio Científico-Humanista</h4>
+                    <p class="mb-0">El horario de este curso será publicado próximamente.</p>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="horario-4graf" role="tabpanel">
+                <div class="alert alert-info text-center py-5">
+                    <i class="bi bi-info-circle display-4 d-block mb-3"></i>
+                    <h4>Horario 4° Medio Gráfica</h4>
+                    <p class="mb-0">El horario de este curso será publicado próximamente.</p>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="horario-4hot" role="tabpanel">
+                <div class="alert alert-info text-center py-5">
+                    <i class="bi bi-info-circle display-4 d-block mb-3"></i>
+                    <h4>Horario 4° Medio Hotelería</h4>
+                    <p class="mb-0">El horario de este curso será publicado próximamente.</p>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="horario-4tel" role="tabpanel">
+                <div class="alert alert-info text-center py-5">
+                    <i class="bi bi-info-circle display-4 d-block mb-3"></i>
+                    <h4>Horario 4° Medio Telecomunicaciones</h4>
+                    <p class="mb-0">El horario de este curso será publicado próximamente.</p>
                 </div>
             </div>
         </div>
@@ -488,11 +572,8 @@
                             <div class="d-flex align-items-start">
                                 <i class="bi bi-clock text-primary fs-4 me-3 mt-1"></i>
                                 <div>
-                                    <h4 class="h6 mb-1">Jornada Escolar</h4>
-                                    <p class="small text-muted mb-0">
-                                        Lunes y Miércoles: 08:00 - 17:15 hrs<br>
-                                        Martes y Jueves: 08:00 - 15:15 hrs<br>
-                                        Viernes: 08:00 - 13:00 hrs
+                                    <h4 class="h6 mb-1">Jornada Escolar Completa</h4>
+                                    <p class="small text-muted mb-0">Horario de 08:00 a 15:30 hrs. de lunes a viernes.
                                     </p>
                                 </div>
                             </div>
@@ -518,191 +599,12 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Configuración de horarios
-        const SCHEDULE_DATA = {
-            timeBlocks: {
-                lunMie: [
-                    { start: "08:00", end: "08:45", type: "class", block: 1 },
-                    { start: "08:45", end: "09:30", type: "class", block: 2 },
-                    { start: "09:30", end: "09:45", type: "break", label: "Recreo" },
-                    { start: "09:45", end: "10:30", type: "class", block: 3 },
-                    { start: "10:30", end: "11:15", type: "class", block: 4 },
-                    { start: "11:15", end: "11:30", type: "break", label: "Recreo" },
-                    { start: "11:30", end: "12:15", type: "class", block: 5 },
-                    { start: "12:15", end: "13:00", type: "class", block: 6 },
-                    { start: "13:00", end: "13:45", type: "lunch", label: "Almuerzo (45 min)" },
-                    { start: "13:45", end: "14:30", type: "class", block: 7 },
-                    { start: "14:30", end: "15:15", type: "class", block: 8 },
-                    { start: "15:15", end: "15:30", type: "break", label: "Recreo" },
-                    { start: "15:30", end: "16:15", type: "class", block: 9 },
-                    { start: "16:15", end: "17:00", type: "class", block: 10 }
-                ],
-                viernes: [
-                    { start: "08:00", end: "08:45", type: "class", block: 1 },
-                    { start: "08:45", end: "09:30", type: "class", block: 2 },
-                    { start: "09:30", end: "09:45", type: "break", label: "Recreo" },
-                    { start: "09:45", end: "10:30", type: "class", block: 3 },
-                    { start: "10:30", end: "11:15", type: "class", block: 4 },
-                    { start: "11:15", end: "11:30", type: "break", label: "Recreo" },
-                    { start: "11:30", end: "12:15", type: "class", block: 5 },
-                    { start: "12:15", end: "13:00", type: "class", block: 6 }
-                ]
-            }
-        };
-
-        // Mapeo de asignaturas a estilos CSS
-        const SUBJECT_STYLES = {
-            "Matemática": "matematica",
-            "Lenguaje": "lenguaje",
-            "Ciencias": "ciencias",
-            "Física": "ciencias",
-            "Química": "ciencias",
-            "Biología": "ciencias",
-            "Historia": "historia",
-            "Filosofía": "historia",
-            "Inglés": "ingles",
-            "Ed. Física": "edufisica",
-            "Artes": "artes",
-            "Música": "artes",
-            "Tecnología": "tecnologia",
-            "Orientación": "orientacion",
-            "C. de Curso": "orientacion",
-            "Religión": "religion"
-        };
-
-        // Función para obtener el estilo de una asignatura
-        function getSubjectStyle(subject) {
-            return SUBJECT_STYLES[subject] || "especialidad";
-        }
-
-        // Función para generar la tabla de horario
-        function generateScheduleTable(courseData) {
-            const days = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes'];
-            const dayNames = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
-
-            let html = `
-                <div class="table-responsive">
-                    <table class="table schedule-table mb-0">
-                        <thead>
-                            <tr>
-                                <th><i class="bi bi-clock me-1"></i>Hora</th>
-                                ${dayNames.map(d => `<th>${d}</th>`).join('')}
-                            </tr>
-                        </thead>
-                        <tbody>`;
-
-            // Usar los bloques de tiempo para Lunes a Jueves (lunJue) y Viernes
-            const blocks = SCHEDULE_DATA.timeBlocks.lunJue;
-
-            blocks.forEach((block, index) => {
-                if (block.type === 'break') {
-                    html += `
-                        <tr class="break-row">
-                            <td colspan="6"><i class="bi bi-cup-hot me-1"></i>${block.label} (${block.start} - ${block.end})</td>
-                        </tr>`;
-                } else if (block.type === 'lunch') {
-                    html += `
-                        <tr class="lunch-row">
-                            <td colspan="6"><i class="bi bi-egg-fried me-1"></i>${block.label} (${block.start} - ${block.end})</td>
-                        </tr>`;
-                } else {
-                    const blockNum = block.block - 1; // Índice 0-based
-                    html += `<tr>
-                        <td class="time-col">${block.start} - ${block.end}</td>`;
-
-                    days.forEach((day, dayIndex) => {
-                        const schedule = courseData.schedule[day];
-                        // Para viernes, verificar si hay clase en ese bloque
-                        if (dayIndex === 4) { // Viernes
-                            const viernesBlocks = SCHEDULE_DATA.timeBlocks.viernes;
-                            const hasBlock = viernesBlocks.some(vb => vb.block === block.block);
-                            if (!hasBlock || blockNum >= schedule.length) {
-                                html += `<td class="text-muted">-</td>`;
-                            } else {
-                                const subject = schedule[blockNum];
-                                const style = getSubjectStyle(subject);
-                                html += `<td><span class="subject-cell subject-${style}">${subject}</span></td>`;
-                            }
-                        } else {
-                            if (schedule && blockNum < schedule.length) {
-                                const subject = schedule[blockNum];
-                                const style = getSubjectStyle(subject);
-                                html += `<td><span class="subject-cell subject-${style}">${subject}</span></td>`;
-                            } else {
-                                html += `<td class="text-muted">-</td>`;
-                            }
-                        }
-                    });
-
-                    html += `</tr>`;
-                }
-            });
-
-            html += `</tbody></table></div>`;
-            return html;
-        }
-
-        // Función para cargar horarios desde JSON
-        async function loadSchedules() {
-            try {
-                const response = await fetch('./data/horarios.json');
-                const data = await response.json();
-
-                const tabsContainer = document.getElementById('courseTabs');
-                const contentContainer = document.getElementById('courseTabsContent');
-
-                // Limpiar contenedor
-                tabsContainer.innerHTML = '';
-                contentContainer.innerHTML = '';
-
-                // Generar tabs y contenido
-                let isFirst = true;
-                for (const [courseId, courseData] of Object.entries(data.courses)) {
-                    // Crear tab
-                    const tab = document.createElement('li');
-                    tab.className = 'nav-item';
-                    tab.setAttribute('role', 'presentation');
-                    tab.innerHTML = `
-                        <button class="nav-link ${isFirst ? 'active' : ''}" 
-                                id="tab-${courseId}" 
-                                data-bs-toggle="pill" 
-                                data-bs-target="#horario-${courseId}"
-                                type="button" 
-                                role="tab">${courseData.name}</button>`;
-                    tabsContainer.appendChild(tab);
-
-                    // Crear contenido
-                    const content = document.createElement('div');
-                    content.className = `tab-pane fade ${isFirst ? 'show active' : ''}`;
-                    content.id = `horario-${courseId}`;
-                    content.setAttribute('role', 'tabpanel');
-                    content.innerHTML = generateScheduleTable(courseData);
-                    contentContainer.appendChild(content);
-
-                    isFirst = false;
-                }
-            } catch (error) {
-                console.error('Error cargando horarios:', error);
-                document.getElementById('courseTabsContent').innerHTML = `
-                    <div class="alert alert-warning text-center py-5">
-                        <i class="bi bi-exclamation-triangle display-4 d-block mb-3"></i>
-                        <h4>Error al cargar horarios</h4>
-                        <p class="mb-0">No se pudieron cargar los horarios. Por favor, intente nuevamente.</p>
-                    </div>`;
-            }
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
-            // Cargar horarios desde JSON
-            loadSchedules();
-
-            // Intersection Observer para animaciones
             const io = new IntersectionObserver(es => es.forEach(e => {
                 if (e.isIntersecting) e.target.classList.add('visible')
             }), { threshold: .2 });
             document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-            // Botón volver arriba
             const backTop = document.getElementById('backTop');
             if (backTop) {
                 window.addEventListener('scroll', () => {
@@ -718,14 +620,11 @@
     </script>
 
     <!-- Footer -->
-    <!-- Footer Moderno y Dinámico -->
     <footer class="footer-modern">
-        <!-- Sección Principal del Footer -->
         <div class="footer-main">
             <div class="container">
                 <div class="row g-4">
-                    <!-- Columna 1: Identidad del Liceo -->
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class="footer-brand">
                             <div class="d-flex align-items-center gap-3 mb-4">
                                 <div class="footer-logo-circle">
@@ -741,90 +640,55 @@
                                 educativa que impulsa
                                 el desarrollo integral de cada estudiante.
                             </p>
-
-                            <!-- Estadísticas Rápidas -->
                             <div class="footer-stats">
-                                <div class="footer-stat-item">
-                                    <i class="bi bi-award-fill"></i>
-                                    <div>
-                                        <strong>59</strong>
-                                        <span>Años de Historia</span>
-                                    </div>
+                                <div class="footer-stat">
+                                    <span class="footer-stat-number">377</span>
+                                    <span class="footer-stat-label">Estudiantes</span>
                                 </div>
-                                <div class="footer-stat-item">
-                                    <i class="bi bi-people-fill"></i>
-                                    <div>
-                                        <strong>+370</strong>
-                                        <span>Estudiantes</span>
-                                    </div>
+                                <div class="footer-stat">
+                                    <span class="footer-stat-number">47</span>
+                                    <span class="footer-stat-label">Docentes</span>
                                 </div>
-                                <div class="footer-stat-item">
-                                    <i class="bi bi-book-fill"></i>
-                                    <div>
-                                        <strong>+40</strong>
-                                        <span>Docentes</span>
-                                    </div>
+                                <div class="footer-stat">
+                                    <span class="footer-stat-number">59</span>
+                                    <span class="footer-stat-label">Años</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Columna 2: Accesos Rápidos -->
                     <div class="col-lg-2 col-md-6">
                         <h4 class="footer-title">
-                            <i class="bi bi-lightning me-2"></i>Accesos Rápidos
+                            <i class="bi bi-building me-2"></i>Institución
                         </h4>
                         <ul class="footer-links">
-                            <li><a href="./index.html"><i class="bi bi-house-door"></i> Inicio</a></li>
                             <li><a href="./nosotros-historia.html"><i class="bi bi-clock-history"></i> Historia</a></li>
                             <li><a href="./nosotros-mision.html"><i class="bi bi-bullseye"></i> Misión y Visión</a></li>
-                            <li><a href="./oferta.html"><i class="bi bi-book"></i> Oferta Educativa</a></li>
-                            <li><a href="./admision.html"><i class="bi bi-door-open"></i> Admisión</a></li>
-                            <li><a href="./contacto.html"><i class="bi bi-envelope"></i> Contacto</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Columna 3: Para Estudiantes -->
-                    <div class="col-lg-2 col-md-6">
-                        <h4 class="footer-title">
-                            <i class="bi bi-mortarboard me-2"></i>Para Estudiantes
-                        </h4>
-                        <ul class="footer-links">
-                            <li><a href="./horarios.html"><i class="bi bi-calendar3"></i> Horarios</a></li>
-                            <li><a href="./calendario-evaluaciones.html"><i class="bi bi-calendar-check"></i>
-                                    Evaluaciones</a></li>
-                            <li><a href="./talleres.html"><i class="bi bi-palette"></i> Talleres</a></li>
-                            <li><a href="./uniforme.html"><i class="bi bi-person-badge"></i> Uniforme</a></li>
-                            <li><a href="./calendario-actividades.html"><i class="bi bi-calendar-event"></i>
-                                    Actividades</a></li>
-                            <li><a href="./noticias.html"><i class="bi bi-newspaper"></i> Noticias</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Columna 4: Para Apoderados -->
-                    <div class="col-lg-2 col-md-6">
-                        <h4 class="footer-title">
-                            <i class="bi bi-people me-2"></i>Para Apoderados
-                        </h4>
-                        <ul class="footer-links">
-                            <li><a href="./docentes.html"><i class="bi bi-person-badge"></i> Docentes</a></li>
-                            <li><a href="./nosotros-pme.html"><i class="bi bi-graph-up"></i> Plan de Mejoramiento</a>
-                            </li>
                             <li><a href="./nosotros-comunidad.html"><i class="bi bi-people"></i> Comunidad</a></li>
+                            <li><a href="./nosotros-pme.html"><i class="bi bi-graph-up"></i> PME</a></li>
                             <li><a href="./documentos.html"><i class="bi bi-file-earmark-text"></i> Documentos</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6">
+                        <h4 class="footer-title">
+                            <i class="bi bi-mortarboard me-2"></i>Educación
+                        </h4>
+                        <ul class="footer-links">
+                            <li><a href="./oferta.html"><i class="bi bi-book"></i> Oferta Educativa</a></li>
+                            <li><a href="./horarios.html"><i class="bi bi-calendar3"></i> Horarios</a></li>
+                            <li><a href="./docentes.html"><i class="bi bi-person-badge"></i> Docentes</a></li>
+                            <li><a href="./talleres.html"><i class="bi bi-palette"></i> Talleres</a></li>
                             <li><a href="./calendario-evaluaciones.html"><i class="bi bi-calendar-check"></i>
                                     Evaluaciones</a></li>
                             <li><a href="./admision.html"><i class="bi bi-door-open"></i> Admisión</a></li>
                         </ul>
                     </div>
 
-                    <!-- Columna 5: Contacto y Redes -->
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-6">
                         <h4 class="footer-title">
                             <i class="bi bi-chat-dots me-2"></i>Contáctanos
                         </h4>
-
-                        <!-- Información de Contacto -->
                         <div class="footer-contact-info">
                             <div class="footer-contact-item">
                                 <div class="footer-contact-icon">
@@ -835,17 +699,15 @@
                                     <p>4 Norte 0417<br>Talca, Chile</p>
                                 </div>
                             </div>
-
                             <div class="footer-contact-item">
                                 <div class="footer-contact-icon">
                                     <i class="bi bi-envelope-fill"></i>
                                 </div>
                                 <div class="footer-contact-text">
                                     <strong>Email</strong>
-                                    <p><a href="mailto:contacto.lbdp@daemtalca.cl">contacto.lbdp@daemtalca.cl</a></p>
+                                    <p><a href="mailto:director.2939@daemtalca.cl">director.2939@daemtalca.cl</a></p>
                                 </div>
                             </div>
-
                             <div class="footer-contact-item">
                                 <div class="footer-contact-icon">
                                     <i class="bi bi-telephone-fill"></i>
@@ -857,19 +719,16 @@
                                     </p>
                                 </div>
                             </div>
-
                             <div class="footer-contact-item">
                                 <div class="footer-contact-icon">
                                     <i class="bi bi-clock-fill"></i>
                                 </div>
                                 <div class="footer-contact-text">
                                     <strong>Horario</strong>
-                                    <p>Lun - Jue: 8:00 - 15:30 hrs<br>Viernes: 8:00 - 13:30 hrs</p>
+                                    <p>Lun - Vie: 8:00 - 18:00 hrs</p>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Redes Sociales -->
                         <div class="footer-social">
                             <h5 class="footer-social-title">Síguenos</h5>
                             <div class="footer-social-links">
@@ -878,6 +737,9 @@
                                 </a>
                                 <a href="#" class="footer-social-link instagram" aria-label="Instagram">
                                     <i class="bi bi-instagram"></i>
+                                </a>
+                                <a href="#" class="footer-social-link twitter" aria-label="Twitter">
+                                    <i class="bi bi-twitter"></i>
                                 </a>
                                 <a href="#" class="footer-social-link youtube" aria-label="YouTube">
                                     <i class="bi bi-youtube"></i>
@@ -889,18 +751,17 @@
             </div>
         </div>
 
-        <!-- Barra Inferior del Footer -->
         <div class="footer-bottom">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-5 text-center text-lg-start mb-3 mb-lg-0">
+                    <div class="col-lg-6 text-center text-lg-start mb-3 mb-lg-0">
                         <p class="footer-copyright mb-0">
                             <i class="bi bi-c-circle me-1"></i>
                             <span id="year"></span> <strong>Liceo Bicentenario Diego Portales</strong>. Todos los
                             derechos reservados.
                         </p>
                     </div>
-                    <div class="col-lg-4 text-center mb-3 mb-lg-0">
+                    <div class="col-lg-6 text-center text-lg-end">
                         <div class="footer-legal-links">
                             <a href="./sitemap.html">
                                 <i class="bi bi-diagram-3"></i> Mapa del Sitio
@@ -915,16 +776,10 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-3 text-center text-lg-end">
-                        <p class="mb-0 small" style="opacity: 1;">
-                            <i class="bi bi-code-slash me-1"></i>Desarrollado por <strong>Claudio Urrutia V.</strong>
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Decoración de Fondo -->
         <div class="footer-decoration">
             <div class="footer-wave"></div>
         </div>
