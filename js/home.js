@@ -196,6 +196,7 @@ const HomeApp = {
       fragment.appendChild(div.firstElementChild);
     });
 
+    muralGrid.innerHTML = '';
     muralGrid.appendChild(fragment);
     this.observeRevealElements();
     this.updateMuralPagination(filtered.length, totalPages);
